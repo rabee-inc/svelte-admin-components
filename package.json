@@ -38,5 +38,14 @@
   },
   "type": "module",
   "dependencies": {
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rabee-inc/svelte-admin-components.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/rabee-inc/svelte-admin-components/issues"
+  },
+  "homepage": "https://github.com/rabee-inc/svelte-admin-components#readme"
 }
