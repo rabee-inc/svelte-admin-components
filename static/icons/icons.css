@@ -1,0 +1,60 @@
+/*
+  Icon Font: icons
+*/
+
+@font-face {
+  font-family: "icons";
+  src: url("./icons_8e43f8a92414bcd1383b0684f8cddf73.eot");
+  src: url("./icons_8e43f8a92414bcd1383b0684f8cddf73.eot?#iefix") format("embedded-opentype"),
+       url("./icons_8e43f8a92414bcd1383b0684f8cddf73.woff2") format("woff2"),
+       url("./icons_8e43f8a92414bcd1383b0684f8cddf73.woff") format("woff"),
+       url("./icons_8e43f8a92414bcd1383b0684f8cddf73.ttf") format("truetype"),
+       url("./icons_8e43f8a92414bcd1383b0684f8cddf73.svg#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "icons";
+    src: url("./icons_8e43f8a92414bcd1383b0684f8cddf73.svg#icons") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icon-arrow_left:before,
+.icon-back:before,
+.icon-bookmark:before,
+.icon-down:before,
+.icon-home:before,
+.icon-menu:before,
+.icon-prev:before,
+.icon-search:before,
+.icon-share:before,
+.icon-up:before {
+  display: inline-block;
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.icon-arrow_left:before { content: "\f100"; }
+.icon-back:before { content: "\f101"; }
+.icon-bookmark:before { content: "\f102"; }
+.icon-down:before { content: "\f103"; }
+.icon-home:before { content: "\f104"; }
+.icon-menu:before { content: "\f105"; }
+.icon-prev:before { content: "\f106"; }
+.icon-search:before { content: "\f107"; }
+.icon-share:before { content: "\f108"; }
+.icon-up:before { content: "\f109"; }
