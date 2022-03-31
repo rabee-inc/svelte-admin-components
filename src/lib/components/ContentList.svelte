@@ -16,7 +16,7 @@
       thead
         tr.border-bottom.text-left
           +each('headings as heading')
-            th.px12.py16.text-gray.bold {heading.label}
+            th.px12.py16.text-gray.bold.word-break-keep {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer
