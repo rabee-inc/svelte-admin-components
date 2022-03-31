@@ -2,6 +2,8 @@
 
 svelte-admin-components is ...
 
+https://www.npmjs.com/package/svelte-admin-components
+
 ## Demo
 
 - Live Demo: https://svelte-admin-components.onrender.com

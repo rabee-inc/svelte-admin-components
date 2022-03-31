@@ -19,8 +19,6 @@ export function user() {
     icon_image: image(),
     followers_count: faker.datatype.number() % 1000,
     following_count: faker.datatype.number() % 1000,
-    project_count: faker.datatype.number() % 1000,
-    collection_count: faker.datatype.number() % 1000,
   };
 };
 
