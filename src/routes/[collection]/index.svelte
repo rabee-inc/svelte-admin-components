@@ -21,6 +21,9 @@
   export let items = [];
   export let content;
 
+  let select = (e) => {
+    alert(`selected ${e.detail.item.id}`);
+  };
 </script>
 
 <template lang='pug'>
@@ -30,5 +33,5 @@
       div.container-960.px16.py32
         h1.mb16 {content.label}
 
-        ContentList(items='{items}', headings='{content.headings}')
+        ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
