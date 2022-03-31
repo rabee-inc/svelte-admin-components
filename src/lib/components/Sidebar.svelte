@@ -3,11 +3,14 @@
 <script>
   let className;
   export {className as class};
+  export let name = 'Admin Demo'
   export let sections = [];
 </script>
 
 <template lang='pug'>
   div.min-h100vh.p16(class='{className}')
+    div.mb32
+      div.bold.fs16 {name}
     +each('sections as section')
       div.mb32
         div.text-uppercase.bold.opacity-50.mb8 {section.label}
