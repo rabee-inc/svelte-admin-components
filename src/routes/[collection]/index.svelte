@@ -4,13 +4,13 @@
     let collection = params.collection;
     let res = await fetch(`/api/${collection}`);
     let {items} = await res.json();
-    let schema = admin.schemas[params.collection];
+    let content = admin.contents[params.collection];
 
     return {
       props: {
         collection,
         items,
-        schema,
+        content,
       }
     };
   }
@@ -19,7 +19,7 @@
   import { ContentList, Sidebar } from "$lib";
   
   export let items = [];
-  export let schema;
+  export let content;
 
 </script>
 
@@ -28,7 +28,7 @@
     Sidebar.w300.bg-royalblue.text-white(sections='{admin.sections}')
     main.w-full
       div.container-960.px16.py32
-        h1.mb16 {schema.label}
+        h1.mb16 {content.label}
 
-        ContentList(items='{items}', headings='{schema.headings}')
+        ContentList(items='{items}', headings='{content.headings}')
 </template>

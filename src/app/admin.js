@@ -1,5 +1,5 @@
 
-import schemas from './schemas.json';
+import contents from './contents.json';
 
 const admin = {
   sections: [
@@ -18,7 +18,7 @@ const admin = {
       ]
     },
   ],
-  schemas,
+  contents,
 };
 
 export default admin;
