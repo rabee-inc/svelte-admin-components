@@ -16,13 +16,15 @@
   }
 </script>
 <script>
+  import { goto } from "$app/navigation";
+
   import { ContentList, Sidebar } from "$lib";
   
   export let items = [];
   export let content;
 
   let select = (e) => {
-    alert(`selected ${e.detail.item.id}`);
+    goto(`/${content.path}/${e.detail.item.id}`);
   };
 </script>
 
