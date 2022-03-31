@@ -20,12 +20,11 @@
     "start": "node build/index.js",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
-
     "release": "npm run package && cd package && npm publish",
-
     "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.1.1",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
@@ -37,8 +36,7 @@
     "typescript": "^4.5.5"
   },
   "type": "module",
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/rabee-inc/svelte-admin-components.git"
