@@ -26,6 +26,15 @@ export const read = (key) => {
   return function({request, params, url}) {
     let item = items.find(item => item['id'] === params['id']);
 
+    if (!item) {
+      return {
+        status: '404',
+        body: {
+          message: `Not found: ${params['id']}`,
+        }
+      }
+    }
+
     return {
       body: {
         item,

@@ -11,8 +11,8 @@ export function image() {
 export function user() {
   let name = faker.name.firstName();
   return {
-    // id: faker.datatype.uuid(),
-    id: '1',
+    id: faker.datatype.uuid(),
+    // id: '1',
     screen_name: name.toLowerCase(),
     display_name: name,
     bio: faker.lorem.lines(),
