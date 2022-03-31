@@ -4,6 +4,7 @@ const admin = {
     {
       label: 'service',
       items: [
+        { label: 'user', link: '/users' },
         { label: 'post', link: '/posts' },
         { label: 'image', link: '/images' },
       ]
