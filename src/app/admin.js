@@ -55,6 +55,11 @@ const admin = {
           label: 'title',
           type: 'text',
         },
+        {
+          key: 'created_at',
+          label: '作成日',
+          type: 'date',
+        },
       ],
     },
   }
