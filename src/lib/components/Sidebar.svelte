@@ -10,7 +10,7 @@
 <template lang='pug'>
   div.min-h100vh.p16(class='{className}')
     div.mb32
-      div.bold.fs16 {name}
+      a.bold.fs16(href='/') {name}
     +each('sections as section')
       div.mb32
         div.text-uppercase.bold.opacity-50.mb8 {section.label}

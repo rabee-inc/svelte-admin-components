@@ -14,14 +14,11 @@
 </script>
 <script>
 
-  import * as forms from "$lib/index.js";
-  import Sidebar from "$lib/components/Sidebar.svelte";
   import admin from "$app/admin.js";
-
+  import { Sidebar } from "$lib";
+  
   export let collection = '';
   export let items = [];
-
-  let Text = forms.Text;
 
 </script>
 
