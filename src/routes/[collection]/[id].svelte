@@ -17,7 +17,7 @@
   }
 </script>
 <script>
-  import { Sidebar } from "$lib";
+  import { ContentForm, Sidebar } from "$lib";
   
   export let item;
   export let content;
@@ -33,4 +33,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id}
+        ContentForm
 </template>
