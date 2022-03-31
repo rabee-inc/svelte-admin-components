@@ -16,6 +16,23 @@ const admin = {
       ]
     },
   ],
+  schemas: {
+    users: {
+      label: 'user',
+      headings: [
+        {
+          key: 'id',
+          label: 'ID',
+          type: 'text',
+        },
+        {
+          key: 'screen_name',
+          label: 'name',
+          type: 'text',
+        },
+      ],
+    },
+  }
 };
 
 export default admin;
