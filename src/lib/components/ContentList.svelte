@@ -1,6 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { contents } from "$lib/index.js";
   import { getByPath } from "$lib/utils";
 
   let className;
@@ -20,8 +21,8 @@
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer
             +each('headings as heading')
-              td.p12
-                div.fs13 {getByPath(item, heading.key)}
+              td.p12.fs13
+                svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }')
 </template>
 
 <style lang="less">
