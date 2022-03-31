@@ -37,6 +37,26 @@ const admin = {
         },
       ],
     },
+    posts: {
+      label: 'user',
+      headings: [
+        {
+          key: 'image.url',
+          label: 'アイキャッチ',
+          type: 'image',
+        },
+        {
+          key: 'id',
+          label: 'ID',
+          type: 'text',
+        },
+        {
+          key: 'title',
+          label: 'title',
+          type: 'text',
+        },
+      ],
+    },
   }
 };
 
