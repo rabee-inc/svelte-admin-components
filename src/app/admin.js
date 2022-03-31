@@ -21,6 +21,11 @@ const admin = {
       label: 'user',
       headings: [
         {
+          key: 'icon_image.url',
+          label: 'Icon',
+          type: 'image',
+        },
+        {
           key: 'id',
           label: 'ID',
           type: 'text',

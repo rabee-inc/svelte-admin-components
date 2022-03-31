@@ -1,6 +1,8 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { getByPath } from "$lib/utils";
+
   let className;
   export {className as class};
   export let headings = [];
@@ -19,7 +21,7 @@
           tr.border-bottom.transition.hover-bg.cursor-pointer
             +each('headings as heading')
               td.p12
-                div.fs13 {item[heading.key]}
+                div.fs13 {getByPath(item, heading.key)}
 </template>
 
 <style lang="less">
