@@ -3,7 +3,7 @@
 <script>
   import * as forms from "$lib/index.js";
   import Sidebar from "$lib/components/Sidebar.svelte";
-  import admin from "$app/admin.js";
+  import admin from "$demo/admin.js"
 
   let Text = forms.Text;
 

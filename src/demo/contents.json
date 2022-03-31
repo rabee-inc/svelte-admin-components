@@ -1,6 +1,19 @@
 {
   "users": {
     "label": "user",
+    "path": "users",
+    "schema": [
+      {
+        "key": "screen_name",
+        "label": "name",
+        "type": "text"
+      },
+      {
+        "key": "display_name",
+        "label": "表示名",
+        "type": "text"
+      }
+    ],
     "headings": [
       {
         "key": "icon_image.url",
@@ -20,7 +33,8 @@
     ]
   },
   "posts": {
-    "label": "user",
+    "label": "post",
+    "path": "posts",
     "headings": [
       {
         "key": "image.url",

@@ -24,7 +24,7 @@ const config = {
       resolve: {
         alias: {
           $components: path.resolve('./src/components'),
-          $app: path.resolve('./src/app'),
+          $demo: path.resolve('./src/demo'),
         }
       }
     }
