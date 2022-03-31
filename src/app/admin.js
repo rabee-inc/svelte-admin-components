@@ -1,4 +1,6 @@
 
+import schemas from './schemas.json';
+
 const admin = {
   sections: [
     {
@@ -16,53 +18,7 @@ const admin = {
       ]
     },
   ],
-  schemas: {
-    users: {
-      label: 'user',
-      headings: [
-        {
-          key: 'icon_image.url',
-          label: 'Icon',
-          type: 'image',
-        },
-        {
-          key: 'id',
-          label: 'ID',
-          type: 'text',
-        },
-        {
-          key: 'screen_name',
-          label: 'name',
-          type: 'text',
-        },
-      ],
-    },
-    posts: {
-      label: 'user',
-      headings: [
-        {
-          key: 'image.url',
-          label: 'アイキャッチ',
-          type: 'image',
-        },
-        {
-          key: 'id',
-          label: 'ID',
-          type: 'text',
-        },
-        {
-          key: 'title',
-          label: 'title',
-          type: 'text',
-        },
-        {
-          key: 'created_at',
-          label: '作成日',
-          type: 'date',
-        },
-      ],
-    },
-  }
+  schemas,
 };
 
 export default admin;
