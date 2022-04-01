@@ -4,10 +4,10 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = [''];
+  export let value = [{}];
 
   let add = () => {
-    value.push('');
+    value.push({});
     value = value;
   };
 
