@@ -23,7 +23,7 @@
   div(class='{className}')
     form(on:submit|preventDefault='{submit}')
       button.mb16 save
-      div.f.mxn8
+      div.row.mxn8
         +each('schemas as schema')
           div.px8.mb16
             //- svelte:component(this='{forms[schema.type]}', value='{ getByPath(item, schema.key) }')
