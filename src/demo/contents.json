@@ -35,6 +35,13 @@
   "posts": {
     "label": "post",
     "path": "posts",
+    "schemas": [
+      {
+        "key": "title",
+        "label": "タイトル",
+        "type": "text"
+      }
+    ],
     "headings": [
       {
         "key": "image.url",
