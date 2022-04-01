@@ -12,6 +12,11 @@
         "key": "display_name",
         "label": "表示名",
         "type": "text"
+      },
+      {
+        "key": "bio",
+        "label": "bio",
+        "type": "textarea"
       }
     ],
     "headings": [
