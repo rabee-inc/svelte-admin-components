@@ -45,6 +45,29 @@ export const read = (key) => {
 
 // 
 export const update = (key) => {
+  let items = dummy[key];
+  
+  return async function({request, params, url}) {
+    let item = items.find(item => item['id'] === params['id']);
+
+    if (!item) {
+      return {
+        status: '404',
+        body: {
+          message: `Not found: ${params['id']}`,
+        }
+      }
+    }
+
+    let body = await request.json();
+    Object.assign(item, body.item);
+
+    return {
+      body: {
+        item,
+      }
+    };
+  };
 
 };
 
