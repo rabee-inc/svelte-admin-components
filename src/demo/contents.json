@@ -2,7 +2,7 @@
   "users": {
     "label": "user",
     "path": "users",
-    "schema": [
+    "schemas": [
       {
         "key": "screen_name",
         "label": "name",

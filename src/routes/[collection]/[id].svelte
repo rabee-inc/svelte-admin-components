@@ -19,11 +19,19 @@
 <script>
   import { ContentForm, Sidebar } from "$lib";
   
+  export let collection;
   export let item;
   export let content;
 
-  let select = (e) => {
-    goto(`/${content.path}/${e.detail.item.id}`);
+  let submit = async (e) => {
+    let item = e.detail.item;
+
+    let res = await fetch(`/api/${collection}/${item.id}`, {
+      method: 'put',
+      body: JSON.stringify({
+        item,
+      }),
+    });
   };
 </script>
 
@@ -33,5 +41,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id}
-        ContentForm
+        ContentForm(item='{item}', schemas='{content.schemas}', on:submit='{submit}')
 </template>
