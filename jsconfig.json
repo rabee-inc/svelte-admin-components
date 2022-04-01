@@ -5,7 +5,9 @@
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"],
       "$components": ["src/components"],
-      "$components/*": ["src/components/*"]
+      "$components/*": ["src/components/*"],
+      "$app": ["src/app"],
+      "$app/*": ["src/app/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]

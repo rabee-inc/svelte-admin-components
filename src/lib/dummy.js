@@ -22,8 +22,23 @@ export function user() {
   };
 };
 
+export function post() {
+  return {
+    id: faker.datatype.uuid(),
+    slug: faker.datatype.uuid(),
+    title: faker.lorem.sentence(),
+    description: faker.lorem.lines(),
+    image: image(),
+    tag_names: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
+    created_user: user(),
+    created_at: faker.datatype.datetime().getTime(),
+    updated_at: faker.datatype.datetime().getTime(),
+  };
+};
+
 let dummy = {
   users: Array(32).fill().map(() => user()),
+  posts: Array(32).fill().map(() => post()),
 };
 
 export default dummy;
