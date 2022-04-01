@@ -1,4 +1,6 @@
 
+import contents from './contents.json';
+
 const admin = {
   sections: [
     {
@@ -16,6 +18,7 @@ const admin = {
       ]
     },
   ],
+  contents,
 };
 
 export default admin;

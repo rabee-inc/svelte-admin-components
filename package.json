@@ -36,7 +36,9 @@
     "typescript": "^4.5.5"
   },
   "type": "module",
-  "dependencies": {},
+  "dependencies": {
+    "dayjs": "^1.11.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/rabee-inc/svelte-admin-components.git"
