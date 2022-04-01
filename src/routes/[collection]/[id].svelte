@@ -18,7 +18,7 @@
 </script>
 <script>
   import { ContentForm, Sidebar } from "$lib";
-  
+
   export let collection;
   export let item;
   export let content;
@@ -32,6 +32,7 @@
         item,
       }),
     });
+    console.log('saved');
   };
 </script>
 
