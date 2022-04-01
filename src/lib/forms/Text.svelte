@@ -8,5 +8,5 @@
 <template lang='pug'>
   label.block
     div.fs12.mb4 {schema.label}
-    input.border.px8.py4(type='text', bind:value='{value}')
+    input.w-full.border.px8.py4(type='text', bind:value='{value}')
 </template>

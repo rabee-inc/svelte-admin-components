@@ -6,17 +6,20 @@
       {
         "key": "screen_name",
         "label": "name",
-        "type": "text"
+        "type": "text",
+        "class": "col4"
       },
       {
         "key": "display_name",
         "label": "表示名",
-        "type": "text"
+        "type": "text",
+        "class": "col4"
       },
       {
         "key": "bio",
         "label": "bio",
-        "type": "textarea"
+        "type": "textarea",
+        "class": "col12"
       }
     ],
     "headings": [
