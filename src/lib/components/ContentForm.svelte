@@ -25,7 +25,7 @@
       button.mb16 save
       div.row.mxn8
         +each('schemas as schema')
-          div.px8.mb16(class='{schema.class}')
+          div.px8.mb16.w-full(class='{schema.class}')
             //- svelte:component(this='{forms[schema.type]}', value='{ getByPath(item, schema.key) }')
             svelte:component(this='{forms[schema.type]}', schema='{schema}', bind:value='{item[schema.key]}')
 </template>
