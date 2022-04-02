@@ -1,6 +1,8 @@
 // https://www.npmjs.com/package/@faker-js/faker
 import {faker} from '@faker-js/faker';
 
+faker.seed(0);
+
 export function image() {
   return {
     // url: faker.image.avatar(), // こっちだと 429 error 出る
