@@ -4,11 +4,23 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = [{}];
+  export let value = [_getDefaultValue()];
 
   let add = () => {
-    value.push({});
+    console.log(schema);
+    value.push(_getDefaultValue());
     value = value;
+  };
+
+  let _getDefaultValue = () => {
+    if (schema.type === 'object') {
+      return {};
+    }
+    else if (schema.type === 'array') {
+      return [];
+    }
+
+    return '';
   };
 
 </script>
@@ -21,5 +33,5 @@
       +each('value as i')
         div.mb4
           svelte:component(this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{i}')
-      button.button(type='button', on:click='{add}') add
+      button.button.w-full(type='button', on:click='{add}') +
 </template>

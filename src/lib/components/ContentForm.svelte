@@ -22,7 +22,8 @@
 <template lang='pug'>
   div(class='{className}')
     form(on:submit|preventDefault='{submit}')
-      button.mb16 save
+      div.f.fr
+        button.button.primary.mb16 save
       div.row.mxn8
         +each('schemas as schema')
           div.px8.mb16.w-full(class='{schema.class}')
