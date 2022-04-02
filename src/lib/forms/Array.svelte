@@ -14,7 +14,7 @@
 </script>
 
 <template lang='pug'>
-  label.block
+  div.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
     div
