@@ -13,7 +13,7 @@
   }
 </script>
 <script>
-  import { ContentForm, Sidebar } from "$lib";
+  import { ContentForm, Sidebar } from "svelte-admin-components";
 
   export let collection;
   export let item = {};

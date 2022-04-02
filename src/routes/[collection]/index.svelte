@@ -18,7 +18,7 @@
 <script>
   import { goto } from "$app/navigation";
 
-  import { ContentList, Sidebar } from "$lib";
+  import { ContentList, Sidebar } from "svelte-admin-components";
   
   export let items = [];
   export let content;
