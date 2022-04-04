@@ -31,7 +31,7 @@ export function post() {
     title: faker.lorem.sentence(),
     description: faker.lorem.lines(),
     image: image(),
-    tag_names: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
+    tags: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
     created_user: user(),
     created_at: faker.datatype.datetime().getTime(),
     updated_at: faker.datatype.datetime().getTime(),

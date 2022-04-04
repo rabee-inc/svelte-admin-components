@@ -51,6 +51,16 @@
         "key": "title",
         "label": "タイトル",
         "type": "text"
+      },
+      {
+        "key": "tags",
+        "label": "タグ",
+        "type": "array",
+        "opts": {
+          "schema": {
+            "type": "text"
+          }
+        }
       }
     ],
     "headings": [
