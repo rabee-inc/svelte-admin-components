@@ -4,7 +4,12 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = {};
+  export let value;
+
+  // setup default value
+  if (!value) {
+    value = {};
+  }
 </script>
 
 <template lang='pug'>

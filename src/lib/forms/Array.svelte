@@ -4,23 +4,17 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = [_getDefaultValue()];
+  export let value;
+
+  // setup default value
+  if (!value) {
+    value = [''];
+  }
 
   let add = () => {
     console.log(schema);
-    value.push(_getDefaultValue());
+    value.push('');
     value = value;
-  };
-
-  let _getDefaultValue = () => {
-    if (schema.type === 'object') {
-      return {};
-    }
-    else if (schema.type === 'array') {
-      return [];
-    }
-
-    return '';
   };
 
 </script>
