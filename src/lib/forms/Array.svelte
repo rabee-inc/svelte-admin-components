@@ -11,7 +11,7 @@
 
   // setup default value
   if (!value) {
-    value = [''];
+    value = [];
   }
 
   let key = Date.now();
