@@ -1,7 +1,7 @@
 <script context="module">
 </script>
 <script>
-  import Sidebar from "$lib/components/Sidebar.svelte";
+  import { Sidebar } from "svelte-admin-components";
   import admin from "$demo/admin.js"
 
 </script>

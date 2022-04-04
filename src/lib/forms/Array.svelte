@@ -4,22 +4,30 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = [{}];
+  export let value;
+
+  // setup default value
+  if (!value) {
+    value = [''];
+  }
 
   let add = () => {
-    value.push({});
+    console.log(schema);
+    value.push('');
     value = value;
   };
 
 </script>
 
 <template lang='pug'>
-  label.block
+  div.block.border
     +if('schema.label')
-      div.fs12.mb4 {schema.label}
-    div
-      +each('value as i')
-        div.mb4
-          svelte:component(this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{i}')
-      button.button(type='button', on:click='{add}') add
+      div.bg-aliceblue.border-bottom.p8
+        div.fs12.mb4 {schema.label}
+    div.p16
+      div.mb8
+        +each('value as i')
+          div.mb8
+            svelte:component(this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{i}')
+      button.button.w-full(type='button', on:click='{add}') +
 </template>

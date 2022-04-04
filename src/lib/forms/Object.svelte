@@ -4,15 +4,21 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
-  export let value = {};
+  export let value;
+
+  // setup default value
+  if (!value) {
+    value = {};
+  }
 </script>
 
 <template lang='pug'>
-  div.border.p8
+  div.border
     +if('schema.label')
-      div.fs12.mb4 {schema.label}
-    div.row.mxn8
+      div.bg-aliceblue.border-bottom.p8
+        div.fs12.mb4 {schema.label}
+    div.row.p16.mxn8
       +each('schema.opts.schemas as schema')
-        div.px8.mb16.w-full(class='{schema.class}')
+        div.w-full.px8.mb16.mb0-last(class='{schema.class}')
           svelte:component(this='{forms[schema.type]}', schema='{schema}', bind:value='{value[schema.key]}')
 </template>
