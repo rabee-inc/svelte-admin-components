@@ -35,7 +35,7 @@
       div.container-960.px16.py32
         div.f.fm.flex-between
           h1.mb16 {content.label}
-          a.fs12(href='/{content.path}/schema') edit
+          a.fs12(href='/{content.path}/edit') edit
 
         ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>

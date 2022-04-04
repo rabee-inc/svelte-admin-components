@@ -15,8 +15,6 @@
 <script>
   import { ContentForm, Sidebar } from "svelte-admin-components";
 
-  export let collection;
-  export let item = {};
   export let content;
 
   let schemas = [
