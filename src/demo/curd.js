@@ -1,5 +1,5 @@
 // 共通 curd
-import dummy from '$lib/dummy.js';
+import dummy from './dummy.js';
 
 // 
 export const index = (key) => {
