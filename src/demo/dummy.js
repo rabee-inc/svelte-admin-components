@@ -41,6 +41,12 @@ export function post() {
 let dummy = {
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
+
+  generator: {
+    images: image,
+    users: user,
+    posts: post,
+  },
 };
 
 export default dummy;
