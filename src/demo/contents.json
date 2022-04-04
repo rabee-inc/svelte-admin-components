@@ -61,6 +61,25 @@
             "type": "text"
           }
         }
+      },
+      {
+        "key": "meta",
+        "label": "メタ情報",
+        "type": "object",
+        "opts": {
+          "schemas": [
+            {
+              "key": "title",
+              "label": "タイトル",
+              "type": "text"
+            },
+            {
+              "key": "description",
+              "label": "詳細",
+              "type": "textarea"
+            }
+          ]
+        }
       }
     ],
     "headings": [
