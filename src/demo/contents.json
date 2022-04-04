@@ -4,8 +4,13 @@
     "path": "users",
     "schemas": [
       {
+        "type": "text",
+        "label": "ID",
+        "key": "id"
+      },
+      {
         "key": "screen_name",
-        "label": "name",
+        "label": "名前",
         "type": "text",
         "class": "col4",
         "opts": {
@@ -20,9 +25,24 @@
       },
       {
         "key": "bio",
-        "label": "bio",
+        "label": "プロフィール",
         "type": "textarea",
         "class": "col12"
+      },
+      {
+        "type": "number",
+        "label": "年齢",
+        "key": "age"
+      },
+      {
+        "type": "date",
+        "label": "作成日",
+        "key": "created_at"
+      },
+      {
+        "type": "switch",
+        "label": "アンバサダー",
+        "key": "is_ambassador"
       }
     ],
     "headings": [

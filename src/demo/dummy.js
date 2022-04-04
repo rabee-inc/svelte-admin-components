@@ -21,6 +21,8 @@ export function user() {
     icon_image: image(),
     followers_count: faker.datatype.number() % 1000,
     following_count: faker.datatype.number() % 1000,
+    created_at: faker.datatype.datetime().getTime(),
+    age: faker.datatype.number({min: 18, max: 64}),
   };
 };
 
