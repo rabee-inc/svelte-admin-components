@@ -8,5 +8,5 @@
 <template lang='pug'>
   label.block
     div.fs12.mb4 {schema.label}
-    input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}')
+    textarea.w-full.border.px8.py4(bind:value, rows='8')
 </template>

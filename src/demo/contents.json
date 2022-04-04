@@ -1,6 +1,30 @@
 {
   "users": {
     "label": "user",
+    "path": "users",
+    "schemas": [
+      {
+        "key": "screen_name",
+        "label": "name",
+        "type": "text",
+        "class": "col4",
+        "opts": {
+          "required": true
+        }
+      },
+      {
+        "key": "display_name",
+        "label": "表示名",
+        "type": "text",
+        "class": "col4"
+      },
+      {
+        "key": "bio",
+        "label": "bio",
+        "type": "textarea",
+        "class": "col12"
+      }
+    ],
     "headings": [
       {
         "key": "icon_image.url",
@@ -20,7 +44,15 @@
     ]
   },
   "posts": {
-    "label": "user",
+    "label": "post",
+    "path": "posts",
+    "schemas": [
+      {
+        "key": "title",
+        "label": "タイトル",
+        "type": "text"
+      }
+    ],
     "headings": [
       {
         "key": "image.url",

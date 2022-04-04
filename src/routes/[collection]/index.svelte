@@ -1,5 +1,5 @@
 <script context="module">
-  import admin from "$app/admin.js";
+  import admin from "$demo/admin.js"
   export async function load({fetch, params}) {
     let collection = params.collection;
     let res = await fetch(`/api/${collection}`);
@@ -16,13 +16,15 @@
   }
 </script>
 <script>
+  import { goto } from "$app/navigation";
+
   import { ContentList, Sidebar } from "$lib";
   
   export let items = [];
   export let content;
 
   let select = (e) => {
-    alert(`selected ${e.detail.item.id}`);
+    goto(`/${content.path}/${e.detail.item.id}`);
   };
 </script>
 

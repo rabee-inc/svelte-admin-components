@@ -6,8 +6,8 @@
       "$lib/*": ["src/lib/*"],
       "$components": ["src/components"],
       "$components/*": ["src/components/*"],
-      "$app": ["src/app"],
-      "$app/*": ["src/app/*"]
+      "$demo": ["src/demo"],
+      "$demo/*": ["src/demo/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
