@@ -33,9 +33,13 @@
     Sidebar.w300.bg-royalblue.text-white(sections='{admin.sections}')
     main.w-full
       div.container-960.px16.py32
-        div.f.fm.flex-between
-          h1.mb16 {content.label}
-          a.fs12(href='/{content.path}/edit') edit
+        div.f.fm.flex-between.mb16
+          div.f.fm
+            h1.mr8 {content.label}
+            a.fs12.p4.mt6(href='/{content.path}/edit')
+              i.material-icons.fs18 edit
+          div
+            a.button.primary(href='/{content.path}/new') NEW
 
         ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
