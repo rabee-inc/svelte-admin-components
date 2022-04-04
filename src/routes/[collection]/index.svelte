@@ -33,7 +33,9 @@
     Sidebar.w300.bg-royalblue.text-white(sections='{admin.sections}')
     main.w-full
       div.container-960.px16.py32
-        h1.mb16 {content.label}
+        div.f.fm.flex-between
+          h1.mb16 {content.label}
+          a.fs12(href='/{content.path}/schema') edit
 
         ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
