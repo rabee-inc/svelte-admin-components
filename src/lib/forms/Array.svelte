@@ -2,6 +2,7 @@
 
 <script>
   import { forms } from "$lib/index.js";
+  import Sortable from 'sortablejs';
 
   export let schema;
   export let value;

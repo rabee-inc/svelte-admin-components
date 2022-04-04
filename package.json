@@ -37,7 +37,8 @@
   },
   "type": "module",
   "dependencies": {
-    "dayjs": "^1.11.0"
+    "dayjs": "^1.11.0",
+    "sortablejs": "^1.15.0"
   },
   "repository": {
     "type": "git",
