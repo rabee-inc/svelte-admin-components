@@ -15,7 +15,7 @@
   }
 
   let key = Date.now();
-  let elements = [];
+  let elements;
 
   let add = () => {
     console.log(schema);
