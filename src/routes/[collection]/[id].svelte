@@ -3,7 +3,7 @@
   export async function load({fetch, params}) {
     let collection = params.collection;
     let id = params.id;
-    let content = admin.contents[params.collection];;
+    let content = admin.contents[params.collection];
     let item;
 
     if (params.id !== 'new') {
