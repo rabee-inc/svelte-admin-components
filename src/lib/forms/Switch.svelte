@@ -4,6 +4,7 @@
   export let schema;
   export let value;
 
+  // スイッチのトグル
 	let onToggleChanged = () => {
 		value = !value;
 	};
