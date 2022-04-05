@@ -3,7 +3,6 @@
 <script>
   export let schema;
   export let value = '';
-
 </script>
 
 <template lang="pug">
