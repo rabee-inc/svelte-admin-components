@@ -16,7 +16,22 @@ export const index = (key) => {
 
 // 
 export const create = (key) => {
+  let items = dummy[key];
+  let generator = dummy.generator[key];
 
+  return async function({request, params, url}) {
+    let item = generator();
+    let body = await request.json();
+    Object.assign(item, body.item);
+
+    items.unshift(item);
+
+    return {
+      body: {
+        item,
+      }
+    };
+  };
 };
 
 // 
