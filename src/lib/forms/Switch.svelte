@@ -4,17 +4,13 @@
   export let schema;
   export let value;
 
-  // スイッチのトグル
-  let onToggleChanged = () => {
-    value = !value;
-  };
 </script>
 
 <template lang='pug'>
   label.inline-block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.switch.text-primary(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
+    input.switch.text-primary(type='checkbox' bind:checked='{value}' class:checked='{value}')
 </template>
 
 <style lang='less' global>
