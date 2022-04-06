@@ -6,7 +6,10 @@
       {
         "type": "text",
         "label": "ID",
-        "key": "id"
+        "key": "id",
+        "opts": {
+          "readonly": true
+        }
       },
       {
         "key": "screen_name",
