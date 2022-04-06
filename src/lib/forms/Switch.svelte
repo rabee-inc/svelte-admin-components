@@ -14,7 +14,7 @@
   label.inline-block
     +if('schema.label')
       div {schema.label}
-    input.switch.text-primary.mr12(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
+    input.switch.text-primary(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
 </template>
 
 <style lang='less' global>
