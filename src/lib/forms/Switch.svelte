@@ -13,7 +13,7 @@
 <template lang='pug'>
   label.inline-block
     +if('schema.label')
-      div {schema.label}
+      div.fs12.mb4 {schema.label}
     input.switch.text-primary(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
 </template>
 
