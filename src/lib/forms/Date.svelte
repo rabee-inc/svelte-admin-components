@@ -6,7 +6,7 @@
 </script>
 
 <template lang="pug">
-  label.block
+  label.inline-block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
     input.input(bind:value, type='date')
