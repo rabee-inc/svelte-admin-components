@@ -6,8 +6,8 @@
 </script>
 
 <template lang="pug">
-  label.inline-block
+  label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.input(bind:value, type='date')
+    input.input.w-full(bind:value, type='date')
 </template>
