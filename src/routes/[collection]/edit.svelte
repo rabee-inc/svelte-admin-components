@@ -32,28 +32,32 @@
       "opts": {
         "schema": {
           "type": "object",
-          "opts": {
-            "schemas": [
-              {
-                "key": "key",
-                "label": "key",
-                "type": "text",
-                "class": "col4",
-              },
-              {
-                "key": "label",
-                "label": "label",
-                "type": "text",
-                "class": "col4",
-              },
-              {
-                "key": "type",
-                "label": "type",
-                "type": "text",
-                "class": "col4",
-              },
-            ]
-          }
+          "opts": ({value}) => {
+            let opts = {
+              "schemas": [
+                { "key": "key", "label": "key", "type": "text", "class": "col4", },
+                { "key": "label", "label": "label", "type": "text", "class": "col4", },
+                { "key": "type", "label": "type", "type": "text", "class": "col4", },
+              ]
+            };
+
+            if (value.type === 'number') {
+              opts.schemas.push({
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "opts": {
+                  "schemas": [
+                    { "key": "min", "label": "min", "type": "number", "class": "col4", },
+                    { "key": "max", "label": "max", "type": "number", "class": "col4", },
+                    { "key": "step", "label": "step", "type": "number", "class": "col4", },
+                  ]
+                }
+              });
+            }
+
+            return opts;
+          },
         }
       }
     },
