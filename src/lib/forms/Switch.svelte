@@ -14,7 +14,7 @@
   label.block
     +if('schema.label')
       div {schema.label}
-    input.switch.mr12(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
+    input.switch.text-primary.mr12(type='checkbox' bind='{value}' on:click='{onToggleChanged}' class:checked='{value}')
 </template>
 
 <style lang='less' global>
@@ -44,7 +44,7 @@
       transition: 200ms;
     }
     &.checked {
-      background: rgb(52, 122, 183);
+      background: currentColor;
       border-color: transparent !important;
       &:after {
         left: 22px;
