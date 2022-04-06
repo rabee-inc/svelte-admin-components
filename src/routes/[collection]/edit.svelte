@@ -70,7 +70,8 @@
                     { "key": "step", "label": "step", "type": "number", "class": "col4", },
                   ]
                 }
-              }
+              },
+              // TODO: 他の type 用のも作っていく
             ],
           },
         }
