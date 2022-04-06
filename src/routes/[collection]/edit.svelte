@@ -32,20 +32,37 @@
       "opts": {
         "schema": {
           "type": "object",
-          "opts": ({value}) => {
-            let opts = {
-              "schemas": [
-                { "key": "key", "label": "key", "type": "text", "class": "col4", },
-                { "key": "label", "label": "label", "type": "text", "class": "col4", },
-                { "key": "type", "label": "type", "type": "text", "class": "col4", },
-              ]
-            };
-
-            if (value.type === 'number') {
-              opts.schemas.push({
+          "opts": {
+            "schemas": [
+              { "key": "key", "label": "key", "type": "text", "class": "col4", },
+              { "key": "label", "label": "label", "type": "text", "class": "col4", },
+              { "key": "type", "label": "type", "type": "text", "class": "col4", },
+              // for textarea
+              {
                 "key": "opts",
                 "label": "opts",
                 "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'textarea',
+                },
+                "opts": {
+                  "schemas": [
+                    { "key": "cols", "label": "cols", "type": "number", "class": "col4", },
+                  ]
+                }
+              },
+              // for number
+              {
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'number',
+                },
                 "opts": {
                   "schemas": [
                     { "key": "min", "label": "min", "type": "number", "class": "col4", },
@@ -53,10 +70,8 @@
                     { "key": "step", "label": "step", "type": "number", "class": "col4", },
                   ]
                 }
-              });
-            }
-
-            return opts;
+              }
+            ],
           },
         }
       }

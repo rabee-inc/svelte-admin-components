@@ -20,6 +20,22 @@
     }
     return opts;
   };
+
+  let isShow = (schema) => {
+    let condition = schema.condition;
+    if (condition) {
+      let a = value[condition.key];
+      let b = condition.value;
+
+      if (condition.operation === '==') {
+        return a === b;
+      }
+      // TODO: <, <=, >, >=
+
+      return false;
+    }
+    return true;
+  };
 </script>
 
 <template lang='pug'>
@@ -29,6 +45,7 @@
         div.fs12.mb4 {schema.label}
     div.row.p16.mxn8
       +each('getOpts().schemas as schema')
-        div.w-full.px8.mb16.mb0-last(class='{schema.class}')
-          svelte:component(this='{forms[schema.type]}', schema='{schema}', bind:value='{value[schema.key]}')
+        +if('isShow(schema, value)')
+          div.w-full.px8.mb16.mb0-last(class='{schema.class}')
+            svelte:component(this='{forms[schema.type]}', schema='{schema}', item='{value}', bind:value='{value[schema.key]}')
 </template>
