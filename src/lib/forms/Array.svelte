@@ -42,17 +42,18 @@
 </script>
 
 <template lang='pug'>
-  div.block.border
+  div.border.rounded-4
     +if('schema.label')
       div.bg-aliceblue.border-bottom.p8
         div.fs12.mb4 {schema.label}
-    div.p16
-      div.mb8(bind:this='{elements}')
+    div
+      div(bind:this='{elements}')
         +key('key')
           +each('value as v,i')
-            div.f.fm.mb8(data-id='{i}')
+            div.f.fm.p16.border-bottom(data-id='{i}')
               img.handle.flex-fixed.p8.mr8(src='{handle}', alt='handle')
               div.w-full
                 svelte:component(this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{v}')
-      button.button.w-full(type='button', on:click='{add}') +
+      div.p16
+        button.button.w-full(type='button', on:click='{add}') +
 </template>
