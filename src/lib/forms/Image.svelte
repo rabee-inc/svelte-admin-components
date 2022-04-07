@@ -8,6 +8,8 @@
   export let value = '';
 
   let input;
+
+  // 画像を click
   let click = async () => {
     if (actions.selectImage) {
       let image = await actions.selectImage();
@@ -16,6 +18,17 @@
     else {
       input.click();
     }
+  };
+
+  // 画像を drop したとき
+  let drop = (e) => {
+    var file = e.dataTransfer.files[0];
+    if (!file) return ;
+
+    // 画像以外は弾く
+    if (/^image/.test(file.type) === false) return ;
+
+    setImage(file);
   };
 
   let setImage = (file) => {
@@ -42,7 +55,7 @@
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    div.relative.inline-block
+    div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
       img.max-height-300(src='{value.url}')
       div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +
     //- input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}', readonly!='{schema.opts?.readonly}')
