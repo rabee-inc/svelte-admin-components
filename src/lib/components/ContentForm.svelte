@@ -7,14 +7,14 @@
 
   let className;
   export {className as class};
-  export let item;
+  export let value;
   export let schemas;
 
   let dispatch = createEventDispatcher();
 
   let submit = () => {
     dispatch('submit', {
-      item,
+      value,
     });
   };
 
@@ -34,5 +34,5 @@
       div.f.fr
         button.button.primary.mb16 save
       div
-        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{item}')
+        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{value}')
 </template>
