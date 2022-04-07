@@ -16,6 +16,7 @@
   import { ContentForm, Sidebar } from "svelte-admin-components";
 
   export let content;
+  export let collection;
 
   let schemas = [
     {
@@ -34,34 +35,57 @@
           "type": "object",
           "opts": {
             "schemas": [
+              { "key": "key", "label": "key", "type": "text", "class": "col4", },
+              { "key": "label", "label": "label", "type": "text", "class": "col4", },
+              { "key": "type", "label": "type", "type": "text", "class": "col4", },
+              // for textarea
               {
-                "key": "key",
-                "label": "key",
-                "type": "text",
-                "class": "col4",
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'textarea',
+                },
+                "opts": {
+                  "schemas": [
+                    { "key": "cols", "label": "cols", "type": "number", "class": "col4", },
+                  ]
+                }
               },
+              // for number
               {
-                "key": "label",
-                "label": "label",
-                "type": "text",
-                "class": "col4",
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'number',
+                },
+                "opts": {
+                  "schemas": [
+                    { "key": "min", "label": "min", "type": "number", "class": "col4", },
+                    { "key": "max", "label": "max", "type": "number", "class": "col4", },
+                    { "key": "step", "label": "step", "type": "number", "class": "col4", },
+                  ]
+                }
               },
-              {
-                "key": "type",
-                "label": "type",
-                "type": "text",
-                "class": "col4",
-              },
-            ]
-          }
+              // TODO: 他の type 用のも作っていく
+            ],
+          },
         }
       }
     },
   ];
 
   let submit = async (e) => {
-    let item = e.detail.item;
+    let value = e.detail.value;
 
+    // 更新
+    admin.contents[collection] = value;
+    
     await fetch('/api/contents', {
       method: 'post',
       body: JSON.stringify({
@@ -79,5 +103,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} edit
-        ContentForm(item='{content}', schemas='{schemas}', on:submit='{submit}')
+        ContentForm(value='{content}', schemas='{schemas}', on:submit='{submit}')
 </template>

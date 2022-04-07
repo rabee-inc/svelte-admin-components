@@ -9,5 +9,5 @@
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}')
+    input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}', readonly!='{schema.opts && schema.opts.readonly}')
 </template>

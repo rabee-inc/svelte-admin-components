@@ -33,7 +33,7 @@
   export let content;
 
   let submit = async (e) => {
-    let item = e.detail.item;
+    let item = e.detail.value;
 
     if (item.id) {
       let res = await fetch(`/api/${collection}/${item.id}`, {
@@ -69,5 +69,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id || 'new'}
-        ContentForm(item='{item}', schemas='{content.schemas}', on:submit='{submit}')
+        ContentForm(value='{item}', schemas='{content.schemas}', on:submit='{submit}')
 </template>

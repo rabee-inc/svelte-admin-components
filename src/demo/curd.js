@@ -22,6 +22,10 @@ export const create = (key) => {
   return async function({request, params, url}) {
     let item = generator();
     let body = await request.json();
+
+    // id は無視する
+    delete body.item.id;
+    
     Object.assign(item, body.item);
 
     items.unshift(item);

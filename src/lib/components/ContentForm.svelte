@@ -7,15 +7,24 @@
 
   let className;
   export {className as class};
-  export let item;
+  export let value;
   export let schemas;
 
   let dispatch = createEventDispatcher();
 
   let submit = () => {
     dispatch('submit', {
-      item,
+      value,
     });
+  };
+
+  let getObjectSchema = () => {
+    return {
+      type: "object",
+      opts: {
+        schemas: schemas,
+      }
+    };
   };
 </script>
 
@@ -24,9 +33,6 @@
     form(on:submit|preventDefault='{submit}')
       div.f.fr
         button.button.primary.mb16 save
-      div.row.mxn8
-        +each('schemas as schema')
-          div.px8.mb16.w-full(class='{schema.class}')
-            //- svelte:component(this='{forms[schema.type]}', value='{ getByPath(item, schema.key) }')
-            svelte:component(this='{forms[schema.type]}', schema='{schema}', bind:value='{item[schema.key]}')
+      div
+        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{value}')
 </template>
