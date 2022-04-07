@@ -653,6 +653,11 @@ make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+meltline@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/meltline/-/meltline-0.1.15.tgz#0ab0e30e8c342820438242cf9ef2c954d9d4ae49"
+  integrity sha512-MisT8ny4K/1gBzZHWIL7+/PDhL1eh5Uou7ofpoMRdYfvLBDx6tloxylASGzyfiemyqK+8p0ZxoIZxjBNzTfKbQ==
+
 mime@^1.4.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
