@@ -21,7 +21,7 @@
     return opts;
   };
 
-  let isShow = (schema) => {
+  let shouldShow = (schema) => {
     let condition = schema.condition;
     if (condition) {
       let a = value[condition.key];
@@ -45,7 +45,7 @@
         div.fs12.mb4 {schema.label}
     div.row.p16.mxn8
       +each('getOpts().schemas as schema')
-        +if('isShow(schema, value)')
+        +if('shouldShow(schema, value)')
           div.w-full.px8.mb16.mb0-last(class='{schema.class}')
             svelte:component(this='{forms[schema.type]}', schema='{schema}', item='{value}', bind:value='{value[schema.key]}')
 </template>
