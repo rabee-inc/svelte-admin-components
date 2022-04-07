@@ -19,6 +19,17 @@ const admin = {
     },
   ],
   contents,
+  actions: {
+    // selectImage() {
+    //   // 画像選択モーダル開いたり
+    // },
+    uploadImage(file) {
+      let url = URL.createObjectURL(file);
+      return {
+        url,
+      };
+    },
+  }
 };
 
 export default admin;

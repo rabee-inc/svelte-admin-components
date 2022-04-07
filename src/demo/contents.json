@@ -132,6 +132,11 @@
             }
           ]
         }
+      },
+      {
+        "type": "image",
+        "label": "アイキャッチ",
+        "key": "image"
       }
     ],
     "headings": [
