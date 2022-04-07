@@ -16,6 +16,7 @@
   import { ContentForm, Sidebar } from "svelte-admin-components";
 
   export let content;
+  export let collection;
 
   let schemas = [
     {
@@ -80,8 +81,11 @@
   ];
 
   let submit = async (e) => {
-    let item = e.detail.item;
+    let value = e.detail.value;
 
+    // 更新
+    admin.contents[collection] = value;
+    
     await fetch('/api/contents', {
       method: 'post',
       body: JSON.stringify({
@@ -99,5 +103,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} edit
-        ContentForm(item='{content}', schemas='{schemas}', on:submit='{submit}')
+        ContentForm(value='{content}', schemas='{schemas}', on:submit='{submit}')
 </template>
