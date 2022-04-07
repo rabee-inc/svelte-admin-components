@@ -30,12 +30,20 @@
         "key": "bio",
         "label": "プロフィール",
         "type": "textarea",
-        "class": "col12"
+        "class": "col12",
+        "opts": {
+          "cols": ""
+        }
       },
       {
         "type": "number",
         "label": "年齢",
-        "key": "age"
+        "key": "age",
+        "opts": {
+          "step": "",
+          "max": "",
+          "min": ""
+        }
       },
       {
         "type": "date",
@@ -46,6 +54,27 @@
         "type": "switch",
         "label": "アンバサダー",
         "key": "is_ambassador"
+      },
+      {
+        "type": "select",
+        "label": "性別",
+        "key": "gender",
+        "opts": {
+          "choices": [
+            {
+              "value": "male",
+              "label": "男性"
+            },
+            {
+              "value": "female",
+              "label": "女性"
+            },
+            {
+              "value": "other",
+              "label": "その他"
+            }
+          ]
+        }
       }
     ],
     "headings": [
