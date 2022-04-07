@@ -5,6 +5,7 @@
 
   export let schema;
   export let value;
+  export let border = true;
 
   // setup default value
   if (!value) {
@@ -39,7 +40,7 @@
 </script>
 
 <template lang='pug'>
-  div.border.rounded-4
+  div.rounded-4(class:border)
     +if('schema.label')
       div.bg-aliceblue.border-bottom.p8
         div.fs12.mb4 {schema.label}

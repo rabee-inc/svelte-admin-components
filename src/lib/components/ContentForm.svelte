@@ -34,5 +34,5 @@
       div.f.fr
         button.button.primary.mb16 save
       div
-        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{value}')
+        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{value}', border='{false}')
 </template>
