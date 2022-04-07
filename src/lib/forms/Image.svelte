@@ -30,10 +30,7 @@
     // 画像以外は弾く
     if (/^image/.test(file.type) === false) return ;
 
-    setImage(file);
-  };
-
-  let setImage = (file) => {
+    // アップロードしてセット
     let image = actions.uploadImage(file);
     value = image;
   };
