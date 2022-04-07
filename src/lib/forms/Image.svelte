@@ -1,3 +1,5 @@
+
+
 <svelte:options accessors={true}/>
 
 <script>
@@ -9,7 +11,7 @@
 
   let input;
 
-  // 画像を click
+  // 画像を click したとき
   let click = async () => {
     if (actions.selectImage) {
       let image = await actions.selectImage();
@@ -56,7 +58,10 @@
     +if('schema.label')
       div.fs12.mb4 {schema.label}
     div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
-      img.max-height-300(src='{value.url}')
+      +if('value.url')
+        img.max-height-300(src='{!value || value.url}')
+        +else
+          div.w200.square.bg-whitesmoke
       div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +
     //- input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}', readonly!='{schema.opts?.readonly}')
 </template>
