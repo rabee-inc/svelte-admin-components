@@ -4,6 +4,10 @@
 
 </script>
 
+<style lang="less" global>
+  @import '/src/demo/styles/global.less';
+</style>
+
 <template lang="pug">
   div.f.fclm.w-full.min-h-full
     div.s-full

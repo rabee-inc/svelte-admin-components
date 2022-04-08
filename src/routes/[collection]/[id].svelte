@@ -65,7 +65,7 @@
 
 <template lang='pug'>
   div.f
-    Sidebar.w300.bg-royalblue.text-white(sections='{admin.sections}')
+    Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id || 'new'}
