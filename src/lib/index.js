@@ -8,11 +8,7 @@ export { default as contents } from './contents/index.js';
 
 // forms
 export { default as forms } from './forms/index.js';
-
 import forms from './forms/index.js';
-console.log( Object.keys(forms).map(key => {
-  return { value : key };
-}) );
 
 // edit 用 shcema
 export const FORM_SCHEMA = [
@@ -61,6 +57,37 @@ export const FORM_SCHEMA = [
         { "key": "min", "label": "min", "type": "number", "class": "col4", },
         { "key": "max", "label": "max", "type": "number", "class": "col4", },
         { "key": "step", "label": "step", "type": "number", "class": "col4", },
+      ]
+    }
+  },
+  // for select
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'select',
+    },
+    "opts": {
+      "schemas": [
+        {
+          "key": "choices",
+          "label": "choices",
+          "type": "array",
+          "opts": {
+            "schema": {
+              "type": "object",
+              "opts": {
+                "schemas": [
+                  { "key": "value", "label": "value", "type": "text", "class": "col6", },
+                  { "key": "label", "label": "label", "type": "text", "class": "col6", },
+                ]
+              },
+            },
+          },
+        },
       ]
     }
   },
