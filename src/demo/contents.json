@@ -91,6 +91,11 @@
     "path": "posts",
     "schemas": [
       {
+        "key": "id",
+        "label": "ID",
+        "type": "text"
+      },
+      {
         "key": "title",
         "label": "タイトル",
         "type": "text"
@@ -119,7 +124,10 @@
             {
               "key": "description",
               "label": "詳細",
-              "type": "textarea"
+              "type": "textarea",
+              "opts": {
+                "cols": ""
+              }
             }
           ]
         }
