@@ -134,9 +134,9 @@
         }
       },
       {
-        "type": "image",
+        "key": "image.url",
         "label": "アイキャッチ",
-        "key": "image"
+        "type": "image"
       }
     ],
     "headings": [
