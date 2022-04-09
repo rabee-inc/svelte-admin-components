@@ -72,6 +72,55 @@
                   ]
                 }
               },
+              // for array
+              {
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'array',
+                },
+                "opts": {
+                  "schemas": [
+                    { "key": "schema.type", "label": "schema type", "type": "text", "class": "col4", },
+                  ]
+                }
+              },
+              // for object
+              {
+                "key": "opts",
+                "label": "opts",
+                "type": "object",
+                "condition": {
+                  "key": 'type',
+                  "operation": "==",
+                  "value": 'object',
+                },
+                "opts": {
+                  "schemas": [
+                    {
+                      "key": "schemas",
+                      "label": "schemas",
+                      "type": "array",
+                      "opts": {
+                        "schema": {
+                          "type": "object",
+                          "opts": {
+                            "schemas": [
+                              { "key": "key", "label": "key", "type": "text", "class": "col4", },
+                              { "key": "label", "label": "label", "type": "text", "class": "col4", },
+                              { "key": "type", "label": "type", "type": "text", "class": "col4", },
+                            ]
+                          }
+                        }
+                      }
+                    },
+                  ]
+                }
+              }
+
               // TODO: 他の type 用のも作っていく
             ],
           },
