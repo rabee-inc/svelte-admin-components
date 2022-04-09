@@ -84,7 +84,8 @@
     let value = e.detail.value;
 
     // 更新
-    admin.contents[collection] = value;
+    Object.assign(content, value);
+    admin.contents[collection] = content;
     
     await fetch('/api/contents', {
       method: 'post',

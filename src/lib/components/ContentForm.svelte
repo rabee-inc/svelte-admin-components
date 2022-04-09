@@ -12,8 +12,10 @@
   export let actions;
 
   let dispatch = createEventDispatcher();
+  let instance;
 
-  let submit = () => {
+  let submit = async () => {
+    let value = await instance.getValue();
     dispatch('submit', {
       value,
     });
@@ -35,5 +37,5 @@
       div.f.fr
         button.button.primary.mb16 save
       div
-        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', bind:value='{value}', border='{false}')
+        svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
 </template>

@@ -2,17 +2,36 @@
 
 <script>
   import { forms } from "$lib/index.js";
+  import { getByPath, setByPath } from "$lib/utils";
 
   export let schema;
   export let actions;
   export let value;
   export let border = true;
+  // svelte-ignore unused-export-let
+  export let getValue = async () => {
+    let v = {};
+    let promises = Object.entries(instances).map(async ([key, instance]) => {
+      let temp = instance.getValue ? instance.getValue() : instance.value;
+
+      if (temp instanceof Promise) {
+        temp = await temp;
+      }
+
+      setByPath(v, key, temp);
+    });
+
+    await Promise.all(promises);
+
+    return v;
+  };
 
   // setup default value
   if (!value) {
     value = {};
   }
 
+  let instances = {};
   let getOpts = () => {
     let opts = schema.opts;
     if (typeof schema.opts === 'function') {
@@ -38,6 +57,7 @@
     }
     return true;
   };
+
 </script>
 
 <template lang='pug'>
@@ -49,5 +69,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.w-full.px8.mb16(class='{schema.class}')
-            svelte:component(this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', bind:value='{value[schema.key]}')
+            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}')
 </template>
