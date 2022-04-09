@@ -69,7 +69,7 @@
             div.f.fm.p16.border-bottom(data-id='{i}')
               img.handle.flex-fixed.p8.mr8(src='{handle}', alt='handle')
               div.w-full
-                svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', value='{v}')
+                svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{v}')
       div.p16
         button.button.w-full(type='button', on:click='{add}') +
 </template>
