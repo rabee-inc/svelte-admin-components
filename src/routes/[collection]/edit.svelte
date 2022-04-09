@@ -2,7 +2,7 @@
   import admin from "$demo/admin.js"
   export async function load({fetch, params}) {
     let collection = params.collection;
-    let content = admin.contents[params.collection];
+    let content = admin.contents[collection];
 
     return {
       props: {
