@@ -58,6 +58,10 @@
     return true;
   };
 
+  let syncValue = async () => {
+    value = await getValue();
+  };
+
 </script>
 
 <template lang='pug'>
@@ -69,5 +73,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.w-full.px8.mb16(class='{schema.class}')
-            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}')
+            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
 </template>

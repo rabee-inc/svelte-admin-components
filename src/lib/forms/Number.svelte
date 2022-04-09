@@ -9,5 +9,5 @@
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.input.w-full(bind:value, type='number')
+    input.input.w-full(bind:value, type='number', on:change)
 </template>
