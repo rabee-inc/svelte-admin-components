@@ -92,7 +92,29 @@ export const update = (key) => {
 
 // 
 export const del = (key) => {
+  let items = dummy[key];
 
+  return async function({request, params, url}) {
+
+    let index = items.findIndex(item => item['id'] === params['id']);
+
+    if (index === -1) {
+      return {
+        status: '404',
+        body: {
+          message: `Not found: ${params['id']}`,
+        }
+      }
+    }
+
+    items.splice(index, 1);
+
+    return {
+      body: {
+        message: `deleted ${params['id']}`,
+      }
+    };
+  }
 };
 
 // 
