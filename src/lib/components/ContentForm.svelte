@@ -21,6 +21,13 @@
     });
   };
 
+  let del = async () => {
+    let value = await instance.getValue();
+    dispatch('delete', {
+      value,
+    });
+  };
+
   let getObjectSchema = () => {
     return {
       type: "object",
@@ -29,13 +36,15 @@
       }
     };
   };
+
 </script>
 
 <template lang='pug'>
   div(class='{className}')
     form(on:submit|preventDefault='{submit}')
-      div.f.fr
-        button.button.primary.mb16 save
+      div.f.fr.mb16
+        button.button.danger.mr8(type='button', on:click!='{del}') delete
+        button.button.primary save
       div
         svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
 </template>

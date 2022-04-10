@@ -61,6 +61,24 @@
       });
     }
   };
+
+  let del = async (e) => {
+    if (!confirm('really?')) {
+      return ;
+    }
+    
+    let item = e.detail.value;
+    await fetch(`/api/${collection}/${item.id}`, {
+      method: 'delete',
+    });
+
+    console.log('deleted');
+
+    // 一覧ページに戻る
+    goto(`/${collection}`, {
+      replaceState: true,
+    });
+  };
 </script>
 
 <template lang='pug'>
@@ -69,5 +87,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id || 'new'}
-        ContentForm(value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}')
+        ContentForm(value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}')
 </template>
