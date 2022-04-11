@@ -6,17 +6,24 @@
       {
         "key": "id",
         "label": "ID",
-        "type": "text"
+        "type": "text",
+        "opts": {
+          "readonly": true
+        }
       },
       {
         "key": "screen_name",
         "label": "名前",
-        "type": "text"
+        "type": "text",
+        "opts": {
+          "required": true
+        }
       },
       {
         "key": "display_name",
         "label": "表示名",
-        "type": "text"
+        "type": "text",
+        "opts": {}
       },
       {
         "key": "bio",
