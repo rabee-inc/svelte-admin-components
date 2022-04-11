@@ -1,12 +1,12 @@
 <script context="module">
   import admin from "$admin/index.js"
   export async function load({fetch, params}) {
-    let collection = params.collection;
-    let content = admin.contents[collection];
+    let content_id = params.content_id;
+    let content = admin.contents[content_id];
 
     return {
       props: {
-        collection,
+        content_id,
         content,
       }
     };
@@ -16,7 +16,7 @@
   import { ContentForm, Sidebar, CONTENT_SCHEMA } from "svelte-admin-components";
 
   export let content;
-  export let collection;
+  export let content_id;
 
   let form;
 
@@ -25,7 +25,7 @@
 
     // 更新
     Object.assign(content, value);
-    admin.contents[collection] = content;
+    admin.contents[content_id] = content;
     
     await fetch('/api/contents', {
       method: 'post',

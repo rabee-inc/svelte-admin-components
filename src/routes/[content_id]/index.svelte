@@ -1,14 +1,14 @@
 <script context="module">
   import admin from "$admin/index.js"
   export async function load({fetch, params}) {
-    let collection = params.collection;
-    let res = await fetch(`/api/${collection}`);
+    let content_id = params.content_id;
+    let res = await fetch(`/api/${content_id}`);
     let {items} = await res.json();
-    let content = admin.contents[params.collection];
+    let content = admin.contents[content_id];
 
     return {
       props: {
-        collection,
+        content_id,
         items,
         content,
       }
