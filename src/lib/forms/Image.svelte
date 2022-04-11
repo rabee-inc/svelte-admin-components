@@ -31,6 +31,10 @@
     if (/^image/.test(file.type) === false) return ;
 
     // アップロードしてセット
+    setImage();
+  };
+
+  let setImage = (file) => {
     let image = actions.uploadImage(file);
     value = image;
   };
