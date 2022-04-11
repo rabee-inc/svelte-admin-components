@@ -10,6 +10,13 @@ export { default as contents } from './contents/index.js';
 export { default as forms } from './forms/index.js';
 import forms from './forms/index.js';
 
+const SCHEMA_REQUIRED = {
+  "key": "opts.required", "label": "required", "type": "switch", "class": "col2",
+};
+const SCHEMA_READONLY = {
+  "key": "opts.readonly", "label": "readonly", "type": "switch", "class": "col2",
+};
+
 // edit 用 shcema
 export const FORM_SCHEMA = [
   {
@@ -26,6 +33,22 @@ export const FORM_SCHEMA = [
       }),
     },
   },
+  // for text
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'text',
+    },
+    "opts": {
+      "schemas": [
+        SCHEMA_REQUIRED, SCHEMA_READONLY,
+      ]
+    }
+  },
   // for textarea
   {
     "key": "opts",
@@ -38,6 +61,7 @@ export const FORM_SCHEMA = [
     },
     "opts": {
       "schemas": [
+        SCHEMA_REQUIRED, SCHEMA_READONLY,
         { "key": "cols", "label": "cols", "type": "number", "class": "col4", },
       ]
     }
