@@ -31,7 +31,7 @@
     if (/^image/.test(file.type) === false) return ;
 
     // アップロードしてセット
-    setImage();
+    setImage(file);
   };
 
   let setImage = (file) => {
