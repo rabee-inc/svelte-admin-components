@@ -11,7 +11,7 @@
   // svelte-ignore unused-export-let
   export let getValue = async () => {
     let v = {};
-    let promises = Object.entries(instances).map(async ([key, instance]) => {
+    let promises = Object.entries(instances).filter(([key, instance]) => instance).map(async ([key, instance]) => {
       let temp = instance.getValue ? instance.getValue() : instance.value;
 
       if (temp instanceof Promise) {

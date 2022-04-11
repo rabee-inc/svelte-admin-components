@@ -10,7 +10,7 @@
   export let value = [];
   // svelte-ignore unused-export-let
   export let getValue = async () => {
-    let promises = instances.map(async (instance, i) => {
+    let promises = instances.filter(Boolean).map(async (instance, i) => {
       let v = instance.getValue ? instance.getValue() : instance.value;
 
       if (v instanceof Promise) {
@@ -36,6 +36,11 @@
 
   let add = () => {
     value.push('');
+    value = value;
+  };
+
+  let del = (i) => {
+    value.splice(i, 1);
     value = value;
   };
 
@@ -66,10 +71,11 @@
       div(bind:this='{elements}')
         +key('key')
           +each('value as v,i')
-            div.f.fm.p16.border-bottom(data-id='{i}')
+            div.relative.f.fm.p16.border-bottom.hover-trigger(data-id='{i}')
               img.handle.flex-fixed.p8.mr8(src='{handle}', alt='handle')
               div.w-full
                 svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{v}')
+              button.absolute.t8.r8.f.fh.s24.circle.border.bg-white.hover-show(type='button', on:click!='{() => {del(i)}}') ✕
       div.p16
         button.button.w-full(type='button', on:click='{add}') +
 </template>
