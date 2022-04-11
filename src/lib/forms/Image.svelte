@@ -18,7 +18,6 @@
   };
 
   let input;
-  let instances = [];
   let _file;
 
   // 画像を click したとき
