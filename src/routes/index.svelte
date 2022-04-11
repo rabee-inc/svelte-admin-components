@@ -2,7 +2,7 @@
 </script>
 <script>
   import { Sidebar } from "svelte-admin-components";
-  import admin from "$demo/admin.js"
+  import admin from "$admin/admin.js"
 
 </script>
 

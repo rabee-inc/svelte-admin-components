@@ -5,7 +5,7 @@
 </script>
 
 <style lang="less" global>
-  @import '/src/demo/styles/global.less';
+  @import '/src/admin/styles/global.less';
 </style>
 
 <template lang="pug">
