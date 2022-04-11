@@ -32,6 +32,8 @@
   export let item;
   export let content;
 
+  let form;
+
   let submit = async (e) => {
     let item = e.detail.value;
 
@@ -61,6 +63,23 @@
       });
     }
   };
+
+  let del = async () => {
+    if (!confirm('really?')) {
+      return ;
+    }
+
+    await fetch(`/api/${collection}/${item.id}`, {
+      method: 'delete',
+    });
+
+    console.log('deleted');
+
+    // 一覧ページに戻る
+    goto(`/${collection}`, {
+      replaceState: true,
+    });
+  };
 </script>
 
 <template lang='pug'>
@@ -68,6 +87,11 @@
     Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
     main.w-full
       div.container-960.px16.py32
-        h1.mb16 {content.label} / {item.id || 'new'}
-        ContentForm(value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}')
+        div.f.fm.flex-between.mb16
+          h1.fs16 {content.label} / {item.id || 'new'}
+          div.f
+            +if('item.id')
+              button.button.danger.mr8(type='button', on:click!='{del}') delete
+            button.button.primary(on:click='{form.submit()}') {item.id ? 'save' : 'create'}
+        ContentForm(bind:this='{form}', value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}')
 </template>
