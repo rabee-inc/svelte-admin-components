@@ -4,6 +4,7 @@
   import { forms } from "$lib/index.js";
 
   export let schema;
+  export let actions;
   export let value;
   export let border = true;
 
@@ -48,5 +49,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.w-full.px8.mb16(class='{schema.class}')
-            svelte:component(this='{forms[schema.type]}', schema='{schema}', item='{value}', bind:value='{value[schema.key]}')
+            svelte:component(this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', bind:value='{value[schema.key]}')
 </template>

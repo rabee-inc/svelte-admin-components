@@ -9,6 +9,7 @@
   export {className as class};
   export let value;
   export let schemas;
+  export let actions;
 
   let dispatch = createEventDispatcher();
 
@@ -34,5 +35,5 @@
       div.f.fr
         button.button.primary.mb16 save
       div
-        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', bind:value='{value}', border='{false}')
+        svelte:component(this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', bind:value='{value}', border='{false}')
 </template>

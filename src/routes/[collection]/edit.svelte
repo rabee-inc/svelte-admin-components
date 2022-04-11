@@ -103,5 +103,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} edit
-        ContentForm(value='{content}', schemas='{schemas}', on:submit='{submit}')
+        ContentForm(value='{content}', schemas='{schemas}', actions='{admin.actions}', on:submit='{submit}')
 </template>

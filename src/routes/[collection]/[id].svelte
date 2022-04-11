@@ -69,5 +69,5 @@
     main.w-full
       div.container-960.px16.py32
         h1.mb16 {content.label} / {item.id || 'new'}
-        ContentForm(value='{item}', schemas='{content.schemas}', on:submit='{submit}')
+        ContentForm(value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}')
 </template>
