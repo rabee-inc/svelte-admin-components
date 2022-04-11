@@ -1,5 +1,5 @@
 <script context="module">
-  import admin from "$admin/admin.js"
+  import admin from "$admin/index.js"
   export async function load({fetch, params}) {
     let collection = params.collection;
     let content = admin.contents[collection];
