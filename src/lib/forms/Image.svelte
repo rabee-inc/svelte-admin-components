@@ -8,8 +8,17 @@
   export let schema;
   export let actions;
   export let value = '';
+  // svelte-ignore unused-export-let
+  export let getValue = async () => {
+    let v = await actions.uploadImage({
+      value,
+      file: _file,
+    });
+    return v;
+  };
 
   let input;
+  let _file;
 
   // 画像を click したとき
   let click = async () => {
@@ -33,10 +42,10 @@
     // アップロードしてセット
     setImage(file);
   };
-
+  
   let setImage = (file) => {
-    let image = actions.uploadImage(file);
-    value = image;
+    value = URL.createObjectURL(file);
+    _file = file;
   };
 
   onMount(() => {
@@ -52,6 +61,7 @@
     };
   });
 
+
 </script>
 
 <template lang='pug'>
@@ -59,8 +69,8 @@
     +if('schema.label')
       div.fs12.mb4 {schema.label}
     div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
-      +if('value.url')
-        img.max-height-300(src='{!value || value.url}')
+      +if('value')
+        img.max-height-300(src='{!value || value}')
         +else
           div.w200.square.bg-whitesmoke
       div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +

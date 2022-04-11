@@ -4,61 +4,52 @@
     "path": "users",
     "schemas": [
       {
-        "type": "text",
-        "label": "ID",
         "key": "id",
-        "opts": {
-          "readonly": true
-        }
+        "label": "ID",
+        "type": "text"
       },
       {
         "key": "screen_name",
         "label": "名前",
-        "type": "text",
-        "class": "col4",
-        "opts": {
-          "required": true
-        }
+        "type": "text"
       },
       {
         "key": "display_name",
         "label": "表示名",
-        "type": "text",
-        "class": "col4"
+        "type": "text"
       },
       {
         "key": "bio",
         "label": "プロフィール",
         "type": "textarea",
-        "class": "col12",
         "opts": {
           "cols": ""
         }
       },
       {
-        "type": "number",
-        "label": "年齢",
         "key": "age",
+        "label": "年齢",
+        "type": "number",
         "opts": {
-          "step": "",
+          "min": "",
           "max": "",
-          "min": ""
+          "step": ""
         }
       },
       {
-        "type": "date",
+        "key": "created_at",
         "label": "作成日",
-        "key": "created_at"
+        "type": "date"
       },
       {
-        "type": "switch",
+        "key": "is_ambassador",
         "label": "アンバサダー",
-        "key": "is_ambassador"
+        "type": "switch"
       },
       {
-        "type": "select",
-        "label": "性別",
         "key": "gender",
+        "label": "性別",
+        "type": "select",
         "opts": {
           "choices": [
             {
@@ -142,9 +133,9 @@
         }
       },
       {
-        "type": "image",
+        "key": "image.url",
         "label": "アイキャッチ",
-        "key": "image"
+        "type": "image"
       }
     ],
     "headings": [

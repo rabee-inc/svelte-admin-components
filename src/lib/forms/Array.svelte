@@ -7,7 +7,23 @@
   import handle from "$lib/assets/handle.svg";
 
   export let schema;
-  export let value;
+  export let value = [];
+  // svelte-ignore unused-export-let
+  export let getValue = async () => {
+    let promises = instances.map(async (instance, i) => {
+      let v = instance.getValue ? instance.getValue() : instance.value;
+
+      if (v instanceof Promise) {
+        v = await v;
+      }
+
+      return v;
+    });
+
+    let v = await Promise.all(promises);
+
+    return v;
+  };
 
   // setup default value
   if (!value) {
@@ -15,10 +31,10 @@
   }
 
   let key = Date.now();
+  let instances = [];
   let elements;
 
   let add = () => {
-    console.log(schema);
     value.push('');
     value = value;
   };
@@ -53,7 +69,7 @@
             div.f.fm.p16.border-bottom(data-id='{i}')
               img.handle.flex-fixed.p8.mr8(src='{handle}', alt='handle')
               div.w-full
-                svelte:component(this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{v}')
+                svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', bind:value='{v}')
       div.p16
         button.button.w-full(type='button', on:click='{add}') +
 </template>

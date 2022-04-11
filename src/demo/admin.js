@@ -23,11 +23,11 @@ const admin = {
     // selectImage() {
     //   // 画像選択モーダル開いたり
     // },
-    uploadImage(file) {
-      let url = URL.createObjectURL(file);
-      return {
-        url,
-      };
+    
+    // url を文字列として返す
+    uploadImage({value, file}) {
+      // TODO: upload server
+      return value;
     },
   }
 };
