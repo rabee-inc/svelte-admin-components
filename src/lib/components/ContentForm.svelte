@@ -12,16 +12,20 @@
   export let actions;
 
   let dispatch = createEventDispatcher();
+  let form;
   let instance;
 
-  let submit = async () => {
+  export let submit = async () => {
+    // check validity
+    if (!form.reportValidity()) return ;
+
     let value = await instance.getValue();
     dispatch('submit', {
       value,
     });
   };
 
-  let del = async () => {
+  export let del = async () => {
     let value = await instance.getValue();
     dispatch('delete', {
       value,
@@ -41,10 +45,9 @@
 
 <template lang='pug'>
   div(class='{className}')
-    form(on:submit|preventDefault='{submit}')
-      div.f.fr.mb16
-        button.button.danger.mr8(type='button', on:click!='{del}') delete
-        button.button.primary save
+    form(bind:this='{form}', on:submit|preventDefault='{submit}')
+      //- Enter 用に submit ボタンを配置
+      button.hide(type='submit')
       div
         svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
 </template>
