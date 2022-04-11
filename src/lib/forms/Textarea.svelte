@@ -9,5 +9,5 @@
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    textarea.w-full.border.px8.py4(bind:value, rows='8', on:change)
+    textarea.w-full.border.px8.py4(bind:value, rows='8', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', on:change)
 </template>

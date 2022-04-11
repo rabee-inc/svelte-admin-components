@@ -11,10 +11,10 @@ export { default as forms } from './forms/index.js';
 import forms from './forms/index.js';
 
 const SCHEMA_REQUIRED = {
-  "key": "opts.required", "label": "required", "type": "switch", "class": "col2",
+  "key": "required", "label": "required", "type": "switch", "class": "col2",
 };
 const SCHEMA_READONLY = {
-  "key": "opts.readonly", "label": "readonly", "type": "switch", "class": "col2",
+  "key": "readonly", "label": "readonly", "type": "switch", "class": "col2",
 };
 
 // edit 用 shcema
