@@ -1,4 +1,4 @@
-import crud from "$demo/curd.js";
+import crud from "$admin/curd.js";
 
 
 export const get = crud.read('posts');

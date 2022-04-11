@@ -1,13 +1,13 @@
 <script context="module">
-  import admin from "$demo/admin.js"
+  import admin from "$admin/index.js"
   export async function load({fetch, params}) {
-    let collection = params.collection;
+    let content_id = params.content_id;
     let id = params.id;
-    let content = admin.contents[params.collection];
+    let content = admin.contents[content_id];
     let item;
 
-    if (params.id !== 'new') {
-      let res = await fetch(`/api/${collection}/${id}`);
+    if (id !== 'new') {
+      let res = await fetch(`/api/${content_id}/${id}`);
       let data = await res.json();
       item = data.item;
     }
@@ -17,7 +17,7 @@
 
     return {
       props: {
-        collection,
+        content_id,
         item,
         content,
       }
@@ -28,7 +28,7 @@
   import { goto } from "$app/navigation";
   import { ContentForm, Sidebar } from "svelte-admin-components";
 
-  export let collection;
+  export let content_id;
   export let item;
   export let content;
 
@@ -38,7 +38,7 @@
     let item = e.detail.value;
 
     if (item.id) {
-      let res = await fetch(`/api/${collection}/${item.id}`, {
+      let res = await fetch(`/api/${content_id}/${item.id}`, {
         method: 'put',
         body: JSON.stringify({
           item,
@@ -48,7 +48,7 @@
       console.log('saved', json);
     }
     else {
-      let res = await fetch(`/api/${collection}`, {
+      let res = await fetch(`/api/${content_id}`, {
         method: 'post',
         body: JSON.stringify({
           item,
@@ -58,7 +58,7 @@
       console.log('created', json);
 
       // 単体編集ページに遷移
-      goto(`/${collection}/${json.item.id}`, {
+      goto(`/${content_id}/${json.item.id}`, {
         replaceState: true,
       });
     }
@@ -69,14 +69,14 @@
       return ;
     }
 
-    await fetch(`/api/${collection}/${item.id}`, {
+    await fetch(`/api/${content_id}/${item.id}`, {
       method: 'delete',
     });
 
     console.log('deleted');
 
     // 一覧ページに戻る
-    goto(`/${collection}`, {
+    goto(`/${content_id}`, {
       replaceState: true,
     });
   };

@@ -25,7 +25,7 @@ const config = {
         alias: {
           "svelte-admin-components": path.resolve('./src/lib'),
           $components: path.resolve('./src/components'),
-          $demo: path.resolve('./src/demo'),
+          $admin: path.resolve('./src/admin'),
         }
       }
     }
