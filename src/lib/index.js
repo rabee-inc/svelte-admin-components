@@ -97,6 +97,7 @@ export const FORM_SCHEMA = [
     },
     "opts": {
       "schemas": [
+        SCHEMA_REQUIRED, SCHEMA_READONLY,
         {
           "key": "choices",
           "label": "choices",
