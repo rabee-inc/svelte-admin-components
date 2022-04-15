@@ -18,7 +18,7 @@
 <script>
   import { goto } from "$app/navigation";
 
-  import { ContentList, Sidebar } from "svelte-admin-components";
+  import { ContentList } from "svelte-admin-components";
   
   export let items = [];
   export let content;
@@ -36,17 +36,14 @@
 </script>
 
 <template lang='pug'>
-  div.f
-    Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
-    main.w-full
-      div.container-960.px16.py32
-        div.f.fm.flex-between.mb16
-          div.f.fm
-            h1.mr8 {content.label}
-            a.fs12.p4.mt6(href='/{content.path}/edit')
-              i.material-icons.fs18 edit
-          div
-            a.button.primary(href='/{content.path}/new') NEW
-
-        ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
+  main.s-full.overflow-scroll
+    div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+      div.f.fm
+        h1.mr8 {content.label}
+        a.fs12.p4.mt6(href='/{content.path}/edit')
+          i.material-icons.fs18 edit
+      div
+        a.button.primary(href='/{content.path}/new') NEW
+    div.container-960
+      ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
