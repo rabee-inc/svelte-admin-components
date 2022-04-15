@@ -13,7 +13,7 @@
   }
 </script>
 <script>
-  import { ContentForm, Sidebar, CONTENT_SCHEMA } from "svelte-admin-components";
+  import { ContentForm, CONTENT_SCHEMA } from "svelte-admin-components";
 
   export let content;
   export let content_id;
