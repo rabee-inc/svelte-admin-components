@@ -24,7 +24,14 @@
   export let content;
 
   let select = (e) => {
-    goto(`/${content.path}/${e.detail.item.id}`);
+    let url = `/${content.path}/${e.detail.item.id}`;
+    if (e.detail.originalEvent.metaKey) {
+      // 新しいタブで開く
+      window.open(url);
+    }
+    else {
+      goto(url);
+    }
   };
 </script>
 

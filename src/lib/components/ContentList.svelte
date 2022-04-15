@@ -12,9 +12,10 @@
 
   let dispatch = createEventDispatcher();
 
-  let select = (item) => {
+  let select = (e, item) => {
     dispatch('select', {
       item,
+      originalEvent: e,
     });
   };
 </script>
@@ -28,7 +29,7 @@
             th.px12.py16.text-gray.bold.word-break-keep {heading.label}
       tbody
         +each('items as item')
-          tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{() => select(item)}')
+          tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => select(e, item)}')
             +each('headings as heading')
               td.p12.fs13
                 svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }')
