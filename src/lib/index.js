@@ -78,6 +78,7 @@ export const FORM_SCHEMA = [
     },
     "opts": {
       "schemas": [
+        SCHEMA_REQUIRED, SCHEMA_READONLY,
         { "key": "min", "label": "min", "type": "number", "class": "col4", },
         { "key": "max", "label": "max", "type": "number", "class": "col4", },
         { "key": "step", "label": "step", "type": "number", "class": "col4", },
@@ -96,6 +97,7 @@ export const FORM_SCHEMA = [
     },
     "opts": {
       "schemas": [
+        SCHEMA_REQUIRED, SCHEMA_READONLY,
         {
           "key": "choices",
           "label": "choices",

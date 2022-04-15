@@ -8,6 +8,8 @@
 <template lang='pug'>
   label.block
     +if('schema.label')
-      div.fs12.mb4 {schema.label}
-    input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', on:change)
+      div.fs12.mb4 {schema.label} 
+        +if('schema.opts?.required')
+          span *
+    input.w-full.border.rounded-4.px8.py4(bind:value, type='text', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
 </template>

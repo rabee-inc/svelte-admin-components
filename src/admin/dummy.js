@@ -11,7 +11,9 @@ export function image() {
 };
 
 export function user() {
+  const GENDERS = ['male', 'female', 'other'];
   let name = faker.name.firstName();
+  
   return {
     id: faker.datatype.uuid(),
     // id: '1',
@@ -23,6 +25,7 @@ export function user() {
     following_count: faker.datatype.number() % 1000,
     created_at: faker.datatype.datetime().getTime(),
     age: faker.datatype.number({min: 18, max: 64}),
+    gender: GENDERS[faker.datatype.number() % 3],
   };
 };
 

@@ -23,14 +23,16 @@
         "key": "display_name",
         "label": "表示名",
         "type": "text",
-        "opts": {}
+        "opts": {
+          "required": false
+        }
       },
       {
         "key": "bio",
         "label": "プロフィール",
         "type": "textarea",
         "opts": {
-          "cols": ""
+          "cols": 20
         }
       },
       {
