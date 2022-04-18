@@ -26,7 +26,7 @@
 </script>
 <script>
   import { goto } from "$app/navigation";
-  import { ContentForm, Sidebar } from "svelte-admin-components";
+  import { ContentForm } from "svelte-admin-components";
 
   export let content_id;
   export let item;
@@ -83,15 +83,13 @@
 </script>
 
 <template lang='pug'>
-  div.f
-    Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
-    main.w-full
-      div.container-960.px16.py32
-        div.f.fm.flex-between.mb16
-          h1.fs16 {content.label} / {item.id || 'new'}
-          div.f
-            +if('item.id')
-              button.button.danger.mr8(type='button', on:click!='{del}') delete
-            button.button.primary(on:click='{form.submit()}') {item.id ? 'save' : 'create'}
-        ContentForm(bind:this='{form}', value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}')
+  main.s-full.overflow-scroll
+    div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+      h1.fs16 {content.label} / {item.id || 'new'}
+      div.f
+        +if('item.id')
+          button.button.danger.mr8(type='button', on:click!='{del}') delete
+        button.button.primary(on:click='{form.submit()}') {item.id ? 'save' : 'create'}
+    div.container-960
+      ContentForm(bind:this='{form}', value='{item}', schemas='{content.schemas}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}')
 </template>

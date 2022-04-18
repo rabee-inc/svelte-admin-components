@@ -13,7 +13,7 @@
   }
 </script>
 <script>
-  import { ContentForm, Sidebar, CONTENT_SCHEMA } from "svelte-admin-components";
+  import { ContentForm, CONTENT_SCHEMA } from "svelte-admin-components";
 
   export let content;
   export let content_id;
@@ -39,13 +39,11 @@
 </script>
 
 <template lang='pug'>
-  div.f
-    Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
-    main.w-full
-      div.container-960.px16.py32
-        div.f.fm.flex-between.mb16
-          h1.fs16 {content.label} edit
-          div.f
-            button.button.primary(on:click='{form.submit()}') save
-        ContentForm(bind:this='{form}', value='{content}', schemas='{CONTENT_SCHEMA}', actions='{admin.actions}', on:submit='{submit}')
+  main.s-full.overflow-scroll
+    div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+      h1.fs16 {content.label} edit
+      div.f
+        button.button.primary(on:click='{form.submit()}') save
+    div.container-960
+      ContentForm(bind:this='{form}', value='{content}', schemas='{CONTENT_SCHEMA}', actions='{admin.actions}', on:submit='{submit}')
 </template>
