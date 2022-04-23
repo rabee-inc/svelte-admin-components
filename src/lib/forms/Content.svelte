@@ -2,6 +2,7 @@
 
 <script>
   import { onMount } from "svelte";
+  import { openModal } from 'svelte-modal-manager';
 
   export let schema;
   export let actions;
@@ -11,36 +12,40 @@
   let content = null;
 
   onMount(async () => {
-    // let contents = await actions.contents.index({
-    //   schema,
-    // });
-
-    // items.push(...contents.items);
-
     content = await actions.contents.get({
       schema,
       value,
     });
   });
 
+  let openContentModal = () => {
+    let modal = openModal('admin-content', {
+      schema,
+      actions,
+    });
+
+    modal.$on('select', (e) => {
+      content = e.detail.content;
+      modal.close();
+    });
+  };
+
   // svelte-ignore unused-export-let
   export let getValue = () => {
-    return '9bd9d8d6-9a67-44e0-b467-cc8796ed151a';
+    return content ? content[schema.opts.value_key] : null;
   };
 
 </script>
 
 <template lang='pug'>
-  label.block
+  div
     +if('schema.label')
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
     div.f.fm
-      div.mr16
-        +if('content')
-          div {content[schema.opts.label_key]}
-          +else
-      button.button(type='button') 選択する
-      
+      +if('content')
+        div.mr16 {content[schema.opts.label_key]}
+      div
+        button.button(type='button', on:click='{openContentModal}') 選択する
 </template>

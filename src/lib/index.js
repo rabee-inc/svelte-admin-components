@@ -205,3 +205,11 @@ export const CONTENT_SCHEMA = [
     }
   },
 ];
+
+// setup modal
+import { registerModalComponent } from 'svelte-modal-manager';
+
+import * as ContentModal from './modals/Content.svelte';
+
+registerModalComponent('admin-content', ContentModal);
+
