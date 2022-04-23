@@ -1000,6 +1000,11 @@ svelte-hmr@^0.14.9:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.14.9.tgz#35f277efc789e1a6230185717347cddb2f8e9833"
   integrity sha512-bKE9+4qb4sAnA+TKHiYurUl970rjA0XmlP9TEP7K/ncyWz3m81kA4HOgmlZK/7irGK7gzZlaPDI3cmf8fp/+tg==
 
+svelte-modal-manager@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/svelte-modal-manager/-/svelte-modal-manager-0.0.7.tgz#826bafcc519f7aa6cdc667256d3b7918397f048c"
+  integrity sha512-DE5eP5f3xg21Lm4j1+gCthZNK4HAm781CwO/FkyfWLNqx2cEEPoFl3A3Ll/8eo2zPeX7hYCRRkDkE2XhMjSNHw==
+
 svelte-preprocess@^4.10.1:
   version "4.10.3"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.10.3.tgz#9aac89a8abc3889fa5740fb34f7dd74f3c578e13"
