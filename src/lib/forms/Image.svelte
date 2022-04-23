@@ -65,12 +65,12 @@
 </script>
 
 <template lang='pug'>
-  label.block
+  div.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
     div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
       +if('value')
-        img.max-height-300(src='{!value || value}')
+        img.max-height-300(src='{!value || value}', alt='')
         +else
           div.w200.square.bg-whitesmoke
       div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +

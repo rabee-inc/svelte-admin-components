@@ -25,6 +25,7 @@
     });
   };
 
+  // svelte-ignore unused-export-let
   export let del = async () => {
     let value = await instance.getValue();
     dispatch('delete', {
