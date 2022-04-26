@@ -29,17 +29,13 @@ import Select from '$lib/forms/Select.svelte';
     });
   };
 
-  // let submit = () => {
-  //   dispatch('submit');
-  //   close();
-  // };
 </script>
 
 <template lang='pug'>
   div.modal.rounded-8.overflow-scroll
     div.p16
       +each('items as item')
-        button.p8.mb4(type='button', on:click!='{ () => selectContent(item) }') {item[schema.opts.label_key]}
+        button.block.w-full.p8.cursor-pointer.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {item[schema.opts.label_key]}
 </template>
 
 <style lang="less">
