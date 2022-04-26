@@ -2,6 +2,7 @@
 import contents from './contents.json';
 
 const admin = {
+  contents,
   sections: [
     {
       label: 'service',
@@ -18,7 +19,6 @@ const admin = {
       ]
     },
   ],
-  contents,
   actions: {
     // selectImage() {
     //   // 画像選択モーダル開いたり
@@ -30,7 +30,7 @@ const admin = {
       return value;
     },
 
-    contents: {
+    content: {
       async index({schema}) {
         let res = await fetch(`/api/${schema.opts.content}`);
         let data = await res.json();

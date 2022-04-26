@@ -16,7 +16,7 @@ import Select from '$lib/forms/Select.svelte';
   let items = [];
 
   onMount(async () => {
-    let contents = await actions.contents.index({
+    let contents = await actions.content.index({
       schema,
     });
 

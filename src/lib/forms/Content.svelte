@@ -12,7 +12,7 @@
   let content = null;
 
   onMount(async () => {
-    content = await actions.contents.get({
+    content = await actions.content.get({
       schema,
       value,
     });
