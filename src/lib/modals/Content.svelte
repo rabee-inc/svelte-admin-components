@@ -34,7 +34,7 @@
   div.modal.rounded-8.overflow-scroll
     div.p16
       +each('items as item')
-        button.block.w-full.p8.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {item[schema.opts.label_key]}
+        button.block.w-full.p8.hover-trigger.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {item[schema.opts.label_key]}
 </template>
 
 <style lang="less">
