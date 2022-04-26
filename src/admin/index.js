@@ -20,14 +20,14 @@ const admin = {
     },
   ],
   actions: {
-    // selectImage() {
-    //   // 画像選択モーダル開いたり
-    // },
-    
-    // url を文字列として返す
-    uploadImage({value, file}) {
-      // TODO: upload server
-      return value;
+    image: {
+      // select() {
+      //   // 画像選択モーダル開いたり
+
+      // },
+      upload({value, file}) {
+        return value;
+      },
     },
 
     content: {
