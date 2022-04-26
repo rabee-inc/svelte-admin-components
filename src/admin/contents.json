@@ -100,16 +100,6 @@
     "path": "posts",
     "schemas": [
       {
-        "key": "author",
-        "label": "作者",
-        "type": "content",
-        "opts": {
-          "content": "users",
-          "value_key": "id",
-          "label_key": "screen_name"
-        }
-      },
-      {
         "key": "id",
         "label": "ID",
         "type": "text",
@@ -158,6 +148,16 @@
         "key": "image.url",
         "label": "アイキャッチ",
         "type": "image"
+      },
+      {
+        "key": "author",
+        "label": "作者",
+        "type": "content",
+        "opts": {
+          "content": "users",
+          "value_key": "id",
+          "label_key": "screen_name"
+        }
       }
     ],
     "headings": [
