@@ -1,7 +1,6 @@
 <svelte:options accessors={true}/>
 
 <script>
-import Select from '$lib/forms/Select.svelte';
 
   import { createEventDispatcher, onMount } from 'svelte';
   export const dispatch = createEventDispatcher();
