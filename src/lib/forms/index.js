@@ -11,6 +11,7 @@ import Array from './Array.svelte';
 import Object from './Object.svelte';
 import Button from './Button.svelte';
 import Section from './Section.svelte';
+import Content from './Content.svelte';
 
 export default {
   text: Text,
@@ -24,4 +25,5 @@ export default {
   object: Object,
   button: Button,
   section: Section,
+  content: Content,
 };

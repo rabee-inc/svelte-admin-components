@@ -27,6 +27,7 @@
 <script>
   import { goto } from "$app/navigation";
   import { ContentForm } from "svelte-admin-components";
+  import { indicator } from 'svelte-modal-manager';
 
   export let content_id;
   export let item;
@@ -38,6 +39,8 @@
     let item = e.detail.value;
 
     if (item.id) {
+      let i = indicator();
+
       let res = await fetch(`/api/${content_id}/${item.id}`, {
         method: 'put',
         body: JSON.stringify({
@@ -46,6 +49,10 @@
       });
       let json = await res.json();
       console.log('saved', json);
+
+      setTimeout(() => {
+        i.close();
+      }, 512);
     }
     else {
       let res = await fetch(`/api/${content_id}`, {
