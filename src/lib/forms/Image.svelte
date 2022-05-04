@@ -10,7 +10,7 @@
   export let value = '';
   // svelte-ignore unused-export-let
   export let getValue = async () => {
-    let v = await actions.uploadImage({
+    let v = await actions.image.upload({
       value,
       file: _file,
     });
@@ -22,8 +22,8 @@
 
   // 画像を click したとき
   let click = async () => {
-    if (actions.selectImage) {
-      let image = await actions.selectImage();
+    if (actions.image?.select) {
+      let image = await actions.image.select();
       value = image;
     }
     else {

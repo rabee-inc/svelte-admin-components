@@ -39,7 +39,8 @@
   "type": "module",
   "dependencies": {
     "dayjs": "^1.11.0",
-    "sortablejs": "^1.15.0"
+    "sortablejs": "^1.15.0",
+    "svelte-modal-manager": "^0.0.7"
   },
   "repository": {
     "type": "git",

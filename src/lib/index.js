@@ -162,7 +162,26 @@ export const FORM_SCHEMA = [
         },
       ]
     }
-  }
+  },
+  // for content
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'content',
+    },
+    "opts": {
+      "schemas": [
+        { "key": "content", "label": "content", "type": "text", "class": "col4", },
+        { "key": "value_key", "label": "value key", "type": "text", "class": "col4", },
+        { "key": "label_key", "label": "label key", "type": "text", "class": "col4", },
+      ]
+    }
+  },
+
   // TODO: 他の type 用のも作っていく
 ];
 export const CONTENT_SCHEMA = [
@@ -186,3 +205,11 @@ export const CONTENT_SCHEMA = [
     }
   },
 ];
+
+// setup modal
+import { registerModalComponent } from 'svelte-modal-manager';
+
+import * as ContentModal from './modals/Content.svelte';
+
+registerModalComponent('admin-content', ContentModal);
+
