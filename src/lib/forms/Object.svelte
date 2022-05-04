@@ -83,6 +83,6 @@
     div.row.p24.mxn8.mbn16
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
-          div.w-full.px8.mb16(class='{schema.class}')
+          div.align-self-top.w-full.px8.mb16(class='{schema.class}')
             svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
 </template>
