@@ -19,20 +19,25 @@ const SCHEMA_READONLY = {
 
 // edit 用 shcema
 export const FORM_SCHEMA = [
+  // 共通
   {
-    "key": "key", "label": "key", "type": "text", "class": "col4",
+    "key": "key", "label": "key", "type": "text", "class": "col3",
   },
   {
-    "key": "label", "label": "label", "type": "text", "class": "col4",
+    "key": "label", "label": "label", "type": "text", "class": "col3",
   },
   {
-    "key": "type", "label": "type", "type": "select", "class": "col4",
+    "key": "type", "label": "type", "type": "select", "class": "col3",
     "opts": {
       "choices": Object.keys(forms).map(key => {
         return { value : key };
       }),
     },
   },
+  {
+    "key": "class", "label": "class", "type": "text", "class": "col3",
+  },
+
   // for text
   {
     "key": "opts",
@@ -181,6 +186,37 @@ export const FORM_SCHEMA = [
       ]
     }
   },
+  // for section
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'section',
+    },
+    "opts": {
+      "schemas": [
+        {
+          "key": "schemas",
+          "label": "schemas",
+          "type": "array",
+          "opts": {
+            "schema": {
+              "type": "object",
+              "opts": () => {
+                return {
+                  "schemas": FORM_SCHEMA,
+                };
+              },
+            }
+          }
+        },
+      ]
+    }
+  },
+
 
   // TODO: 他の type 用のも作っていく
 ];

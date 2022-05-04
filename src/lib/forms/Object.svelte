@@ -18,7 +18,13 @@
         temp = await temp;
       }
 
-      setByPath(v, key, temp);
+      if (instance.schema.type === 'section') {
+        // section の場合は key を無視して extend する
+        Object.assign(v, temp);
+      }
+      else {
+        setByPath(v, key, temp);
+      }
     });
 
     await Promise.all(promises);
