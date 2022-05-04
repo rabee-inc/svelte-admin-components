@@ -7,6 +7,7 @@
   export let schema;
   export let actions;
   export let value;
+  export let item;
   export let border = true;
   // svelte-ignore unused-export-let
   export let getValue = async () => {
@@ -18,8 +19,8 @@
         temp = await temp;
       }
 
-      if (instance.schema.type === 'section') {
-        // section の場合は key を無視して extend する
+      if (instance.schema.type === 'object' && instance.schema.opts.is_section) {
+        // is_section:true の場合は key を無視して extend する
         Object.assign(v, temp);
       }
       else {
@@ -35,6 +36,10 @@
   // setup default value
   if (!value) {
     value = {};
+  }
+  // section の場合は value を item で上書きする
+  if (schema.opts.is_section) {
+    value = item;
   }
 
   let instances = {};

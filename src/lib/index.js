@@ -150,6 +150,7 @@ export const FORM_SCHEMA = [
     },
     "opts": {
       "schemas": [
+        { "key": "is_section", "label": "section", "type": "switch", "class": "col4", },
         {
           "key": "schemas",
           "label": "schemas",

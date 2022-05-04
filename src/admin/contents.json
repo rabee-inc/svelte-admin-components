@@ -102,9 +102,10 @@
       {
         "key": "main",
         "label": "メイン",
-        "type": "section",
+        "type": "object",
         "class": "col8",
         "opts": {
+          "is_section": true,
           "schemas": [
             {
               "key": "id",
@@ -144,9 +145,10 @@
       {
         "key": "sub",
         "label": "サブ",
-        "type": "section",
+        "type": "object",
         "class": "col4",
         "opts": {
+          "is_section": true,
           "schemas": [
             {
               "key": "image.url",
