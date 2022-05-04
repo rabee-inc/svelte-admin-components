@@ -44,6 +44,7 @@ export function post() {
 };
 
 let dummy = {
+  images: Array(32).fill().map(() => image()),
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
 

@@ -169,5 +169,31 @@
         "type": "date"
       }
     ]
+  },
+  "images": {
+    "label": "post",
+    "path": "posts",
+    "headings": [
+      {
+        "key": "image.url",
+        "label": "アイキャッチ",
+        "type": "image"
+      },
+      {
+        "key": "id",
+        "label": "ID",
+        "type": "text"
+      },
+      {
+        "key": "title",
+        "label": "title",
+        "type": "text"
+      },
+      {
+        "key": "created_at",
+        "label": "作成日",
+        "type": "date"
+      }
+    ]
   }
 }
