@@ -1,6 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import deepExtend from '@jalik/deep-extend';
   import { forms } from "$lib/index.js";
   import { getByPath, setByPath } from "$lib/utils";
 
@@ -21,7 +22,7 @@
 
       if (instance.schema.type === 'object' && instance.schema.opts.is_section) {
         // is_section:true の場合は key を無視して extend する
-        Object.assign(v, temp);
+        deepExtend(v, temp);
       }
       else {
         setByPath(v, key, temp);
