@@ -3,9 +3,9 @@ import dummy from './dummy.js';
 
 // 
 export const index = (key) => {
-  let items = dummy[key];
-
   return function({request, params, url}) {
+    let items = dummy[params.collection];
+
     return {
       body: {
         items,
@@ -16,10 +16,10 @@ export const index = (key) => {
 
 // 
 export const create = (key) => {
-  let items = dummy[key];
-  let generator = dummy.generator[key];
-
   return async function({request, params, url}) {
+    let items = dummy[params.collection];
+    let generator = dummy.generator[params.collection];
+
     let item = generator();
     let body = await request.json();
 
@@ -40,9 +40,8 @@ export const create = (key) => {
 
 // 
 export const read = (key) => {
-  let items = dummy[key];
-
   return function({request, params, url}) {
+    let items = dummy[params.collection];
     let item = items.find(item => item['id'] === params['id']);
 
     if (!item) {
@@ -64,9 +63,8 @@ export const read = (key) => {
 
 // 
 export const update = (key) => {
-  let items = dummy[key];
-  
   return async function({request, params, url}) {
+    let items = dummy[params.collection];
     let item = items.find(item => item['id'] === params['id']);
 
     if (!item) {
@@ -92,10 +90,8 @@ export const update = (key) => {
 
 // 
 export const del = (key) => {
-  let items = dummy[key];
-
   return async function({request, params, url}) {
-
+    let items = dummy[params.collection];
     let index = items.findIndex(item => item['id'] === params['id']);
 
     if (index === -1) {
