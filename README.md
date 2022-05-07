@@ -6,7 +6,7 @@ https://www.npmjs.com/package/svelte-admin-components
 
 ## Demo
 
-- Live Demo: https://svelte-admin-components.onrender.com
+- Live Demo: https://svelte-admin-components.netlify.app/
 - REPL: https://svelte.dev/repl/0608f1c29c984f61b45242cc08011418?version=3.46.4
 
 ## Install

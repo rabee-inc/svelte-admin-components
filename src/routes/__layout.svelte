@@ -1,6 +1,27 @@
 <script>
   import '../app.css';
   import '/static/icons/icons.css';
+  
+  // setup head
+  import {setOptions} from 'svelte-head';
+
+  setOptions({
+    title(title) {
+      return title;
+    },
+    description(description) {
+      return description;
+    },
+    keywords(keywords) {
+      return keywords;
+    },
+    noindex() {
+      return true;
+    },
+    nofollow() {
+      return true;
+    },
+  });
 
   import { Sidebar } from "svelte-admin-components";
   import admin from "$admin/index.js"
