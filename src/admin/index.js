@@ -47,7 +47,14 @@ const admin = {
 
         return data.item;
       },
-    }
+    },
+
+    button: {
+      preview({schema, item}) {
+        console.log(schema, item);
+        alert('view preview');
+      },
+    },
   }
 };
 
