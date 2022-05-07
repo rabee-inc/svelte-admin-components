@@ -49,6 +49,7 @@
     form(bind:this='{form}', on:submit|preventDefault='{submit}')
       //- Enter 用に submit ボタンを配置
       button.hide(type='submit')
-      div
-        svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
+      +key('value')
+        div
+          svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
 </template>
