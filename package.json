@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@jalik/deep-extend": "^1.1.14",
     "dayjs": "^1.11.0",
     "sortablejs": "^1.15.0",
     "svelte-modal-manager": "^0.0.7"
