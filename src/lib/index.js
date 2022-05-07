@@ -186,37 +186,6 @@ export const SCHEMA_FORM = [
       ]
     }
   },
-  // for section
-  {
-    "key": "opts",
-    "label": "opts",
-    "type": "object",
-    "condition": {
-      "key": 'type',
-      "operation": "==",
-      "value": 'section',
-    },
-    "opts": {
-      "schemas": [
-        {
-          "key": "schemas",
-          "label": "schemas",
-          "type": "array",
-          "opts": {
-            "schema": {
-              "type": "object",
-              "opts": () => {
-                return {
-                  "schemas": FORM_SCHEMA,
-                };
-              },
-            }
-          }
-        },
-      ]
-    }
-  },
-
 
   // TODO: 他の type 用のも作っていく
 ];
