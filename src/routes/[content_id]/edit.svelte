@@ -44,6 +44,6 @@
       h1.fs16 {content.label} edit
       div.f
         button.button.primary(on:click='{form.submit()}') save
-    div.container-960
+    div
       ContentForm(bind:this='{form}', value='{content}', schemas='{SCHEMA_CONTENT}', actions='{admin.actions}', on:submit='{submit}')
 </template>

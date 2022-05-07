@@ -100,25 +100,78 @@
     "path": "posts",
     "schemas": [
       {
-        "key": "id",
-        "label": "ID",
-        "type": "text",
-        "opts": {}
-      },
-      {
-        "key": "title",
-        "label": "タイトル",
-        "type": "text",
-        "opts": {}
-      },
-      {
-        "key": "tags",
-        "label": "タグ",
-        "type": "array",
+        "key": "main",
+        "label": "メイン",
+        "type": "object",
+        "class": "col8",
         "opts": {
-          "schema": {
-            "type": "text"
-          }
+          "is_section": true,
+          "schemas": [
+            {
+              "key": "id",
+              "label": "ID",
+              "type": "text",
+              "opts": {
+                "readonly": true
+              }
+            },
+            {
+              "key": "title",
+              "label": "タイトル",
+              "type": "text",
+              "opts": {}
+            },
+            {
+              "key": "tags",
+              "label": "タグ",
+              "type": "array",
+              "opts": {
+                "schema": {
+                  "type": "text"
+                }
+              }
+            },
+            {
+              "key": "author",
+              "label": "作者",
+              "type": "content",
+              "opts": {
+                "content": "users",
+                "value_key": "id",
+                "label_key": "screen_name"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "sub",
+        "label": "サブ",
+        "type": "object",
+        "class": "col4",
+        "opts": {
+          "is_section": true,
+          "schemas": [
+            {
+              "key": "image.url",
+              "label": "アイキャッチ",
+              "type": "image"
+            },
+            {
+              "key": "meta_title",
+              "label": "メタタイトル",
+              "type": "text",
+              "opts": {}
+            },
+            {
+              "key": "meta_description",
+              "label": "メタ詳細",
+              "type": "textarea",
+              "opts": {
+                "cols": ""
+              }
+            }
+          ]
         }
       },
       {
@@ -142,21 +195,6 @@
               }
             }
           ]
-        }
-      },
-      {
-        "key": "image.url",
-        "label": "アイキャッチ",
-        "type": "image"
-      },
-      {
-        "key": "author",
-        "label": "作者",
-        "type": "content",
-        "opts": {
-          "content": "users",
-          "value_key": "id",
-          "label_key": "screen_name"
         }
       }
     ],

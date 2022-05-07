@@ -7,6 +7,7 @@
   export let schema;
   export let actions;
   export let value;
+  export let item;
   export let border = true;
   // svelte-ignore unused-export-let
   export let getValue = async () => {
@@ -18,7 +19,13 @@
         temp = await temp;
       }
 
-      setByPath(v, key, temp);
+      if (instance.schema.type === 'object' && instance.schema.opts.is_section) {
+        // is_section:true の場合は key を無視して extend する
+        Object.assign(v, temp);
+      }
+      else {
+        setByPath(v, key, temp);
+      }
     });
 
     await Promise.all(promises);
@@ -29,6 +36,10 @@
   // setup default value
   if (!value) {
     value = {};
+  }
+  // section の場合は value を item で上書きする
+  if (schema.opts.is_section) {
+    value = item;
   }
 
   let instances = {};
@@ -72,6 +83,6 @@
     div.row.p24.mxn8.mbn16
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
-          div.w-full.px8.mb16(class='{schema.class}')
+          div.align-self-top.w-full.px8.mb16(class='{schema.class}')
             svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
 </template>

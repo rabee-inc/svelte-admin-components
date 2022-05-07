@@ -10,7 +10,6 @@ import Image from './Image.svelte';
 import Array from './Array.svelte';
 import Object from './Object.svelte';
 import Button from './Button.svelte';
-import Section from './Section.svelte';
 import Content from './Content.svelte';
 
 export default {
@@ -24,6 +23,5 @@ export default {
   array: Array,
   object: Object,
   button: Button,
-  section: Section,
   content: Content,
 };

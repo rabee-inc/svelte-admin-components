@@ -20,19 +20,23 @@ const SCHEMA_READONLY = {
 // edit 用 shcema
 export const SCHEMA_FORM = [
   {
-    "key": "key", "label": "key", "type": "text", "class": "col4",
+    "key": "key", "label": "key", "type": "text", "class": "col3",
   },
   {
-    "key": "label", "label": "label", "type": "text", "class": "col4",
+    "key": "label", "label": "label", "type": "text", "class": "col3",
   },
   {
-    "key": "type", "label": "type", "type": "select", "class": "col4",
+    "key": "type", "label": "type", "type": "select", "class": "col3",
     "opts": {
       "choices": Object.keys(forms).map(key => {
         return { value : key };
       }),
     },
   },
+  {
+    "key": "class", "label": "class", "type": "text", "class": "col3",
+  },
+
   // for text
   {
     "key": "opts",
@@ -145,6 +149,7 @@ export const SCHEMA_FORM = [
     },
     "opts": {
       "schemas": [
+        { "key": "is_section", "label": "section", "type": "switch", "class": "col4", },
         {
           "key": "schemas",
           "label": "schemas",

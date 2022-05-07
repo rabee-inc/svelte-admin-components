@@ -47,6 +47,6 @@
           i.material-icons.fs18 edit
       div
         a.button.primary(href='/{content.path}/new') NEW
-    div.container-960
+    div.p16
       ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
