@@ -17,6 +17,7 @@
 </script>
 <script>
   import { goto } from "$app/navigation";
+  import { Meta } from 'svelte-head';
 
   import { ContentList } from "svelte-admin-components";
   
@@ -34,6 +35,8 @@
     }
   };
 </script>
+
+<Meta />
 
 <template lang='pug'>
   main.s-full.overflow-scroll
