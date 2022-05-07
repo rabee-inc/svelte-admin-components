@@ -153,6 +153,13 @@
           "is_section": true,
           "schemas": [
             {
+              "label": "preview",
+              "type": "button",
+              "opts": {
+                "action": "preview"
+              }
+            },
+            {
               "key": "image.url",
               "label": "アイキャッチ",
               "type": "image"

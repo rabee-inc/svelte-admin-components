@@ -1,6 +1,6 @@
 
 // path でゲット
-export function getByPath(obj, key) {
+export function getByPath(obj, key = '') {
   return key.split('.').reduce(function (t, v) {
     return t && t[v];
   }, obj);

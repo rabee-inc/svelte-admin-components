@@ -186,6 +186,22 @@ export const SCHEMA_FORM = [
       ]
     }
   },
+  // for button
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'button',
+    },
+    "opts": {
+      "schemas": [
+        { "key": "action", "label": "action", "type": "text", "class": "col4", },
+      ]
+    }
+  },
 
   // TODO: 他の type 用のも作っていく
 ];
