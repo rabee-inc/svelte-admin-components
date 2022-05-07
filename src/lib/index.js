@@ -18,7 +18,7 @@ const SCHEMA_READONLY = {
 };
 
 // edit 用 shcema
-export const FORM_SCHEMA = [
+export const SCHEMA_FORM = [
   {
     "key": "key", "label": "key", "type": "text", "class": "col4",
   },
@@ -154,7 +154,7 @@ export const FORM_SCHEMA = [
               "type": "object",
               "opts": () => {
                 return {
-                  "schemas": FORM_SCHEMA,
+                  "schemas": SCHEMA_FORM,
                 };
               },
             }
@@ -184,7 +184,7 @@ export const FORM_SCHEMA = [
 
   // TODO: 他の type 用のも作っていく
 ];
-export const CONTENT_SCHEMA = [
+export const SCHEMA_CONTENT = [
   {
     "key": "label",
     "label": "label",
@@ -199,7 +199,7 @@ export const CONTENT_SCHEMA = [
       "schema": {
         "type": "object",
         "opts": {
-          "schemas": FORM_SCHEMA
+          "schemas": SCHEMA_FORM
         },
       }
     }

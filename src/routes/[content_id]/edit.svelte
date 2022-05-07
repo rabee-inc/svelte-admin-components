@@ -13,7 +13,7 @@
   }
 </script>
 <script>
-  import { ContentForm, CONTENT_SCHEMA } from "svelte-admin-components";
+  import { ContentForm, SCHEMA_CONTENT } from "svelte-admin-components";
 
   export let content;
   export let content_id;
@@ -45,5 +45,5 @@
       div.f
         button.button.primary(on:click='{form.submit()}') save
     div.container-960
-      ContentForm(bind:this='{form}', value='{content}', schemas='{CONTENT_SCHEMA}', actions='{admin.actions}', on:submit='{submit}')
+      ContentForm(bind:this='{form}', value='{content}', schemas='{SCHEMA_CONTENT}', actions='{admin.actions}', on:submit='{submit}')
 </template>
