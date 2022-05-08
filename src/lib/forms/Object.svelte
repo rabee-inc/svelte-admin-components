@@ -10,6 +10,7 @@
   export let value;
   export let item;
   export let border = true;
+  
   // svelte-ignore unused-export-let
   export let getValue = async () => {
     let v = {};
