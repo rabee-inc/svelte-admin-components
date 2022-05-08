@@ -1,6 +1,4 @@
 <script>
-  import '../app.css';
-  import '/static/icons/icons.css';
   
   // setup head
   import {setOptions} from 'svelte-head';
@@ -28,6 +26,7 @@
 </script>
 
 <style lang="less" global>
+  @import '/src/app.css';
   @import '/src/admin/styles/global.less';
 </style>
 
