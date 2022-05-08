@@ -222,8 +222,8 @@
     ]
   },
   "images": {
-    "label": "post",
-    "path": "posts",
+    "label": "image",
+    "path": "images",
     "headings": [
       {
         "key": "image.url",
