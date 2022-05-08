@@ -202,6 +202,34 @@ export const SCHEMA_FORM = [
       ]
     }
   },
+  // for date
+  {
+    "key": "opts",
+    "label": "opts",
+    "type": "object",
+    "condition": {
+      "key": 'type',
+      "operation": "==",
+      "value": 'date',
+    },
+    "opts": {
+      "schemas": [
+        // { "key": "format", "label": "format", "type": "text", "class": "col4", },
+        { "key": "is_unixtime", "label": "unixtime", "type": "switch", "class": "col4", },
+        {
+          "key": "date_type", "label": "type", "type": "select", "class": "col4",
+          "opts": {
+            "choices": [
+              { value: 'datetime', },
+              { value: 'date', },
+              { value: 'month', },
+              { value: 'week', },
+            ],
+          },
+        },      
+      ]
+    }
+  },
 
   // TODO: 他の type 用のも作っていく
 ];

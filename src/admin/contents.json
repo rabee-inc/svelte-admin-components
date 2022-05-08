@@ -203,6 +203,56 @@
             }
           ]
         }
+      },
+      {
+        "key": "date_test",
+        "label": "日付のテスト",
+        "type": "object",
+        "opts": {
+          "is_section": true,
+          "schemas": [
+            {
+              "key": "date_default",
+              "label": "date(default)",
+              "type": "date",
+              "opts": {
+                "is_unixtime": true
+              }
+            },
+            {
+              "key": "date_datetime",
+              "label": "datetime",
+              "type": "date",
+              "opts": {
+                "date_type": "datetime"
+              }
+            },
+            {
+              "key": "date_date",
+              "label": "date",
+              "type": "date",
+              "opts": {
+                "date_type": "date"
+              }
+            },
+            {
+              "key": "date_month",
+              "label": "month",
+              "type": "date",
+              "opts": {
+                "date_type": "month"
+              }
+            },
+            {
+              "key": "date_week",
+              "label": "week",
+              "type": "date",
+              "opts": {
+                "date_type": "week"
+              }
+            }
+          ]
+        }
       }
     ],
     "headings": [
