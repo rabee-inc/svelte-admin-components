@@ -226,7 +226,7 @@
     "path": "images",
     "headings": [
       {
-        "key": "image.url",
+        "key": "url",
         "label": "アイキャッチ",
         "type": "image"
       },
@@ -236,14 +236,22 @@
         "type": "text"
       },
       {
-        "key": "title",
-        "label": "title",
+        "key": "name",
+        "label": "name",
         "type": "text"
       },
       {
         "key": "created_at",
         "label": "作成日",
         "type": "date"
+      }
+    ],
+    "schemas": [
+      {
+        "key": "name",
+        "label": "name",
+        "type": "text",
+        "opts": {}
       }
     ]
   }
