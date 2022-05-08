@@ -48,7 +48,8 @@
       {
         "key": "created_at",
         "label": "作成日",
-        "type": "date"
+        "type": "date",
+        "opts": {}
       },
       {
         "key": "is_ambassador",
