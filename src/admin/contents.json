@@ -280,11 +280,11 @@
     ]
   },
   "images": {
-    "label": "post",
-    "path": "posts",
+    "label": "image",
+    "path": "images",
     "headings": [
       {
-        "key": "image.url",
+        "key": "url",
         "label": "アイキャッチ",
         "type": "image"
       },
@@ -294,14 +294,36 @@
         "type": "text"
       },
       {
-        "key": "title",
-        "label": "title",
+        "key": "name",
+        "label": "name",
         "type": "text"
       },
       {
         "key": "created_at",
         "label": "作成日",
         "type": "date"
+      }
+    ],
+    "schemas": [
+      {
+        "key": "id",
+        "label": "id",
+        "type": "text",
+        "opts": {
+          "required": false,
+          "readonly": true
+        }
+      },
+      {
+        "key": "name",
+        "label": "name",
+        "type": "text",
+        "opts": {}
+      },
+      {
+        "key": "url",
+        "label": "image",
+        "type": "image"
       }
     ]
   }

@@ -5,8 +5,10 @@ faker.seed(0);
 
 export function image() {
   return {
+    id: faker.datatype.uuid(),
     // url: faker.image.avatar(), // こっちだと 429 error 出る
     url: `https://picsum.photos/id/${faker.datatype.number()%50}/512/512`,
+    name: faker.lorem.word(),
   }
 };
 
