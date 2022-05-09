@@ -6,14 +6,10 @@
   export let item;
 
   let onAction = () => {
-    let fn = actions.button[schema.opts.action];
-
-    if (fn) {
-      fn({
-        schema,
-        item,
-      });
-    }
+    actions.button[schema.opts.action]?.({
+      schema,
+      item,
+    });
   };
 </script>
 
