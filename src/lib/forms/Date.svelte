@@ -6,14 +6,18 @@
   export let schema;
   export let value = '';
 
-  if (schema.opts.is_unixtime) {
-    // value = dayjs(value*1000).format('YYYY-MM-DDTHH:mm:ss');
-    value = dayjs(value).format('YYYY-MM-DDTHH:mm:ss');
+  let _value = '';
+
+  if (schema.opts.is_unixtime && value) {
+    _value = dayjs(value || undefined).format('YYYY-MM-DDTHH:mm');
+  }
+  else {
+    _value = value;
   }
 
   let input;
   let getType = () => {
-    let date_type = schema.opts.date_type;
+    let date_type = schema.opts.date_type || 'datetime-local';
     if (date_type === 'datetime') date_type += '-local';
 
     return date_type;
@@ -30,11 +34,12 @@
 
     return v;
   };
+
 </script>
 
 <template lang="pug">
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.input.w-full(bind:this='{input}', value='{value}', type='{getType()}', on:change)
+    input.input.w-full(bind:this='{input}', value='{_value}', type='{getType()}', on:change)
 </template>
