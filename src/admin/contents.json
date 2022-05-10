@@ -48,7 +48,8 @@
       {
         "key": "created_at",
         "label": "作成日",
-        "type": "date"
+        "type": "date",
+        "opts": {}
       },
       {
         "key": "is_ambassador",
@@ -199,6 +200,57 @@
               "type": "textarea",
               "opts": {
                 "cols": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "date_test",
+        "label": "日付のテスト",
+        "type": "object",
+        "opts": {
+          "is_section": true,
+          "schemas": [
+            {
+              "key": "date_datetime",
+              "label": "datetime",
+              "type": "date",
+              "opts": {
+                "date_type": "datetime"
+              }
+            },
+            {
+              "key": "date_date",
+              "label": "date",
+              "type": "date",
+              "opts": {
+                "date_type": "date"
+              }
+            },
+            {
+              "key": "date_month",
+              "label": "month",
+              "type": "date",
+              "opts": {
+                "date_type": "month"
+              }
+            },
+            {
+              "key": "date_week",
+              "label": "week",
+              "type": "date",
+              "opts": {
+                "date_type": "week"
+              }
+            },
+            {
+              "key": "date_unixtime",
+              "label": "date(unixtime)",
+              "type": "date",
+              "opts": {
+                "is_unixtime": true,
+                "date_type": "datetime"
               }
             }
           ]
