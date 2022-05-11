@@ -213,14 +213,6 @@
           "is_section": true,
           "schemas": [
             {
-              "key": "date_default",
-              "label": "date(default)",
-              "type": "date",
-              "opts": {
-                "is_unixtime": true
-              }
-            },
-            {
               "key": "date_datetime",
               "label": "datetime",
               "type": "date",
@@ -250,6 +242,15 @@
               "type": "date",
               "opts": {
                 "date_type": "week"
+              }
+            },
+            {
+              "key": "date_unixtime",
+              "label": "date(unixtime)",
+              "type": "date",
+              "opts": {
+                "is_unixtime": true,
+                "date_type": "datetime"
               }
             }
           ]
