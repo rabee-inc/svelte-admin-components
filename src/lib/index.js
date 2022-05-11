@@ -5,6 +5,7 @@ export { default as ContentForm } from './components/ContentForm.svelte';
 
 // contents
 export { default as contents } from './contents/index.js';
+import contents from './contents/index.js';
 
 // forms
 export { default as forms } from './forms/index.js';
@@ -233,12 +234,43 @@ export const SCHEMA_FORM = [
 
   // TODO: 他の type 用のも作っていく
 ];
+
+export const SCHEMA_HEADING = [
+  {
+    "key": "key", "label": "key", "type": "text", "class": "col4",
+  },
+  {
+    "key": "label", "label": "label", "type": "text", "class": "col4",
+  },
+  {
+    "key": "type", "label": "type", "type": "select", "class": "col4",
+    "opts": {
+      "choices": Object.keys(contents).map(key => {
+        return { value : key };
+      }),
+    },
+  },
+];
+
 export const SCHEMA_CONTENT = [
   {
     "key": "label",
     "label": "label",
     "type": "text",
     "class": "col4",
+  },
+  {
+    "key": "headings",
+    "label": "headings",
+    "type": "array",
+    "opts": {
+      "schema": {
+        "type": "object",
+        "opts": {
+          "schemas": SCHEMA_HEADING
+        },
+      }
+    }
   },
   {
     "key": "schemas",
