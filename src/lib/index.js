@@ -235,6 +235,28 @@ export const SCHEMA_FORM = [
   // TODO: 他の type 用のも作っていく
 ];
 
+export const SCHEMA_SECTIONS = [
+  {
+    "key": "label", "label": "label", "type": "text", "class": "col4",
+  },
+  {
+    "key": "class", "label": "class", "type": "text", "class": "col4",
+  },
+  {
+    "key": "schemas",
+    "label": "schemas",
+    "type": "array",
+    "opts": {
+      "schema": {
+        "type": "object",
+        "opts": {
+          "schemas": SCHEMA_FORM
+        },
+      }
+    }
+  },
+];
+
 export const SCHEMA_HEADING = [
   {
     "key": "key", "label": "key", "type": "text", "class": "col4",
@@ -254,38 +276,58 @@ export const SCHEMA_HEADING = [
 
 export const SCHEMA_CONTENT = [
   {
-    "key": "label",
-    "label": "label",
-    "type": "text",
-    "class": "col4",
-  },
-  {
-    "key": "headings",
-    "label": "headings",
-    "type": "array",
-    "opts": {
-      "schema": {
-        "type": "object",
+    label: 'content',
+    class: '',
+    schemas: [
+      {
+        "key": "label",
+        "label": "label",
+        "type": "text",
+        "class": "col4",
+      },
+      {
+        "key": "headings",
+        "label": "headings",
+        "type": "array",
         "opts": {
-          "schemas": SCHEMA_HEADING
-        },
-      }
-    }
-  },
-  {
-    "key": "schemas",
-    "label": "schemas",
-    "type": "array",
-    "opts": {
-      "schema": {
-        "type": "object",
+          "schema": {
+            "type": "object",
+            "opts": {
+              "schemas": SCHEMA_HEADING
+            },
+          }
+        }
+      },
+      {
+        "key": "sections",
+        "label": "sections",
+        "type": "array",
         "opts": {
-          "schemas": SCHEMA_FORM
-        },
-      }
-    }
-  },
+          "schema": {
+            "type": "object",
+            "opts": {
+              "schemas": SCHEMA_SECTIONS
+            },
+          }
+        }
+      },
+      {
+        "key": "schemas",
+        "label": "schemas",
+        "type": "array",
+        "opts": {
+          "schema": {
+            "type": "object",
+            "opts": {
+              "schemas": SCHEMA_FORM
+            },
+          }
+        }
+      },  
+    ]
+  }
 ];
+
 
 // setup modal
 import { registerModalComponent } from 'svelte-modal-manager';

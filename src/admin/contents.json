@@ -278,6 +278,46 @@
         "label": "作成日",
         "type": "date"
       }
+    ],
+    "sections": [
+      {
+        "label": "メイン",
+        "class": "col8",
+        "schemas": [
+          {
+            "key": "id",
+            "label": "ID",
+            "type": "text",
+            "opts": {
+              "readonly": true
+            }
+          },
+          {
+            "key": "title",
+            "label": "title",
+            "type": "text",
+            "opts": {}
+          }
+        ]
+      },
+      {
+        "label": "サブ",
+        "class": "col4",
+        "schemas": [
+          {
+            "label": "preview",
+            "type": "button",
+            "opts": {
+              "action": "preview"
+            }
+          },
+          {
+            "key": "image.url",
+            "label": "image",
+            "type": "image"
+          }
+        ]
+      }
     ]
   },
   "images": {
