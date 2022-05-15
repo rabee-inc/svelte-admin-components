@@ -297,6 +297,14 @@
             "label": "title",
             "type": "text",
             "opts": {}
+          },
+          {
+            "key": "description",
+            "label": "description",
+            "type": "textarea",
+            "opts": {
+              "cols": ""
+            }
           }
         ]
       },
@@ -315,6 +323,26 @@
             "key": "image.url",
             "label": "image",
             "type": "image"
+          }
+        ]
+      },
+      {
+        "label": "メタ",
+        "class": "col12",
+        "schemas": [
+          {
+            "key": "meta_title",
+            "label": "メタタイトル",
+            "type": "text",
+            "opts": {}
+          },
+          {
+            "key": "meta_description",
+            "label": "メタ詳細",
+            "type": "textarea",
+            "opts": {
+              "cols": ""
+            }
           }
         ]
       }
