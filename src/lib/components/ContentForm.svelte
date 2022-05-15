@@ -10,7 +10,6 @@
   export {className as class};
   export let value;
   export let sections;
-  export let schemas;
   export let actions;
 
   let dispatch = createEventDispatcher();
@@ -81,7 +80,4 @@
                   div.fs12.mb4 {section.label}
                 div
                   svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', border='{false}')
-
-        //- div
-        //-   svelte:component(bind:this='{instance}', this='{forms.object}', schema='{getObjectSchema()}', actions='{actions}', value='{value}', border='{false}')
 </template>
