@@ -235,7 +235,7 @@ export const SCHEMA_FORM = [
   // TODO: 他の type 用のも作っていく
 ];
 
-export const SCHEMA_SECTIONS = [
+export const SCHEMA_SECTION = [
   {
     "key": "label", "label": "label", "type": "text", "class": "col4",
   },
@@ -306,7 +306,7 @@ export const SCHEMA_CONTENT = [
           "schema": {
             "type": "object",
             "opts": {
-              "schemas": SCHEMA_SECTIONS
+              "schemas": SCHEMA_SECTION
             },
           }
         }
