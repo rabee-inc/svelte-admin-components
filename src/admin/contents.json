@@ -94,6 +94,87 @@
         "label": "name",
         "type": "text"
       }
+    ],
+    "sections": [
+      {
+        "label": "メイン",
+        "class": "col12",
+        "schemas": [
+          {
+            "key": "id",
+            "label": "id",
+            "type": "text",
+            "opts": {
+              "readonly": true
+            }
+          },
+          {
+            "key": "screen_name",
+            "label": "名前　",
+            "type": "text",
+            "opts": {}
+          },
+          {
+            "key": "display_name",
+            "label": "表示名",
+            "type": "text",
+            "opts": {}
+          },
+          {
+            "key": "bio",
+            "label": "プロフィール",
+            "type": "textarea",
+            "opts": {
+              "cols": ""
+            }
+          },
+          {
+            "key": "age",
+            "label": "年齢",
+            "type": "number",
+            "opts": {
+              "min": 12,
+              "max": 128,
+              "step": ""
+            }
+          },
+          {
+            "key": "is_ambassador",
+            "label": "アンバサダー",
+            "type": "switch"
+          },
+          {
+            "key": "gender",
+            "label": "性別",
+            "type": "select",
+            "opts": {
+              "choices": [
+                {
+                  "value": "male",
+                  "label": "男性"
+                },
+                {
+                  "value": "female",
+                  "label": "女性"
+                },
+                {
+                  "value": "other",
+                  "label": "その他"
+                }
+              ]
+            }
+          },
+          {
+            "key": "created_at",
+            "label": "作成日",
+            "type": "date",
+            "opts": {
+              "is_unixtime": true,
+              "date_type": ""
+            }
+          }
+        ]
+      }
     ]
   },
   "posts": {
