@@ -475,6 +475,31 @@
         "label": "image",
         "type": "image"
       }
+    ],
+    "sections": [
+      {
+        "label": "メイン",
+        "class": "col12",
+        "schemas": [
+          {
+            "key": "id",
+            "label": "id",
+            "type": "text",
+            "opts": {}
+          },
+          {
+            "key": "name",
+            "label": "name",
+            "type": "text",
+            "opts": {}
+          },
+          {
+            "key": "url",
+            "label": "image",
+            "type": "image"
+          }
+        ]
+      }
     ]
   }
 }
