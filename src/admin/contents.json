@@ -2,82 +2,6 @@
   "users": {
     "label": "user",
     "path": "users",
-    "schemas": [
-      {
-        "key": "id",
-        "label": "ID",
-        "type": "text",
-        "opts": {
-          "readonly": true
-        }
-      },
-      {
-        "key": "screen_name",
-        "label": "名前",
-        "type": "text",
-        "opts": {
-          "required": true
-        }
-      },
-      {
-        "key": "display_name",
-        "label": "表示名",
-        "type": "text",
-        "opts": {
-          "required": false
-        }
-      },
-      {
-        "key": "bio",
-        "label": "プロフィール",
-        "type": "textarea",
-        "opts": {
-          "cols": 20
-        }
-      },
-      {
-        "key": "age",
-        "label": "年齢",
-        "type": "number",
-        "opts": {
-          "min": "",
-          "max": "",
-          "step": ""
-        }
-      },
-      {
-        "key": "created_at",
-        "label": "作成日",
-        "type": "date",
-        "opts": {}
-      },
-      {
-        "key": "is_ambassador",
-        "label": "アンバサダー",
-        "type": "switch"
-      },
-      {
-        "key": "gender",
-        "label": "性別",
-        "type": "select",
-        "opts": {
-          "choices": [
-            {
-              "value": "male",
-              "label": "男性"
-            },
-            {
-              "value": "female",
-              "label": "女性"
-            },
-            {
-              "value": "other",
-              "label": "その他"
-            }
-          ]
-        }
-      }
-    ],
     "headings": [
       {
         "key": "icon_image.url",
@@ -180,164 +104,6 @@
   "posts": {
     "label": "post",
     "path": "posts",
-    "schemas": [
-      {
-        "key": "main",
-        "label": "メイン",
-        "type": "object",
-        "class": "col8",
-        "opts": {
-          "is_section": true,
-          "schemas": [
-            {
-              "key": "id",
-              "label": "ID",
-              "type": "text",
-              "opts": {
-                "readonly": true
-              }
-            },
-            {
-              "key": "title",
-              "label": "タイトル",
-              "type": "text",
-              "opts": {}
-            },
-            {
-              "key": "tags",
-              "label": "タグ",
-              "type": "array",
-              "opts": {
-                "schema": {
-                  "type": "text"
-                }
-              }
-            },
-            {
-              "key": "author",
-              "label": "作者",
-              "type": "content",
-              "opts": {
-                "content": "users",
-                "value_key": "id",
-                "label_key": "screen_name"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "key": "sub",
-        "label": "サブ",
-        "type": "object",
-        "class": "col4",
-        "opts": {
-          "is_section": true,
-          "schemas": [
-            {
-              "label": "preview",
-              "type": "button",
-              "opts": {
-                "action": "preview"
-              }
-            },
-            {
-              "key": "image.url",
-              "label": "アイキャッチ",
-              "type": "image"
-            },
-            {
-              "key": "meta_title",
-              "label": "メタタイトル",
-              "type": "text",
-              "opts": {}
-            },
-            {
-              "key": "meta_description",
-              "label": "メタ詳細",
-              "type": "textarea",
-              "opts": {
-                "cols": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "key": "meta",
-        "label": "メタ情報",
-        "type": "object",
-        "opts": {
-          "schemas": [
-            {
-              "key": "title",
-              "label": "タイトル",
-              "type": "text",
-              "opts": {}
-            },
-            {
-              "key": "description",
-              "label": "詳細",
-              "type": "textarea",
-              "opts": {
-                "cols": ""
-              }
-            }
-          ]
-        }
-      },
-      {
-        "key": "date_test",
-        "label": "日付のテスト",
-        "type": "object",
-        "opts": {
-          "is_section": true,
-          "schemas": [
-            {
-              "key": "date_datetime",
-              "label": "datetime",
-              "type": "date",
-              "opts": {
-                "date_type": "datetime"
-              }
-            },
-            {
-              "key": "date_date",
-              "label": "date",
-              "type": "date",
-              "opts": {
-                "date_type": "date"
-              }
-            },
-            {
-              "key": "date_month",
-              "label": "month",
-              "type": "date",
-              "opts": {
-                "date_type": "month"
-              }
-            },
-            {
-              "key": "date_week",
-              "label": "week",
-              "type": "date",
-              "opts": {
-                "date_type": "week"
-              }
-            },
-            {
-              "key": "date_unixtime",
-              "label": "date(unixtime)",
-              "type": "date",
-              "opts": {
-                "is_unixtime": true,
-                "date_type": "datetime"
-              }
-            }
-          ]
-        }
-      }
-    ],
     "headings": [
       {
         "key": "image.url",
@@ -369,6 +135,7 @@
             "key": "id",
             "label": "ID",
             "type": "text",
+            "class": "",
             "opts": {
               "readonly": true
             }
@@ -377,12 +144,14 @@
             "key": "title",
             "label": "title",
             "type": "text",
+            "class": "",
             "opts": {}
           },
           {
             "key": "description",
             "label": "description",
             "type": "textarea",
+            "class": "",
             "opts": {
               "cols": ""
             }
@@ -394,8 +163,10 @@
         "class": "col4",
         "schemas": [
           {
+            "key": "",
             "label": "preview",
             "type": "button",
+            "class": "",
             "opts": {
               "action": "preview"
             }
@@ -403,7 +174,8 @@
           {
             "key": "image.url",
             "label": "image",
-            "type": "image"
+            "type": "image",
+            "class": ""
           }
         ]
       },
@@ -415,12 +187,14 @@
             "key": "meta_title",
             "label": "メタタイトル",
             "type": "text",
+            "class": "",
             "opts": {}
           },
           {
             "key": "meta_description",
             "label": "メタ詳細",
             "type": "textarea",
+            "class": "",
             "opts": {
               "cols": ""
             }
@@ -452,28 +226,6 @@
         "key": "created_at",
         "label": "作成日",
         "type": "date"
-      }
-    ],
-    "schemas": [
-      {
-        "key": "id",
-        "label": "id",
-        "type": "text",
-        "opts": {
-          "required": false,
-          "readonly": true
-        }
-      },
-      {
-        "key": "name",
-        "label": "name",
-        "type": "text",
-        "opts": {}
-      },
-      {
-        "key": "url",
-        "label": "image",
-        "type": "image"
       }
     ],
     "sections": [

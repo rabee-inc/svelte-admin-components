@@ -311,19 +311,6 @@ export const SCHEMA_CONTENT = [
           }
         }
       },
-      {
-        "key": "schemas",
-        "label": "schemas",
-        "type": "array",
-        "opts": {
-          "schema": {
-            "type": "object",
-            "opts": {
-              "schemas": SCHEMA_FORM
-            },
-          }
-        }
-      },  
     ]
   }
 ];
