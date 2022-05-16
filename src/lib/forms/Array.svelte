@@ -25,11 +25,6 @@
     return v;
   };
 
-  // setup default value
-  if (!value) {
-    value = [];
-  }
-
   let key = Date.now();
   let instances = [];
   let elements;
@@ -59,6 +54,13 @@
       },
     });
   });
+
+  $: {
+    // setup default value
+    if (!value) {
+      value = [];
+    }
+  }
 
 </script>
 

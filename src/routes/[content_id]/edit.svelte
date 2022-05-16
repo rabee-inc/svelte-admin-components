@@ -45,5 +45,5 @@
       div.f
         button.button.primary(on:click='{form.submit()}') save
     div
-      ContentForm(bind:this='{form}', value='{content}', schemas='{SCHEMA_CONTENT}', actions='{admin.actions}', on:submit='{submit}')
+      ContentForm(bind:this='{form}', value='{content}', sections='{SCHEMA_CONTENT}', actions='{admin.actions}', on:submit='{submit}')
 </template>
