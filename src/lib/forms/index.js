@@ -12,7 +12,7 @@ import Object from './Object.svelte';
 import Button from './Button.svelte';
 import Content from './Content.svelte';
 
-export default {
+let forms = {
   text: Text,
   textarea: Textarea,
   number: Number,
@@ -24,4 +24,10 @@ export default {
   object: Object,
   button: Button,
   content: Content,
+};
+
+export default forms;
+
+export let registerForm = (key, form) => {
+  forms[key] = form;
 };

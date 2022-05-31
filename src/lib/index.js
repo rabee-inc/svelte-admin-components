@@ -8,7 +8,7 @@ export { default as contents } from './contents/index.js';
 import contents from './contents/index.js';
 
 // forms
-export { default as forms } from './forms/index.js';
+export { default as forms, registerForm } from './forms/index.js';
 import forms from './forms/index.js';
 
 const SCHEMA_REQUIRED = {
