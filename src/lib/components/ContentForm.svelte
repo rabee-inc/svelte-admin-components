@@ -2,8 +2,8 @@
 
 <script>
   import { createEventDispatcher } from "svelte";
+  import Section from "./Section.svelte";
   import { forms } from "$lib/index.js";
-  import Section from "$lib/forms/Section.svelte";
   import { getByPath } from "$lib/utils";
   import deepExtend from "@jalik/deep-extend";
 
