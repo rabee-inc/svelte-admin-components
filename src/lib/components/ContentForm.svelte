@@ -12,6 +12,7 @@
   export let value;
   export let sections;
   export let actions;
+  export let sectionComponent = Section;
 
   let dispatch = createEventDispatcher();
   let form;
@@ -76,6 +77,6 @@
         div.row.mxn8
           +each('sections as section,i')
             div.align-self-top.px8.mb16(class='{section.class}')
-              Section(label='{section.label}')
+              svelte:component(this='{sectionComponent}', label='{section.label}')
                 svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', border='{false}')
 </template>
