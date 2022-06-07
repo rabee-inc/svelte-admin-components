@@ -9,7 +9,7 @@
   export let actions;
   export let value;
   export let item;
-  export let border = true;
+  export let frame = true;
   
   // svelte-ignore unused-export-let
   export let getValue = async () => {
@@ -78,11 +78,11 @@
 </script>
 
 <template lang='pug'>
-  div.rounded-4(class:border)
+  div.rounded-4(class:border='{frame}')
     +if('schema.label')
       div.bg-aliceblue.border-bottom.p8
         div.fs12.mb4 {schema.label}
-    div.row.p24.mxn8.mbn16
+    div.row.p24.mxn8.mbn16(class:p24='{frame}')
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.align-self-top.w-full.px8.mb16(class='{schema.class}')

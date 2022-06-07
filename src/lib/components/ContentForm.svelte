@@ -78,5 +78,5 @@
           +each('sections as section,i')
             div.align-self-top.px8.mb16(class='{section.class}')
               svelte:component(this='{sectionComponent}', label='{section.label}')
-                svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', border='{false}')
+                svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', frame='{false}')
 </template>
