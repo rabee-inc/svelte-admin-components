@@ -7,5 +7,6 @@
   div.border.rounded-4
     div.bg-aliceblue.border-bottom.p8
       div.fs12 {label}
-    slot
+    div.p16
+      slot
 </template>
