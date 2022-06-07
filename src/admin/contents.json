@@ -176,6 +176,16 @@
             "label": "image",
             "type": "image",
             "class": ""
+          },
+          {
+            "key": "tags",
+            "label": "tags",
+            "type": "array",
+            "opts": {
+              "schema": {
+                "type": "text"
+              }
+            }
           }
         ]
       },

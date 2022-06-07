@@ -2,6 +2,7 @@
 
 <script>
   import { createEventDispatcher } from "svelte";
+  import Section from "./Section.svelte";
   import { forms } from "$lib/index.js";
   import { getByPath } from "$lib/utils";
   import deepExtend from "@jalik/deep-extend";
@@ -11,6 +12,7 @@
   export let value;
   export let sections;
   export let actions;
+  export let sectionComponent = Section;
 
   let dispatch = createEventDispatcher();
   let form;
@@ -72,12 +74,9 @@
       //- Enter 用に submit ボタンを配置
       button.hide(type='submit')
       +key('value')
-        div.row.p16.mxn8
+        div.row.mxn8
           +each('sections as section,i')
             div.align-self-top.px8.mb16(class='{section.class}')
-              div.border.rounded-4
-                div.bg-aliceblue.border-bottom.p8
-                  div.fs12.mb4 {section.label}
-                div
-                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', border='{false}')
+              svelte:component(this='{sectionComponent}', label='{section.label}')
+                svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', border='{false}')
 </template>
