@@ -59,6 +59,16 @@
   };
 
   let shouldShow = (schema) => {
+    let shouldShow = schema.shouldShow;
+    if (shouldShow) {
+      let result = shouldShow({
+        schema,
+        value,
+      });
+
+      return result;
+    }
+
     let condition = schema.condition;
     if (condition) {
       let a = value[condition.key];
