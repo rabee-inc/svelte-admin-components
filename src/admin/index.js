@@ -58,11 +58,15 @@ const admin = {
   },
 };
 
-
-
 // DEBUG: メタの値に応じて分岐テスト
 admin.contents.posts.sections.find(s => s.label === 'メタ').shouldShow = ({section, value}) => {
   return value.meta;
 };
+
+// DEBUG: 18歳以上だったら性別を選択できるよう対応
+admin.contents.users.sections[0].schemas.find(s => s.key === 'gender').shouldShow = ({schema, value}) => {
+  return value.age >= 18;
+};
+
 
 export default admin;

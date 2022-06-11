@@ -63,11 +63,6 @@
             }
           },
           {
-            "key": "is_ambassador",
-            "label": "アンバサダー",
-            "type": "switch"
-          },
-          {
             "key": "gender",
             "label": "性別",
             "type": "select",
@@ -87,6 +82,11 @@
                 }
               ]
             }
+          },
+          {
+            "key": "is_ambassador",
+            "label": "アンバサダー",
+            "type": "switch"
           },
           {
             "key": "created_at",
