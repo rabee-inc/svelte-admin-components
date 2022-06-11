@@ -25,7 +25,6 @@
   }
 </script>
 <script>
-  import OriginalSection from "$admin/OriginalSection.svelte";
   import { goto } from "$app/navigation";
   import { ContentForm } from "svelte-admin-components";
   import { indicator } from 'svelte-modal-manager';
@@ -99,5 +98,5 @@
           button.button.danger.mr8(type='button', on:click!='{del}') delete
         button.button.primary(on:click='{form.submit()}') {item.id ? 'save' : 'create'}
     div.p16
-      ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}', sectionComponent='{OriginalSection}')
+      ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{submit}', on:delete='{del}')
 </template>

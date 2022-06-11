@@ -3,7 +3,7 @@
 <svelte:options accessors={true}/>
 
 <script>
-  import { onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
 
   export let schema;
   export let actions;
@@ -19,6 +19,7 @@
 
   let input;
   let _file;
+  let dispatch = createEventDispatcher();
 
   // 画像を click したとき
   let click = async () => {
@@ -46,6 +47,8 @@
   let setImage = (file) => {
     value = URL.createObjectURL(file);
     _file = file;
+
+    dispatch('change');
   };
 
   onMount(() => {
