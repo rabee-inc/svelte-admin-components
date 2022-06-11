@@ -64,7 +64,7 @@
     if (shouldShow) {
       let result = shouldShow({
         schema,
-        value: formValue,
+        value: formValue || value,
       });
 
       return result;
