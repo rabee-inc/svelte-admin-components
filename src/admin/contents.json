@@ -186,6 +186,11 @@
                 "type": "text"
               }
             }
+          },
+          {
+            "key": "meta",
+            "label": "is_meta",
+            "type": "switch"
           }
         ]
       },

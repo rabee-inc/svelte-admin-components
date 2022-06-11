@@ -18,10 +18,11 @@
   let form;
   let instance;
   let instances = [];
+  let _value = value;
 
   export let getValue = async () => {
     let promises = instances.map(instance => {
-      return instance.getValue();
+      return instance ? instance.getValue() : {};
     });
 
     let values = await Promise.all(promises);
@@ -66,6 +67,29 @@
     };
   };
 
+  // セクションごとに表示するかをチェック
+  let shouldShowSection = (section) => {
+    if (section.shouldShow) {
+      let result = section.shouldShow({
+        section,
+        value: _value,
+      });
+
+      return result;
+    }
+    return true;
+  };
+
+  // 変更イベント
+  let onChange = async () => {
+    _value = await getValue();
+
+    // 更新したら sections の表示を再チェックする
+    sections = sections;
+
+    console.log('changed');
+  };
+
 </script>
 
 <template lang='pug'>
@@ -73,10 +97,12 @@
     form(bind:this='{form}', on:submit|preventDefault='{submit}')
       //- Enter 用に submit ボタンを配置
       button.hide(type='submit')
+
       +key('value')
         div.row.mxn8
           +each('sections as section,i')
-            div.align-self-top.px8.mb16(class='{section.class}')
-              svelte:component(this='{sectionComponent}', label='{section.label}')
-                svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', frame='{false}')
+            +if('shouldShowSection(section)')
+              div.align-self-top.px8.mb16(class='{section.class}')
+                svelte:component(this='{sectionComponent}', label='{section.label}')
+                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', frame='{false}', on:change='{onChange}')
 </template>
