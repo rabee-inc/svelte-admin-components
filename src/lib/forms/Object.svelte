@@ -10,7 +10,10 @@
   export let value;
   export let item;
   export let frame = true;
-  
+
+  import { createEventDispatcher } from 'svelte';
+  let dispatch = createEventDispatcher();
+
   // svelte-ignore unused-export-let
   export let getValue = async () => {
     let v = {};
@@ -73,6 +76,8 @@
 
   let syncValue = async () => {
     value = await getValue();
+
+    dispatch('change');
   };
 
 </script>
