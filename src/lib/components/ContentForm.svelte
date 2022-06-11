@@ -87,7 +87,7 @@
     // 更新したら sections の表示を再チェックする
     sections = sections;
 
-    console.log('changed');
+    dispatch('change');
   };
 
 </script>
