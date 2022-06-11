@@ -10,6 +10,7 @@
   export let value;
   export let item;
   export let frame = true;
+  export let formValue;
 
   import { createEventDispatcher } from 'svelte';
   let dispatch = createEventDispatcher();
@@ -63,7 +64,7 @@
     if (shouldShow) {
       let result = shouldShow({
         schema,
-        value,
+        value: formValue || value,
       });
 
       return result;
@@ -101,5 +102,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.align-self-top.w-full.px8.mb16(class='{schema.class}')
-            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
+            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', {formValue}, item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
 </template>

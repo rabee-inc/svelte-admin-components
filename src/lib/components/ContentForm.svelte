@@ -18,7 +18,7 @@
   let form;
   let instance;
   let instances = [];
-  let _value = value;
+  let formValue = value;
 
   export let getValue = async () => {
     let promises = instances.map(instance => {
@@ -72,7 +72,7 @@
     if (section.shouldShow) {
       let result = section.shouldShow({
         section,
-        value: _value,
+        value: formValue,
       });
 
       return result;
@@ -82,7 +82,7 @@
 
   // 変更イベント
   let onChange = async () => {
-    _value = await getValue();
+    formValue = await getValue();
 
     // 更新したら sections の表示を再チェックする
     sections = sections;
@@ -104,5 +104,5 @@
             +if('shouldShowSection(section)')
               div.align-self-top.px8.mb16(class='{section.class}')
                 svelte:component(this='{sectionComponent}', label='{section.label}')
-                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', frame='{false}', on:change='{onChange}')
+                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
 </template>
