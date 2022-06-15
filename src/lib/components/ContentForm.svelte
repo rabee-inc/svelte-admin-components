@@ -49,6 +49,10 @@
     });
   };
 
+  export const getInstances = () => {
+    return instances;
+  };
+
   let getObjectSchema = () => {
     return {
       type: "object",
