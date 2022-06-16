@@ -34,7 +34,7 @@
 
   export let submit = async () => {
     // check validity
-    if (reportValidity()) return ;
+    if (!reportValidity()) return ;
 
     let value = await getValue();
     dispatch('submit', {
