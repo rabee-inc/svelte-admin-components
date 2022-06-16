@@ -9,6 +9,12 @@
   export let schema;
   export let value = [];
   // svelte-ignore unused-export-let
+  export let actions;
+  // svelte-ignore unused-export-let
+  export let formValue;
+  // svelte-ignore unused-export-let
+  export let item;
+  // svelte-ignore unused-export-let
   export let getValue = async () => {
     let promises = instances.filter(Boolean).map(async (instance, i) => {
       let v = instance.getValue ? instance.getValue() : instance.value;
