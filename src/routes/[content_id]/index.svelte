@@ -49,5 +49,5 @@
       div
         a.button.primary(href='/{content.path}/new') NEW
     div.p16
-      ContentList(items='{items}', headings='{content.headings}', on:select='{select}', class='')
+      ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
 </template>
