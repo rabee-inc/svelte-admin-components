@@ -5,6 +5,13 @@
 
   export let schema;
   export let value = '';
+  // svelte-ignore unused-export-let
+  export let formValue;
+  // svelte-ignore unused-export-let
+  export let actions;
+  // svelte-ignore unused-export-let
+  export let item;
+
 
   let _value = '';
 

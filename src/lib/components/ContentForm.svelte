@@ -7,13 +7,13 @@
   import { getByPath } from "$lib/utils";
   import deepExtend from "@jalik/deep-extend";
 
-  let className;
+  let className = null;
   export {className as class};
   export let value;
   export let sections;
   export let actions;
   export let sectionComponent = Section;
-  export let validator;
+  export let validator = null;
 
   let dispatch = createEventDispatcher();
   let form;
@@ -105,7 +105,7 @@
 </script>
 
 <template lang='pug'>
-  div(class='{className}')
+  div(class!='{className || ""}')
     form(bind:this='{form}', on:submit|preventDefault='{submit}', novalidate='{validator}')
       //- Enter 用に submit ボタンを配置
       button.hide(type='submit')
@@ -114,7 +114,7 @@
         div.row.mxn8
           +each('sections as section,i')
             +if('shouldShowSection(section)')
-              div.align-self-top.px8.mb16(class='{section.class}')
+              div.align-self-top.px8.mb16(class!='{section.class || ""}')
                 svelte:component(this='{sectionComponent}', label='{section.label}')
                   svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
 </template>

@@ -20,7 +20,9 @@
   import { Meta } from 'svelte-head';
 
   import { ContentList } from "svelte-admin-components";
-  
+
+  // svelte-ignore unused-export-let
+  export let content_id;
   export let items = [];
   export let content;
 

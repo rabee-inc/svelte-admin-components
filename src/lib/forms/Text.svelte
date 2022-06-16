@@ -2,13 +2,13 @@
 
 <script>
   export let schema;
-  export let value = '';
+  export let value = null;
   // svelte-ignore unused-export-let
-  export let formValue;
+  export let formValue = null;
   // svelte-ignore unused-export-let
-  export let actions;
+  export let actions = null;
   // svelte-ignore unused-export-let
-  export let item;
+  export let item = null;
 </script>
 
 <template lang='pug'>

@@ -9,6 +9,10 @@
   export let actions;
   export let value = '';
   // svelte-ignore unused-export-let
+  export let formValue;
+  // svelte-ignore unused-export-let
+  export let item;
+  // svelte-ignore unused-export-let
   export let getValue = async () => {
     let v = await actions.image.upload({
       value,
