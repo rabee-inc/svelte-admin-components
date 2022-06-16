@@ -39,6 +39,10 @@
     return v;
   };
 
+  export const getInstances = () => {
+    return instances;
+  };
+
   // setup default value
   if (!value) {
     value = {};
