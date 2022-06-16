@@ -20,7 +20,8 @@
   import { Meta } from 'svelte-head';
 
   import { ContentList } from "svelte-admin-components";
-  
+
+  export let content_id;
   export let items = [];
   export let content;
 
@@ -48,5 +49,5 @@
       div
         a.button.primary(href='/{content.path}/new') NEW
     div.p16
-      ContentList(items='{items}', headings='{content.headings}', on:select='{select}')
+      ContentList(items='{items}', headings='{content.headings}', on:select='{select}', class='')
 </template>

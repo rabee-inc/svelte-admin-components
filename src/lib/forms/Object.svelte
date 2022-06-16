@@ -6,11 +6,11 @@
   import { getByPath, setByPath } from "$lib/utils";
 
   export let schema;
-  export let actions;
+  export let actions = null;
   export let value;
-  export let item;
+  export let formValue = null;
+  export let item = null;
   export let frame = true;
-  export let formValue;
 
   import { createEventDispatcher } from 'svelte';
   let dispatch = createEventDispatcher();

@@ -5,7 +5,7 @@
   import { contents } from "$lib/index.js";
   import { getByPath } from "$lib/utils";
 
-  let className;
+  let className = null;
   export {className as class};
   export let headings = [];
   export let items = [];

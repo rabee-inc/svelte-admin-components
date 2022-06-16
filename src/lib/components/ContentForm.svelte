@@ -7,13 +7,13 @@
   import { getByPath } from "$lib/utils";
   import deepExtend from "@jalik/deep-extend";
 
-  let className;
+  let className = null;
   export {className as class};
   export let value;
   export let sections;
   export let actions;
   export let sectionComponent = Section;
-  export let validator;
+  export let validator = null;
 
   let dispatch = createEventDispatcher();
   let form;
