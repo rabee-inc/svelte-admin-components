@@ -8,9 +8,7 @@
   export let value = '';
   // svelte-ignore unused-export-let
   export let formValue;
-
-
-
+  
   let onAction = () => {
     actions.button[schema.opts.action]?.({
       schema,
