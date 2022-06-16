@@ -13,6 +13,7 @@
   export let sections;
   export let actions;
   export let sectionComponent = Section;
+  export let validator;
 
   let dispatch = createEventDispatcher();
   let form;
@@ -33,12 +34,19 @@
 
   export let submit = async () => {
     // check validity
-    if (!form.reportValidity()) return ;
+    if (reportValidity()) return ;
 
     let value = await getValue();
     dispatch('submit', {
       value,
     });
+  };
+
+  export const reportValidity = () => {
+    if (validator?.reportValidity) {
+      return validator.reportValidity();
+    }
+    return form.reportValidity();
   };
 
   // svelte-ignore unused-export-let
@@ -47,6 +55,10 @@
     dispatch('delete', {
       value,
     });
+  };
+
+  export const getInstances = () => {
+    return instances;
   };
 
   let getObjectSchema = () => {
@@ -94,7 +106,7 @@
 
 <template lang='pug'>
   div(class='{className}')
-    form(bind:this='{form}', on:submit|preventDefault='{submit}')
+    form(bind:this='{form}', on:submit|preventDefault='{submit}', novalidate='{validator}')
       //- Enter 用に submit ボタンを配置
       button.hide(type='submit')
 
