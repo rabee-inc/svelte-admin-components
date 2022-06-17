@@ -136,7 +136,7 @@
             "key": "id",
             "label": "ID",
             "type": "text",
-            "class": "",
+            "class": "mb64",
             "opts": {
               "readonly": true
             }
