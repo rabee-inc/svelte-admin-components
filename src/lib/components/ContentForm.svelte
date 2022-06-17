@@ -115,6 +115,6 @@
           +each('sections as section,i')
             +if('shouldShowSection(section)')
               div.align-self-top.px8.mb16(class!='{section.class || ""}')
-                svelte:component(this='{sectionComponent}', label='{section.label}')
+                svelte:component(this='{sectionComponent}', section='{section}')
                   svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
 </template>
