@@ -243,6 +243,15 @@ export const SCHEMA_SECTION = [
     "key": "class", "label": "class", "type": "text", "class": "col4",
   },
   {
+    "key": "description",
+    "label": "description",
+    "type": "textarea",
+    "class": "col12",
+    "opts": {
+      "cols": 2,
+    }
+  },
+  {
     "key": "schemas",
     "label": "schemas",
     "type": "array",
