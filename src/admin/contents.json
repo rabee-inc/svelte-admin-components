@@ -130,6 +130,7 @@
       {
         "label": "メイン",
         "class": "col8",
+        "description": "メインとなる入力フォームです!",
         "schemas": [
           {
             "key": "id",
