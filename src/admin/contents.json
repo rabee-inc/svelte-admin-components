@@ -117,13 +117,23 @@
       },
       {
         "key": "title",
-        "label": "title",
+        "label": "タイトル",
         "type": "text"
       },
       {
         "key": "created_at",
         "label": "作成日",
         "type": "date"
+      },
+      {
+        "key": "tags",
+        "label": "タグ",
+        "type": "text"
+      },
+      {
+        "key": "description",
+        "label": "詳細",
+        "type": "text"
       }
     ],
     "sections": [
