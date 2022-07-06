@@ -5,5 +5,5 @@
 </script>
 
 <template lang='pug'>
-  p {value}
+  p.line-clamp-3 {value}
 </template>

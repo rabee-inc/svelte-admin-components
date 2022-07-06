@@ -32,8 +32,8 @@
 
 <template lang="pug">
   div.f.fclm.s-full
-    div.s-full.f.overflow-hidden
+    div.s-full.f
       Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
-      div.s-full.f.flex-column
+      div.s-full.f.flex-column.overflow-hidden
         slot
 </template>
