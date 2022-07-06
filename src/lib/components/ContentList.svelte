@@ -26,7 +26,7 @@
       thead
         tr.border-bottom.text-left
           +each('headings as heading')
-            th.min-width-100.px12.py16.text-gray.bold.word-break-keep {heading.label}
+            th.min-width-150.px12.py16.text-gray.bold.word-break-keep {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => select(e, item)}')
