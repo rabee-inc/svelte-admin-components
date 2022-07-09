@@ -84,6 +84,14 @@
             }
           },
           {
+            "key": "gender",
+            "label": "性別",
+            "type": "select",
+            "opts": {
+              "choices": "genders"
+            }
+          },
+          {
             "key": "is_ambassador",
             "label": "アンバサダー",
             "type": "switch"

@@ -1,6 +1,8 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { onMount } from "svelte";
+
   export let schema;
   export let value = '';
   // svelte-ignore unused-export-let
@@ -10,6 +12,29 @@
   // svelte-ignore unused-export-let
   export let item;
 
+  let _choices = [];
+
+  let setupChoices = async (choices) => {
+    // 文字列だったら関数化して結果を返す
+    if (typeof choices === 'string') {
+      // 共通の関数もしくは配列に変換
+      choices = actions[choices];
+
+      if (typeof choices === 'function') {
+        _choices = await choices({schema, value});
+      }
+      else {
+        _choices = choices;
+      }
+    }
+    else {
+      _choices = choices;
+    }
+  };
+
+  onMount(() => {
+    setupChoices(schema.opts.choices);
+  });
 </script>
 
 <template lang='pug'>
@@ -20,6 +45,6 @@
           span *
     //- TODO: select は readonly 効かないので対策考える
     select.px8.py4.border.rounded-4.lh15(bind:value, required!='{schema.opts?.required}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
-      +each('schema.opts.choices as choice')
+      +each('_choices as choice')
         option(value='{choice.value}') {choice.label || choice.value}
 </template>
