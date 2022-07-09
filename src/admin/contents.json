@@ -17,6 +17,14 @@
         "key": "screen_name",
         "label": "name",
         "type": "text"
+      },
+      {
+        "key": "gender",
+        "label": "gender",
+        "type": "text",
+        "opts": {
+          "mappings": "genders"
+        }
       }
     ],
     "sections": [
