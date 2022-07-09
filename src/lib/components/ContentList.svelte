@@ -41,4 +41,8 @@
       background-color: aliceblue;
     }
   }
+
+  .min-width-150 {
+    min-width: 150px;
+  }
 </style>
