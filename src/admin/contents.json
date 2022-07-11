@@ -17,6 +17,14 @@
         "key": "screen_name",
         "label": "name",
         "type": "text"
+      },
+      {
+        "key": "gender",
+        "label": "gender",
+        "type": "text",
+        "opts": {
+          "mappings": "genders"
+        }
       }
     ],
     "sections": [
@@ -81,6 +89,14 @@
                   "label": "その他"
                 }
               ]
+            }
+          },
+          {
+            "key": "gender",
+            "label": "性別",
+            "type": "select",
+            "opts": {
+              "choices": "genders"
             }
           },
           {

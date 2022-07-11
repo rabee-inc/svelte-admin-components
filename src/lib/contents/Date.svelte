@@ -2,6 +2,11 @@
 
 <script>
   import dayjs from 'dayjs';
+
+  // svelte-ignore unused-export-let
+  export let heading;
+  // svelte-ignore unused-export-let
+  export let actions;
   export let value = '';
 </script>
 

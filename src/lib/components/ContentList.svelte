@@ -9,6 +9,7 @@
   export {className as class};
   export let headings = [];
   export let items = [];
+  export let actions;
 
   let dispatch = createEventDispatcher();
 
@@ -32,7 +33,7 @@
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => select(e, item)}')
             +each('headings as heading')
               td.p12.fs13
-                svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }')
+                svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', heading='{heading}', actions='{actions}')
 </template>
 
 <style lang="less">
