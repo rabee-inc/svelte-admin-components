@@ -15,11 +15,11 @@
     "setup": "yarn",
     "clean": "rm -rf node_modules yarn.lock .svelte-kit build",
     "reset": "yarn clean; yarn setup",
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "start": "node build/index.js",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "HOST=127.0.0.1 PORT=4000 node build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
     "release": "npm run package && cd package && npm publish",
     "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/"
   },
@@ -35,7 +35,8 @@
     "svelte-head": "^0.0.6",
     "svelte-preprocess": "^4.10.1",
     "svelte2tsx": "^0.5.3",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "vite": "^2.9.14"
   },
   "type": "module",
   "dependencies": {
