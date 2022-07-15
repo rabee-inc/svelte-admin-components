@@ -5,9 +5,8 @@
 
   export let heading;
   export let actions;
-  // svelte-ignore unused-export-let
-  export let item;
   export let value = '';
+  export let item;
 
   let _value = value;
 
@@ -42,8 +41,15 @@
     }
   };
 
+  let onAction = () => {
+    actions.button[heading.opts.action]?.({
+      heading,
+      item,
+    });
+  };
+
 </script>
 
 <template lang='pug'>
-  p.line-clamp-3 {_value}
+  button.button(on:click|stopPropagation='{onAction}') {heading.label}
 </template>

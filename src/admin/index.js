@@ -54,6 +54,10 @@ const admin = {
         console.log(schema, item);
         alert('view preview');
       },
+
+      download({heading, item}) {
+        alert('download: '+ item.title);
+      },
     },
 
     genders() {
