@@ -5,6 +5,8 @@
 
   export let heading;
   export let actions;
+  // svelte-ignore unused-export-let
+  export let item;
   export let value = '';
 
   let _value = value;

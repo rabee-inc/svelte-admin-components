@@ -7,6 +7,8 @@
   export let heading;
   // svelte-ignore unused-export-let
   export let actions;
+  // svelte-ignore unused-export-let
+  export let item;
   export let value = '';
 </script>
 
