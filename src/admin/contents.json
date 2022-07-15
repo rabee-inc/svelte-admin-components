@@ -150,6 +150,11 @@
         "key": "description",
         "label": "詳細",
         "type": "text"
+      },
+      {
+        "key": "updated_at",
+        "label": "更新日時",
+        "type": "date"
       }
     ],
     "sections": [

@@ -12,5 +12,5 @@
 
 <template lang='pug'>
   +if('value')
-    time {dayjs().format('YYYY/MM/DD HH:mm')}
+    time {dayjs(value).format('YYYY/MM/DD HH:mm')}
 </template>
