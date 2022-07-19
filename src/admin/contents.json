@@ -133,6 +133,27 @@
                 }
               ]
             }
+          },
+          {
+            "key": "gender",
+            "label": "性別",
+            "type": "radio",
+            "opts": {
+              "choices": [
+                {
+                  "value": "male",
+                  "label": "男性"
+                },
+                {
+                  "value": "female",
+                  "label": "女性"
+                },
+                {
+                  "value": "other",
+                  "label": "その他"
+                }
+              ]
+            }
           }
         ]
       }
