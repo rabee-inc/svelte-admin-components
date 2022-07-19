@@ -112,6 +112,27 @@
               "is_unixtime": true,
               "date_type": ""
             }
+          },
+          {
+            "key": "roles",
+            "label": "権限",
+            "type": "checkboxes",
+            "opts": {
+              "choices": [
+                {
+                  "value": "admin",
+                  "label": "管理者"
+                },
+                {
+                  "value": "member",
+                  "label": "メンバー"
+                },
+                {
+                  "value": "viewer",
+                  "label": "閲覧者"
+                }
+              ]
+            }
           }
         ]
       }

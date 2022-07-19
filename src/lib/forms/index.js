@@ -6,6 +6,7 @@ import Number from './Number.svelte';
 import Switch from './Switch.svelte';
 import Date from './Date.svelte';
 import Select from './Select.svelte';
+import Checkboxes from './Checkboxes.svelte';
 import Image from './Image.svelte';
 import Array from './Array.svelte';
 import Object from './Object.svelte';
@@ -19,6 +20,7 @@ let forms = {
   switch: Switch,
   date: Date,
   select: Select,
+  checkboxes: Checkboxes,
   image: Image,
   array: Array,
   object: Object,
