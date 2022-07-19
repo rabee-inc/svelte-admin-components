@@ -28,6 +28,7 @@ export function user() {
     created_at: faker.datatype.datetime().getTime(),
     age: faker.datatype.number({min: 18, max: 64}),
     gender: GENDERS[faker.datatype.number() % 3],
+    roles: ['member'],
   };
 };
 
