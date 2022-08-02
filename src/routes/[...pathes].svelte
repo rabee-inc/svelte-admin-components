@@ -41,6 +41,7 @@
   import ContentForm from "$lib/components/ContentForm.svelte";
   import ContentList from "$lib/components/ContentList.svelte";
   import { goto } from "$app/navigation";
+  import { Meta } from "svelte-head";
 
   export let path;
   export let pathes;
@@ -101,6 +102,8 @@
     }
   }
 </script>
+
+<Meta />
 
 <template lang="pug">
   main.s-full.overflow-scroll
