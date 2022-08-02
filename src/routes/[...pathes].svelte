@@ -1,39 +1,126 @@
 <script context="module">
-import { contents } from "$lib";
-
+  import admin from "$admin/index.js"
 
   export async function load({fetch, params}) {
     let pathes = params.pathes.split('/');
     let mode = (pathes.length % 2 === 0) ? 'edit' : 'list';
 
     let content_id;
+    let id;
 
     if (mode === 'edit') {
       content_id = pathes[pathes.length  - 2];
+      id = pathes[pathes.length  - 1];
     }
     else {
       content_id = pathes[pathes.length  - 1];
     }
 
-    console.log(content_id);
-    if (!contents.schemas[content_id]) {
-      // return {
-      //   redirect: 404,
-      // }
+    let content = admin.contents[content_id];
+    if (!content) {
+      return {
+        status: 404,
+        error: new Error('page not found!'),
+      };
     }
 
     return {
       props: {
+        path: params.pathes,
+        pathes,
         mode,
+        content,
+        content_id,
+        id,
       }
     };
   };
 </script>
 
 <script>
+  import ContentForm from "$lib/components/ContentForm.svelte";
+  import ContentList from "$lib/components/ContentList.svelte";
+  import { goto } from "$app/navigation";
+
+  export let path;
+  export let pathes;
   export let mode;
+  export let content;
+  export let content_id;
+  export let id;
+
+  let form;
+  let item = null;
+  let items = [];
+
+  let setup = () => {
+    item = null;
+    items = [];
+  };
+
+  let fetchItems = async () => {
+    let res = await fetch(`/api/${content_id}`);
+    ({items} = await res.json());
+  };
+
+  let fetchItem = async () => {
+    let res = await fetch(`/api/${content_id}/${id}`);
+    ({item} = await res.json());
+  };
+
+  let onSelect = (e) => {
+    let url = `/${content.path}/${e.detail.item.id}`;
+    if (e.detail.originalEvent.metaKey) {
+      // 新しいタブで開く
+      window.open(url);
+    }
+    else {
+      goto(url);
+    }
+  };
+
+  let onSubmit = () => {
+
+  };
+
+  let onDelete = () => {
+
+  };
+
+  $: {
+    mode;
+    content_id;
+
+    setup();
+
+    if (mode === 'list') {
+      fetchItems();
+    }
+    else if (mode === 'edit') {
+      fetchItem();
+    }
+  }
 </script>
 
 <template lang="pug">
-  div {mode}
+  main.s-full.overflow-scroll
+    +if('mode === "list"')
+      div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+        div.f.fm
+          h1.mr8 {content.label}
+          a.fs12.p4.mt6(href='/{content.path}/edit')
+            i.material-icons.fs18 edit
+        div
+          a.button.primary(href='/{content.path}/new') NEW
+      div.p16
+        ContentList(items='{items}', headings='{content.headings}', actions='{admin.actions}', on:select='{onSelect}')
+    +if('mode === "edit"')
+      div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+        h1.fs16 {content.label} / {item?.id || 'new'}
+        div.f
+          +if('item?.id')
+            button.button.danger.mr8(type='button', on:click!='{onDelete}') delete
+          button.button.primary(on:click='{form.submit()}') {item?.id ? 'save' : 'create'}
+      div.p16
+        ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
 </template>
