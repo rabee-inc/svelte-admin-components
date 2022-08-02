@@ -84,8 +84,21 @@
 
   };
 
-  let onDelete = () => {
+  let onDelete = async () => {
+    if (!confirm('really?')) {
+      return ;
+    }
 
+    await fetch(`/api/${content_id}/${item.id}`, {
+      method: 'delete',
+    });
+
+    console.log('deleted');
+
+    // 一覧ページに戻る
+    goto(`/${content_id}`, {
+      replaceState: true,
+    });
   };
 
   $: {
