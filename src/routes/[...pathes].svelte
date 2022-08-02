@@ -29,6 +29,7 @@
       id = pathes[pathes.length  - 1];
     }
 
+    // TODO: 多階層を考慮する必要あり
     let content = admin.contents[content_id];
     if (!content) {
       return {
