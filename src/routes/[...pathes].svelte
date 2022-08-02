@@ -42,6 +42,7 @@
   import ContentList from "$lib/components/ContentList.svelte";
   import { goto } from "$app/navigation";
   import { Meta } from "svelte-head";
+  import { indicator } from "svelte-modal-manager";
 
   export let path;
   export let pathes;
@@ -65,6 +66,8 @@
   };
 
   let fetchItem = async () => {
+    if (id === 'new') return ;
+
     let res = await fetch(`/api/${content_id}/${id}`);
     ({item} = await res.json());
   };
@@ -80,8 +83,57 @@
     }
   };
 
-  let onSubmit = () => {
+  let onSubmit = async (e) => {
+    let item = e.detail.value;
 
+    if (item.id) {
+      let i = indicator();
+
+      try {
+        let res = await fetch(`/api/${content_id}/${item.id}`, {
+          method: 'put',
+          body: JSON.stringify({
+            item,
+          }),
+        });
+        let json = await res.json();
+        console.log('saved', json);
+      }
+      catch (e) {
+
+      }
+      finally {
+        setTimeout(() => {
+          i.close();
+        }, 512);
+      }
+    }
+    else {
+      let i = indicator();
+
+      try {
+        let res = await fetch(`/api/${content_id}`, {
+          method: 'post',
+          body: JSON.stringify({
+            item,
+          }),
+        });
+        let json = await res.json();
+        console.log('created', json);
+        // 単体編集ページに遷移
+        goto(`/${content_id}/${json.item.id}`, {
+          replaceState: true,
+        });
+      }
+      catch (e) {
+
+      }
+      finally {
+        setTimeout(() => {
+          i.close();
+        }, 512);
+      }
+    }
   };
 
   let onDelete = async () => {
@@ -104,6 +156,7 @@
   $: {
     mode;
     content_id;
+    id;
 
     setup();
 
