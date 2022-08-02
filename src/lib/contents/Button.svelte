@@ -29,7 +29,7 @@
       if (Array.isArray(mappings)) {
         // choices 形式だった場合
         let hit = mappings.find(item => item.value === value);
-        _value = hit.label;
+        _value = hit?.label;
       }
       else {
         // object だった場合

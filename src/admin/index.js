@@ -72,7 +72,7 @@ const admin = {
 
 // DEBUG: メタの値に応じて分岐テスト
 admin.contents.posts.sections.find(s => s.label === 'メタ').shouldShow = ({section, value}) => {
-  return value.meta;
+  return value?.meta;
 };
 
 // DEBUG: 18歳以上だったら性別を選択できるよう対応
