@@ -3,17 +3,30 @@
 
   export async function load({fetch, params}) {
     let pathes = params.pathes.split('/');
-    let mode = (pathes.length % 2 === 0) ? 'edit' : 'list';
+    let mode;
+
+    // mode の判定
+    if (pathes.length % 2 === 1) {
+      mode = 'list';
+    }
+    else {
+      if (pathes[pathes.length-1] === '_schema') {
+        mode = 'schema';
+      }
+      else {
+        mode = 'edit';
+      }
+    }
 
     let content_id;
     let id;
 
-    if (mode === 'edit') {
-      content_id = pathes[pathes.length  - 2];
-      id = pathes[pathes.length  - 1];
+    if (mode === 'list') {
+      content_id = pathes[pathes.length  - 1];
     }
     else {
-      content_id = pathes[pathes.length  - 1];
+      content_id = pathes[pathes.length  - 2];
+      id = pathes[pathes.length  - 1];
     }
 
     let content = admin.contents[content_id];
@@ -177,7 +190,7 @@
       div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
         div.f.fm
           h1.mr8 {content.label}
-          a.fs12.p4.mt6(href='/{content.path}/edit')
+          a.fs12.p4.mt6(href='/{content.path}/_schema')
             i.material-icons.fs18 edit
         div
           a.button.primary(href='/{content.path}/new') NEW
@@ -192,4 +205,6 @@
           button.button.primary(on:click='{form.submit()}') {item?.id ? 'save' : 'create'}
       div.p16
         ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
+    +if('mode === "schema"')
+      div TODO: schema 編集
 </template>
