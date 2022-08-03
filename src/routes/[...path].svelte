@@ -94,7 +94,7 @@
   let fetchItem = async () => {
     if (id === 'new') return ;
 
-    let res = await fetch(`/api/${content_id}/${id}`);
+    let res = await fetch(`/api/${path}`);
     ({item} = await res.json());
   };
 
