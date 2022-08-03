@@ -1,26 +1,26 @@
 <script context="module">
   import admin from "$admin/index.js"
 
-  // pathes から content_id を取得する
-  let getContentId = (pathes) => {
+  // paths から content_id を取得する
+  let getContentId = (paths) => {
     // 偶数だけ残す
-    let content_pathes = pathes.filter((p, i) => {
+    let content_paths = paths.filter((p, i) => {
       return i % 2 === 0;
     });
 
-    return content_pathes.join('/');
+    return content_paths.join('/');
   };
 
   export async function load({fetch, params}) {
-    let pathes = params.pathes.split('/');
+    let paths = params.paths.split('/');
     let mode;
 
     // mode の判定
-    if (pathes.length % 2 === 1) {
+    if (paths.length % 2 === 1) {
       mode = 'list';
     }
     else {
-      if (pathes[pathes.length-1] === '_schema') {
+      if (paths[paths.length-1] === '_schema') {
         mode = 'schema';
       }
       else {
@@ -28,11 +28,11 @@
       }
     }
 
-    let content_id = getContentId(pathes);
+    let content_id = getContentId(paths);
     let id;
 
     if (mode !== 'list') {
-      id = pathes[pathes.length  - 1];
+      id = paths[paths.length  - 1];
     }
 
     // TODO: 多階層を考慮する必要あり
@@ -46,8 +46,8 @@
 
     return {
       props: {
-        path: params.pathes,
-        pathes,
+        path: params.paths,
+        paths,
         mode,
         content,
         content_id,
@@ -65,7 +65,7 @@
   import { indicator } from "svelte-modal-manager";
 
   export let path;
-  export let pathes;
+  export let paths;
   export let mode;
   export let content;
   export let content_id;
