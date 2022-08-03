@@ -2,7 +2,7 @@
   import admin from "$admin/index.js"
 
   // paths から content_id を取得する
-  let getContentId = (paths) => {
+  let pathsToContentId = (paths) => {
     // 偶数だけ残す
     let content_paths = paths.filter((p, i) => {
       return i % 2 === 0;
@@ -11,8 +11,14 @@
     return content_paths.join('/');
   };
 
+  let pathsToId = (paths) => {
+    return paths[paths.length-1];
+  };
+
+
   export async function load({fetch, params}) {
-    let paths = params.paths.split('/');
+    let path = params.path;
+    let paths = params.path.split('/');
     let mode;
 
     // mode の判定
@@ -28,11 +34,11 @@
       }
     }
 
-    let content_id = getContentId(paths);
+    let content_id = pathsToContentId(paths);
     let id;
 
     if (mode !== 'list') {
-      id = paths[paths.length  - 1];
+      id = pathsToId(paths);
     }
 
     // TODO: 多階層を考慮する必要あり
@@ -46,7 +52,7 @@
 
     return {
       props: {
-        path: params.paths,
+        path,
         paths,
         mode,
         content,
