@@ -116,7 +116,7 @@
       let i = indicator();
 
       try {
-        let res = await fetch(`/api/${content_id}/${item.id}`, {
+        let res = await fetch(`/api/${path}`, {
           method: 'put',
           body: JSON.stringify({
             item,
@@ -138,7 +138,7 @@
       let i = indicator();
 
       try {
-        let res = await fetch(`/api/${content_id}`, {
+        let res = await fetch(`/api/${path}`, {
           method: 'post',
           body: JSON.stringify({
             item,
@@ -147,7 +147,8 @@
         let json = await res.json();
         console.log('created', json);
         // 単体編集ページに遷移
-        goto(`/${content_id}/${json.item.id}`, {
+        let to = path.replace(/new$/, json.item.id);
+        goto(`/${to}`, {
           replaceState: true,
         });
       }
