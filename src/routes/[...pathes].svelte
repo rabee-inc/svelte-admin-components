@@ -31,11 +31,7 @@
     let content_id = getContentId(pathes);
     let id;
 
-    if (mode === 'list') {
-      // content_id = pathes[pathes.length  - 1];
-    }
-    else {
-      // content_id = pathes[pathes.length  - 2];
+    if (mode !== 'list') {
       id = pathes[pathes.length  - 1];
     }
 
