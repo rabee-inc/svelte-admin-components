@@ -1,6 +1,16 @@
 <script context="module">
   import admin from "$admin/index.js"
 
+  // pathes から content_id を取得する
+  let getContentId = (pathes) => {
+    // 偶数だけ残す
+    let content_pathes = pathes.filter((p, i) => {
+      return i % 2 === 0;
+    });
+
+    return content_pathes.join('/');
+  };
+
   export async function load({fetch, params}) {
     let pathes = params.pathes.split('/');
     let mode;
@@ -18,14 +28,14 @@
       }
     }
 
-    let content_id;
+    let content_id = getContentId(pathes);
     let id;
 
     if (mode === 'list') {
-      content_id = pathes[pathes.length  - 1];
+      // content_id = pathes[pathes.length  - 1];
     }
     else {
-      content_id = pathes[pathes.length  - 2];
+      // content_id = pathes[pathes.length  - 2];
       id = pathes[pathes.length  - 1];
     }
 
@@ -75,7 +85,7 @@
   };
 
   let fetchItems = async () => {
-    let res = await fetch(`/api/${content_id}`);
+    let res = await fetch(`/api/${path}`);
     ({items} = await res.json());
   };
 
@@ -87,7 +97,7 @@
   };
 
   let onSelect = (e) => {
-    let url = `/${content.path}/${e.detail.item.id}`;
+    let url = `/${path}/${e.detail.item.id}`;
     if (e.detail.originalEvent.metaKey) {
       // 新しいタブで開く
       window.open(url);
@@ -191,10 +201,10 @@
       div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
         div.f.fm
           h1.mr8 {content.label}
-          a.fs12.p4.mt6(href='/{content.path}/_schema')
+          a.fs12.p4.mt6(href='/{path}/_schema')
             i.material-icons.fs18 edit
         div
-          a.button.primary(href='/{content.path}/new') NEW
+          a.button.primary(href='/{path}/new') NEW
       div.p16
         ContentList(items='{items}', headings='{content.headings}', actions='{admin.actions}', on:select='{onSelect}')
     +if('mode === "edit"')

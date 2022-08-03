@@ -46,6 +46,16 @@ export function post() {
   };
 };
 
+export function postComment() {
+  return {
+    id: faker.datatype.uuid(),
+    content: faker.lorem.lines(),
+    created_user: user(),
+    created_at: faker.datatype.datetime().getTime(),
+    updated_at: faker.datatype.datetime().getTime(),
+  };
+};
+
 let dummy = {
   images: Array(32).fill().map(() => image()),
   users: Array(32).fill().map(() => user()),
@@ -56,6 +66,8 @@ let dummy = {
     users: user,
     posts: post,
   },
+
+  'posts/comments': Array(32).fill().map(() => postComment()),
 };
 
 export default dummy;

@@ -1,7 +1,6 @@
 {
   "users": {
     "label": "user",
-    "path": "users",
     "headings": [
       {
         "key": "icon_image.url",
@@ -161,7 +160,6 @@
   },
   "posts": {
     "label": "post",
-    "path": "posts",
     "headings": [
       {
         "key": "image.url",
@@ -300,9 +298,55 @@
       }
     ]
   },
+  "posts/comments": {
+    "label": "post comments",
+    "headings": [
+      {
+        "key": "id",
+        "label": "ID",
+        "type": "text"
+      },
+      {
+        "key": "created_user.screen_name",
+        "label": "user",
+        "type": "text"
+      },
+      {
+        "key": "content",
+        "label": "content",
+        "type": "text"
+      },
+      {
+        "key": "created_at",
+        "label": "作成日",
+        "type": "date"
+      }
+    ],
+    "sections": [
+      {
+        "label": "メイン",
+        "class": "col12",
+        "schemas": [
+          {
+            "key": "id",
+            "label": "ID",
+            "type": "text",
+            "opts": {
+              "readonly": true
+            }
+          },
+          {
+            "key": "content",
+            "label": "content",
+            "type": "textarea",
+            "opts": {}
+          }
+        ]
+      }
+    ]
+  },
   "images": {
     "label": "image",
-    "path": "images",
     "headings": [
       {
         "key": "url",
