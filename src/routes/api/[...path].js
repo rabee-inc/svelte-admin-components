@@ -1,4 +1,3 @@
-import crud from "$admin/curd.js";
 import dummy from "$admin/dummy";
 
 // path to content_id
