@@ -60,14 +60,15 @@ let dummy = {
   images: Array(32).fill().map(() => image()),
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
+  'posts/comments': Array(32).fill().map(() => postComment()),
 
   generator: {
     images: image,
     users: user,
     posts: post,
+    'posts/comments': postComment,
   },
 
-  'posts/comments': Array(32).fill().map(() => postComment()),
 };
 
 export default dummy;
