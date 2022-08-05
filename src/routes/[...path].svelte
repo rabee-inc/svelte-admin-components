@@ -15,7 +15,6 @@
     return paths[paths.length-1];
   };
 
-
   export async function load({fetch, params}) {
     let path = params.path;
     let paths = params.path.split('/');
@@ -80,15 +79,25 @@
   let form;
   let item = null;
   let items = [];
+  let nextCursor = '';
+  let query = '';
+  let loading = false;
 
   let setup = () => {
     item = null;
     items = [];
+    nextCursor = '';
+    query = '';
+    loading = false;
   };
 
   let fetchItems = async () => {
+    loading = true;
+
     let res = await fetch(`/api/${path}`);
     ({items} = await res.json());
+
+    loading = false;
   };
 
   let fetchItem = async () => {
@@ -210,6 +219,13 @@
           a.button.primary(href='/{path}/new') NEW
       div.p16
         ContentList(items='{items}', headings='{content.headings}', actions='{admin.actions}', on:select='{onSelect}')
+        +if('nextCursor && !loading')
+          div.f.fh
+            button.button(on:click='{fetchItems}') More
+        +if('loading')
+          div.f.fh
+            div loading...
+
     +if('mode === "edit"')
       div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
         h1.fs16 {content.label} / {item?.id || 'new'}
