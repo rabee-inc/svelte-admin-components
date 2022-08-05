@@ -69,6 +69,8 @@
   import { Meta } from "svelte-head";
   import { indicator } from "svelte-modal-manager";
 
+  import List from "./_List.svelte";
+
   export let path;
   export let paths;
   export let mode;
@@ -78,26 +80,9 @@
 
   let form;
   let item = null;
-  let items = [];
-  let nextCursor = '';
-  let query = '';
-  let loading = false;
 
   let setup = () => {
     item = null;
-    items = [];
-    nextCursor = '';
-    query = '';
-    loading = false;
-  };
-
-  let fetchItems = async () => {
-    loading = true;
-
-    let res = await fetch(`/api/${path}`);
-    ({items} = await res.json());
-
-    loading = false;
   };
 
   let fetchItem = async () => {
@@ -196,13 +181,11 @@
 
     setup();
 
-    if (mode === 'list') {
-      fetchItems();
-    }
-    else if (mode === 'edit') {
+    if (mode === 'edit') {
       fetchItem();
     }
   }
+  
 </script>
 
 <Meta />
@@ -210,21 +193,7 @@
 <template lang="pug">
   main.s-full.overflow-scroll
     +if('mode === "list"')
-      div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
-        div.f.fm
-          h1.mr8 {content.label}
-          a.fs12.p4.mt6(href='/{path}/_schema')
-            i.material-icons.fs18 edit
-        div
-          a.button.primary(href='/{path}/new') NEW
-      div.p16
-        ContentList(items='{items}', headings='{content.headings}', actions='{admin.actions}', on:select='{onSelect}')
-        +if('nextCursor && !loading')
-          div.f.fh
-            button.button(on:click='{fetchItems}') More
-        +if('loading')
-          div.f.fh
-            div loading...
+      List(content='{content}', path='{path}', actions='{admin.actions}')
 
     +if('mode === "edit"')
       div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
