@@ -63,13 +63,12 @@
 </script>
 
 <script>
-  import ContentForm from "$lib/components/ContentForm.svelte";
-  import ContentList from "$lib/components/ContentList.svelte";
   import { goto } from "$app/navigation";
   import { Meta } from "svelte-head";
   import { indicator } from "svelte-modal-manager";
 
   import List from "./_List.svelte";
+  import Edit from "./_Edit.svelte";
 
   export let path;
   export let paths;
@@ -77,20 +76,6 @@
   export let content;
   export let content_id;
   export let id;
-
-  let form;
-  let item = null;
-
-  let setup = () => {
-    item = null;
-  };
-
-  let fetchItem = async () => {
-    if (id === 'new') return ;
-
-    let res = await fetch(`/api/${path}`);
-    ({item} = await res.json());
-  };
 
   let onSelect = (e) => {
     let url = `/${path}/${e.detail.item.id}`;
@@ -173,19 +158,6 @@
       replaceState: true,
     });
   };
-
-  $: {
-    mode;
-    content_id;
-    id;
-
-    setup();
-
-    if (mode === 'edit') {
-      fetchItem();
-    }
-  }
-  
 </script>
 
 <Meta />
@@ -193,17 +165,9 @@
 <template lang="pug">
   main.s-full.overflow-scroll
     +if('mode === "list"')
-      List(content='{content}', path='{path}', actions='{admin.actions}')
-
+      List(content_id='{content_id}', content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
     +if('mode === "edit"')
-      div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
-        h1.fs16 {content.label} / {item?.id || 'new'}
-        div.f
-          +if('item?.id')
-            button.button.danger.mr8(type='button', on:click!='{onDelete}') delete
-          button.button.primary(on:click='{form.submit()}') {item?.id ? 'save' : 'create'}
-      div.p16
-        ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
+      Edit(content_id='{content_id}', content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
     +if('mode === "schema"')
       div TODO: schema 編集
 </template>
