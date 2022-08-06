@@ -27,15 +27,13 @@
   let onSubmit = async (e) => {
     let item = e.detail.value;
 
-    if (item.id) {
+    if (id !== 'new') {
       let i = indicator();
 
       try {
         let res = await actions.api.put({
           path,
-          data: {
-            item,
-          },
+          data: item,
         });
         console.log('saved', res);
       }
@@ -54,9 +52,7 @@
       try {
         let res = await actions.api.post({
           path: path.replace(/\/new$/, ''),
-          data: {
-            item,
-          },
+          data: item,
         });
 
         console.log('created', res);

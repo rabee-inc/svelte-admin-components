@@ -36,7 +36,9 @@ const admin = {
       async put({path, data}) {
         let res = await fetch(`/api/${path}`, {
           method: 'put',
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            item: data,
+          }),
         });
         let json = await res.json();
 
@@ -45,7 +47,9 @@ const admin = {
       async post({path, data}) {
         let res = await fetch(`/api/${path}`, {
           method: 'post',
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            item: data,
+          }),
         });
         let json = await res.json();
 
