@@ -50,6 +50,13 @@ const admin = {
         let json = await res.json();
 
         return json;
+      },
+      async del({path}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'delete',
+        });
+        let json = await res.json();
+        return json;
       }
     },
 

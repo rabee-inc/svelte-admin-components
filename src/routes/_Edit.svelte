@@ -82,11 +82,10 @@
       return ;
     }
 
-    await fetch(`/api/${path}`, {
-      method: 'delete',
+    let res = await actions.api.del({
+      path,
     });
-
-    console.log('deleted');
+    console.log('deleted', res);
 
     // 前のページに戻る
     history.back();
