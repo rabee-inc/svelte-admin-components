@@ -44,7 +44,7 @@
     if (!content) {
       return {
         status: 404,
-        error: new Error('page not found!'),
+        error: new Error('content not found!'),
       };
     }
 
@@ -74,6 +74,8 @@
   export let content;
   export let content_id;
   export let id;
+
+  content = admin.contents[content_id];
 </script>
 
 <Meta />
