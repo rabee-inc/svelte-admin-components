@@ -19,8 +19,9 @@
   let fetchItem = async () => {
     if (id === 'new') return ;
 
-    let res = await fetch(`/api/${path}`);
-    ({item} = await res.json());
+    ({item} = await actions.api.get({
+      path,
+    }));
   };
 
   let onSubmit = async (e) => {

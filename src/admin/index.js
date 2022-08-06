@@ -20,6 +20,21 @@ const admin = {
     },
   ],
   actions: {
+    api: {
+      async index({path, cursor, query}) {
+        let res = await fetch(`/api/${path}`);
+        let json = await res.json();
+
+        return json;
+      },
+      async get({path}) {
+        let res = await fetch(`/api/${path}`);
+        let json = await res.json();
+
+        return json;
+      },
+    },
+
     image: {
       // select() {
       //   // 画像選択モーダル開いたり

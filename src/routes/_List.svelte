@@ -21,8 +21,11 @@
   let fetchItems = async () => {
     loading = true;
 
-    let res = await fetch(`/api/${path}`);
-    ({items} = await res.json());
+    ({items, nextCursor} = await actions.api.index({
+      path,
+      cursor: nextCursor,
+      query,
+    }));
 
     loading = false;
   };
