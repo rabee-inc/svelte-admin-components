@@ -1,6 +1,6 @@
 <script>
   import { goto } from "$app/navigation";
-  import ContentForm from "$lib/components/ContentForm.svelte";
+  import { ContentForm } from "svelte-admin-components";
   import { indicator } from "svelte-modal-manager";
 
   export let content_id;

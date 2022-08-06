@@ -1,11 +1,14 @@
 <script>
   import { goto } from "$app/navigation";
-  import ContentList from "$lib/components/ContentList.svelte";
+  import { ContentList } from "svelte-admin-components";
 
   export let content;
   export let path;
   export let actions;
 
+  const LIMIT = 16;
+
+  let queryElement;
   let items = [];
   let nextCursor;
   let query;
@@ -21,11 +24,17 @@
   let fetchItems = async () => {
     loading = true;
 
-    ({items, nextCursor} = await actions.api.index({
+    let res = await actions.api.index({
       path,
       cursor: nextCursor,
       query,
-    }));
+      limit: LIMIT,
+    });
+
+    items.push(...res.items);
+    items = items;
+
+    nextCursor = res.next_cursor;
 
     loading = false;
   };
@@ -41,13 +50,18 @@
     }
   };
 
+  let onSearch = async () => {
+    setup();
+    query = queryElement.value;
+    fetchItems();
+  };
+
   $: {
     path;
 
     setup();
     fetchItems();
   }
-
 </script>
 
 <template lang="pug">
@@ -59,11 +73,18 @@
     div
       a.button.primary(href='/{path}/new') NEW
   div.p16
-    ContentList(items='{items}', headings='{content.headings}', actions='{actions}', on:select='{onSelect}')
-    +if('nextCursor && !loading')
-      div.f.fh
-        button.button(on:click='{fetchItems}') More
-    +if('loading')
-      div.f.fh
-        div loading...
+    form.f.fr(on:submit|preventDefault='{onSearch}')
+      div.f
+        input.input.mr4(bind:this='{queryElement}', type='search')
+        button.button 検索
+    div.mb16
+      ContentList(items='{items}', headings='{content.headings}', actions='{actions}', on:select='{onSelect}')
+    
+    div.p16
+      +if('nextCursor && !loading')
+        div.f.fh
+          button.button(on:click='{fetchItems}') More
+      +if('loading')
+        div.f.fh
+          div loading...
 </template>

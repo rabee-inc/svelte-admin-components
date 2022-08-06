@@ -40,7 +40,6 @@
       id = pathsToId(paths);
     }
 
-    // TODO: 多階層を考慮する必要あり
     let content = admin.contents[content_id];
     if (!content) {
       return {
@@ -65,7 +64,6 @@
 <script>
   import { goto } from "$app/navigation";
   import { Meta } from "svelte-head";
-  import { indicator } from "svelte-modal-manager";
 
   import List from "./_List.svelte";
   import Edit from "./_Edit.svelte";
