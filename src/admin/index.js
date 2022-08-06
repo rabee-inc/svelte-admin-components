@@ -33,6 +33,24 @@ const admin = {
 
         return json;
       },
+      async put({path, data}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'put',
+          body: JSON.stringify(data),
+        });
+        let json = await res.json();
+
+        return json;
+      },
+      async post({path, data}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'post',
+          body: JSON.stringify(data),
+        });
+        let json = await res.json();
+
+        return json;
+      }
     },
 
     image: {

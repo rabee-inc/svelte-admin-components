@@ -31,17 +31,16 @@
       let i = indicator();
 
       try {
-        let res = await fetch(`/api/${path}`, {
-          method: 'put',
-          body: JSON.stringify({
+        let res = await actions.api.put({
+          path,
+          data: {
             item,
-          }),
+          },
         });
-        let json = await res.json();
-        console.log('saved', json);
+        console.log('saved', res);
       }
       catch (e) {
-
+        alert(e);
       }
       finally {
         setTimeout(() => {
@@ -53,22 +52,22 @@
       let i = indicator();
 
       try {
-        let res = await fetch(`/api/${path}`, {
-          method: 'post',
-          body: JSON.stringify({
+        let res = await actions.api.post({
+          path: path.replace(/\/new$/, ''),
+          data: {
             item,
-          }),
+          },
         });
-        let json = await res.json();
-        console.log('created', json);
+
+        console.log('created', res);
         // 単体編集ページに遷移
-        let to = path.replace(/new$/, json.item.id);
+        let to = path.replace(/new$/, res.item.id);
         goto(`/${to}`, {
           replaceState: true,
         });
       }
       catch (e) {
-
+        alert(e);
       }
       finally {
         setTimeout(() => {
