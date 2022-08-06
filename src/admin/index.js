@@ -1,4 +1,5 @@
 
+import { goto } from '$app/navigation';
 import contents from './contents.json';
 
 const admin = {
@@ -101,6 +102,10 @@ const admin = {
 
       download({heading, item}) {
         alert('download: '+ item.title);
+      },
+
+      gotoComments({item}) {
+        goto(`${location.pathname}/comments`);
       },
     },
 

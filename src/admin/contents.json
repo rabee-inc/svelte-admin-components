@@ -235,6 +235,15 @@
             "opts": {
               "cols": ""
             }
+          },
+          {
+            "key": "",
+            "label": "コメント一覧へ",
+            "type": "button",
+            "class": "",
+            "opts": {
+              "action": "gotoComments"
+            }
           }
         ]
       },
