@@ -5,7 +5,8 @@
       {
         "key": "icon_image.url",
         "label": "Icon",
-        "type": "image"
+        "type": "image",
+        "class": "h64"
       },
       {
         "key": "id",
@@ -164,7 +165,8 @@
       {
         "key": "image.url",
         "label": "アイキャッチ",
-        "type": "image"
+        "type": "image",
+        "class": "h64"
       },
       {
         "key": "id",
@@ -360,7 +362,8 @@
       {
         "key": "url",
         "label": "アイキャッチ",
-        "type": "image"
+        "type": "image",
+        "class": "h64"
       },
       {
         "key": "id",

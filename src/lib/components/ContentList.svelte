@@ -33,7 +33,8 @@
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => select(e, item)}')
             +each('headings as heading')
               td.p12.fs13
-                svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
+                div(class='{heading.class}')
+                  svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
 </template>
 
 <style lang="less">
