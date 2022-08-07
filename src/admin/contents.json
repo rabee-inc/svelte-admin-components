@@ -110,7 +110,8 @@
             "type": "date",
             "opts": {
               "is_unixtime": true,
-              "date_type": ""
+              "date_type": "",
+              "readonly": true
             }
           },
           {

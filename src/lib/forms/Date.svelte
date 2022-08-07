@@ -48,5 +48,5 @@
   label.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.input.w-full(bind:this='{input}', value='{_value}', type='{getType()}', on:change)
+    input.input.w-full(bind:this='{input}', value='{_value}', type='{getType()}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
 </template>
