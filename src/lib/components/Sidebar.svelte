@@ -19,8 +19,9 @@
         
         div
           +each('section.items as item')
-            a.block.pl16.py3.fs16.mb5.mb0-last(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16' : ''}")
-              div {item.label}
+            div.pl8.rounded-8.hover-trigger.hover-bg-light
+              a.block.pl8.py3.fs16.mb0-last(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln8' : ''}")
+                div {item.label}
 </template>
 
 <style lang="less">
