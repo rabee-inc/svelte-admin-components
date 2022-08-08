@@ -19,7 +19,7 @@
         
         div
           +each('section.items as item')
-            a.block.py3.fs16.mb5.mb0-last(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl10 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln10' : ''}")
+            a.block.pl16.py3.fs16.mb5.mb0-last(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16' : ''}")
               div {item.label}
 </template>
 
