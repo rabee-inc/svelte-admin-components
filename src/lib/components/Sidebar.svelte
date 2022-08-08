@@ -19,7 +19,7 @@
         
         div
           +each('section.items as item')
-            a.block.p3.fs16.mb8(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl10 text-primary bg-white bold rounded-top-left-full rounded-bottom-left-full mrn16 mln10' : ''}")
+            a.block.py3.fs16(href='{item.link}', class!="{$page.url.pathname === item.link ? 'pl10 text-primary bg-white bold rounded-top-left-full rounded-bottom-left-full mrn16 mln10' : ''}")
               div {item.label}
 </template>
 
