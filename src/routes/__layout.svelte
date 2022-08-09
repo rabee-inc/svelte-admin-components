@@ -22,7 +22,9 @@
   });
 
   import { Sidebar } from "svelte-admin-components";
-  import admin from "$admin/index.js"
+  import admin from "$admin/index.js";
+
+  let name = 'Admin demo';
 </script>
 
 <style lang="less" global>
@@ -33,7 +35,7 @@
 <template lang="pug">
   div.f.fclm.s-full
     div.s-full.f
-      Sidebar.w300.bg-primary.text-white(sections='{admin.sections}')
+      Sidebar.w300.bg-primary.text-white(name='{name}', sections='{admin.sections}')
       div.s-full.f.flex-column.overflow-hidden
         slot
 </template>

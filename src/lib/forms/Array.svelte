@@ -4,7 +4,9 @@
   import { forms } from "$lib/index.js";
   import Sortable from 'sortablejs';
   import { onMount } from "svelte";
-  import handle from "$lib/assets/handle.svg";
+
+  // NOTE: ssr:false にするとうまくいかない
+  // import handle from "$lib/assets/handle.svg";
 
   export let schema;
   export let value = [];
@@ -80,7 +82,8 @@
         +key('key')
           +each('value as v,i')
             div.relative.f.fm.p16.border-bottom.hover-trigger(data-id='{i}')
-              img.handle.flex-fixed.p8.mr8(src='{handle}', alt='handle')
+              div.handle.flex-fixed.p8.cursor-pointer.mr8(alt='handle').
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
               div.w-full
                 svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', actions='{actions}', bind:value='{v}', on:change)
               button.absolute.t8.r8.f.fh.s24.circle.border.bg-white.hover-show(type='button', on:click!='{() => {del(i)}}') ✕

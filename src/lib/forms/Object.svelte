@@ -19,6 +19,8 @@
   export let getValue = async () => {
     let v = {};
     let promises = Object.entries(instances).filter(([key, instance]) => instance).map(async ([key, instance]) => {
+      if (!key) return ;
+      
       let temp = instance.getValue ? instance.getValue() : instance.value;
 
       if (temp instanceof Promise) {
