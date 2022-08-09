@@ -1,6 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { getByPath } from '$lib/utils';
 
   import { createEventDispatcher, onMount } from 'svelte';
   export const dispatch = createEventDispatcher();
@@ -27,14 +28,13 @@
       content,
     });
   };
-
 </script>
 
 <template lang='pug'>
   div.modal.rounded-8.overflow-scroll
     div.p16
       +each('items as item')
-        button.block.w-full.p8.hover-trigger.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {item[schema.opts.label_key]}
+        button.block.w-full.p8.hover-trigger.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {getByPath(item, schema.opts.label_key)}
 </template>
 
 <style lang="less">
