@@ -280,6 +280,16 @@
             }
           },
           {
+            "key": "author",
+            "label": "作者",
+            "type": "content",
+            "opts": {
+              "content_name": "users",
+              "value_key": "id",
+              "label_key": "screen_name"
+            }
+          },
+          {
             "key": "meta",
             "label": "is_meta",
             "type": "switch"
