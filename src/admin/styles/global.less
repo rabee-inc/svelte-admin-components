@@ -18,3 +18,17 @@ body {
 
 // 色定義
 .define-color-by-object(primary, #0076D0);
+
+// hover
+[class^='hover-'], [class*=' hover-'] {
+  .transition-128;
+}
+
+.define-hover(bg-light, {
+  background-color: rgba(255, 255, 255, 0.1);
+});
+
+// other
+.transition-128 {
+  transition: 128ms;
+}
