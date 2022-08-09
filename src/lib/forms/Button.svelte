@@ -10,10 +10,20 @@
   export let formValue;
   
   let onAction = () => {
-    actions.button[schema.opts.action]?.({
-      schema,
-      item,
-    });
+    let func;
+    if (typeof schema.opts.action === 'function') {
+      func = schema.opts.action;
+    }
+    else if (actions.button[schema.opts.action]) {
+      func = actions.button[schema.opts.action];
+    }
+
+    if (func) {
+      func({
+        schema,
+        item,
+      });
+    }
   };
 </script>
 

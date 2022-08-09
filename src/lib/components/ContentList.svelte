@@ -27,13 +27,14 @@
       thead
         tr.border-bottom.text-left
           +each('headings as heading')
-            th.min-width-150.px12.py16.text-gray.bold.word-break-keep {heading.label}
+            th.px12.py16.text-gray.bold.word-break-keep(style!='min-width: {heading.width || "150px"}; width: {heading.width || "100%"}') {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => select(e, item)}')
             +each('headings as heading')
               td.p12.fs13
-                svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
+                div(class='{heading.class}')
+                  svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
 </template>
 
 <style lang="less">

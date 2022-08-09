@@ -15,11 +15,11 @@
   let items = [];
 
   onMount(async () => {
-    let contents = await actions.content.index({
-      schema,
+    let res = await actions.api.index({
+      path: `${schema.opts.content_name}`
     });
 
-    items = [...items, ...contents.items];
+    items = [...items, ...res.items];
   });
 
   let selectContent = (content) => {

@@ -11,7 +11,7 @@
 </script>
 
 <template lang='pug'>
-  div.rect-ogp.bg-whitesmoke.border
+  div.s-full.bg-whitesmoke.border
     +if('value')
       img.s-full.object-fit-contain(src='{value}', alt='')
 </template>

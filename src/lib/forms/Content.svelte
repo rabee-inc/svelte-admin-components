@@ -1,21 +1,26 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { getByPath } from "$lib/utils";
   import { onMount } from "svelte";
   import { openModal } from 'svelte-modal-manager';
 
   export let schema;
   export let actions;
   export let value = '';
+  export let item;
 
   let items = [];
   let content = null;
 
   onMount(async () => {
-    content = await actions.content.get({
-      schema,
-      value,
+    if (!value) return ;
+
+    let res = await actions.api.get({
+      path: `${schema.opts.content_name}/${value}`
     });
+
+    content = res.item;
   });
 
   let openContentModal = () => {
@@ -34,7 +39,6 @@
   export let getValue = () => {
     return content ? content[schema.opts.value_key] : null;
   };
-
 </script>
 
 <template lang='pug'>
@@ -45,7 +49,7 @@
           span *
     div.f.fm
       +if('content')
-        div.mr16 {content[schema.opts.label_key]}
+        div.mr16 {getByPath(content, schema.opts.label_key)}
       div
         button.button(type='button', on:click='{openContentModal}') 選択する
 </template>

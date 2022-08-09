@@ -1,4 +1,5 @@
 
+import { goto } from '$app/navigation';
 import contents from './contents.json';
 
 const admin = {
@@ -20,6 +21,50 @@ const admin = {
     },
   ],
   actions: {
+    api: {
+      async index({path, cursor, query}) {
+        let res = await fetch(`/api/${path}`);
+        let json = await res.json();
+
+        return json;
+      },
+      async get({path}) {
+        let res = await fetch(`/api/${path}`);
+        let json = await res.json();
+
+        return json;
+      },
+      async put({path, data}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'put',
+          body: JSON.stringify({
+            item: data,
+          }),
+        });
+        let json = await res.json();
+
+        return json;
+      },
+      async post({path, data}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'post',
+          body: JSON.stringify({
+            item: data,
+          }),
+        });
+        let json = await res.json();
+
+        return json;
+      },
+      async del({path}) {
+        let res = await fetch(`/api/${path}`, {
+          method: 'delete',
+        });
+        let json = await res.json();
+        return json;
+      }
+    },
+
     image: {
       // select() {
       //   // 画像選択モーダル開いたり
@@ -27,25 +72,6 @@ const admin = {
       // },
       upload({value, file}) {
         return value;
-      },
-    },
-
-    content: {
-      async index({schema}) {
-        let res = await fetch(`/api/${schema.opts.content}`);
-        let data = await res.json();
-  
-        return data;
-      },
-
-      async get({schema, value}) {
-        // value = '9bd9d8d6-9a67-44e0-b467-cc8796ed151a';
-        if (!value) return null;
-
-        let res = await fetch(`/api/${schema.opts.content}/${value}`);
-        let data = await res.json();
-
-        return data.item;
       },
     },
 
@@ -57,6 +83,10 @@ const admin = {
 
       download({heading, item}) {
         alert('download: '+ item.title);
+      },
+
+      gotoComments({item}) {
+        goto(`${location.pathname}/comments`);
       },
     },
 
@@ -72,7 +102,7 @@ const admin = {
 
 // DEBUG: メタの値に応じて分岐テスト
 admin.contents.posts.sections.find(s => s.label === 'メタ').shouldShow = ({section, value}) => {
-  return value.meta;
+  return value?.meta;
 };
 
 // DEBUG: 18歳以上だったら性別を選択できるよう対応

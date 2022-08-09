@@ -1,12 +1,13 @@
 {
   "users": {
     "label": "user",
-    "path": "users",
     "headings": [
       {
         "key": "icon_image.url",
         "label": "Icon",
-        "type": "image"
+        "type": "image",
+        "width": "100px",
+        "class": "h64"
       },
       {
         "key": "id",
@@ -110,7 +111,9 @@
             "type": "date",
             "opts": {
               "is_unixtime": true,
-              "date_type": ""
+              "date_type": "",
+              "readonly": true,
+              "required": true
             }
           },
           {
@@ -161,12 +164,12 @@
   },
   "posts": {
     "label": "post",
-    "path": "posts",
     "headings": [
       {
         "key": "image.url",
         "label": "アイキャッチ",
-        "type": "image"
+        "type": "image",
+        "width": "80px"
       },
       {
         "key": "id",
@@ -237,6 +240,15 @@
             "opts": {
               "cols": ""
             }
+          },
+          {
+            "key": "",
+            "label": "コメント一覧へ",
+            "type": "button",
+            "class": "",
+            "opts": {
+              "action": "gotoComments"
+            }
           }
         ]
       },
@@ -270,6 +282,16 @@
             }
           },
           {
+            "key": "author",
+            "label": "作者",
+            "type": "content",
+            "opts": {
+              "content_name": "users",
+              "value_key": "id",
+              "label_key": "screen_name"
+            }
+          },
+          {
             "key": "meta",
             "label": "is_meta",
             "type": "switch"
@@ -300,14 +322,62 @@
       }
     ]
   },
+  "posts/comments": {
+    "label": "post comments",
+    "headings": [
+      {
+        "key": "id",
+        "label": "ID",
+        "type": "text"
+      },
+      {
+        "key": "created_user.screen_name",
+        "label": "user",
+        "type": "text"
+      },
+      {
+        "key": "content",
+        "label": "content",
+        "type": "text"
+      },
+      {
+        "key": "created_at",
+        "label": "作成日",
+        "type": "date"
+      }
+    ],
+    "sections": [
+      {
+        "label": "メイン",
+        "class": "col12",
+        "schemas": [
+          {
+            "key": "id",
+            "label": "ID",
+            "type": "text",
+            "opts": {
+              "readonly": true
+            }
+          },
+          {
+            "key": "content",
+            "label": "content",
+            "type": "textarea",
+            "opts": {}
+          }
+        ]
+      }
+    ]
+  },
   "images": {
     "label": "image",
-    "path": "images",
     "headings": [
       {
         "key": "url",
         "label": "アイキャッチ",
-        "type": "image"
+        "type": "image",
+        "width": "100px",
+        "class": "h64"
       },
       {
         "key": "id",
