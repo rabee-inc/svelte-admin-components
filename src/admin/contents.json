@@ -6,6 +6,7 @@
         "key": "icon_image.url",
         "label": "Icon",
         "type": "image",
+        "width": "100px",
         "class": "h64"
       },
       {
@@ -166,7 +167,7 @@
         "key": "image.url",
         "label": "アイキャッチ",
         "type": "image",
-        "class": "h64"
+        "width": "80px"
       },
       {
         "key": "id",
@@ -363,6 +364,7 @@
         "key": "url",
         "label": "アイキャッチ",
         "type": "image",
+        "width": "100px",
         "class": "h64"
       },
       {
