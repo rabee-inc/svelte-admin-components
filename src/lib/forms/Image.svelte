@@ -14,15 +14,21 @@
   export let item;
   // svelte-ignore unused-export-let
   export let getValue = async () => {
-    let v = await actions.image.upload({
-      value,
-      file: _file,
-    });
-    return v;
+    if (_changed) {
+      let v = await actions.image.upload({
+        value,
+        file: _file,
+      });
+      value = v;
+      _changed = false;
+    }
+
+    return value;
   };
 
   let input;
   let _file;
+  let _changed = false;
   let dispatch = createEventDispatcher();
 
   // 画像を click したとき
@@ -52,6 +58,7 @@
     value = URL.createObjectURL(file);
     _file = file;
 
+    _changed = true;
     dispatch('change');
   };
 
@@ -67,8 +74,6 @@
       setImage(file);
     };
   });
-
-
 </script>
 
 <template lang='pug'>
@@ -81,7 +86,6 @@
         +else
           div.w200.square.bg-whitesmoke
       div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +
-    //- input.w-full.border.px8.py4(type='text', bind:value='{value}', required!='{schema.opts && schema.opts.required}', readonly!='{schema.opts?.readonly}')
 </template>
 
 
