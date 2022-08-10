@@ -37,7 +37,7 @@
 
   // svelte-ignore unused-export-let
   export let getValue = () => {
-    return content ? content[schema.opts.value_key] : null;
+    return content ? getByPath(content, schema.opts.value_key) : null;
   };
 </script>
 
