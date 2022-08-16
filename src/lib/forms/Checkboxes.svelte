@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
 
   export let schema;
-  export let value = '';
+  export let value = [];
   // svelte-ignore unused-export-let
   export let formValue;
   // svelte-ignore unused-export-let
