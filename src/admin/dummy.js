@@ -68,7 +68,12 @@ let dummy = {
     posts: post,
     'posts/comments': postComment,
   },
-
+  
+  settings: [
+    {
+      id: 'config',
+    },
+  ]
 };
 
 export default dummy;

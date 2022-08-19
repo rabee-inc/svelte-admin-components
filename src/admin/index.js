@@ -17,6 +17,7 @@ const admin = {
       label: 'admin',
       items: [
         { label: 'operator', link: '/operators' },
+        { label: 'config', link: '/settings/config' },
       ]
     },
   ],
