@@ -13,21 +13,12 @@
 
   export let schema;
   export let actions;
-  export let path;
-
-  let items = [];
 
   let content = actions.pathToContent(schema.opts.content_path);
 
-  let selectContent = (content) => {
+  let onSelect = (e) => {
     dispatch('select', {
-      content,
-    });
-  };
-
-  let onSelect = () => {
-    dispatch('select', {
-      content,
+      item: e.detail.item,
     });
   };
 
