@@ -28,22 +28,27 @@ export default {
   ],
   sections: [
     {
-      label: "基本",
-      class: "col8",
+      label: "メイン",
+      class: "col12",
       schemas: [
-        // schemas.image,
-        // // TODO: テキストを表示させる
-        // {
-        //   label: 'クリック または ドラッグ&ドロップで追加できます',
-        // },
-        // schemas.slug,
-        // {
-        //   key: "data.alt",
-        //   label: "alt text",
-        //   type: "text",
-        //   opts: {},
-        // },      
+        {
+          key: "id",
+          label: "id",
+          type: "text",
+          opts: {}
+        },
+        {
+          key: "name",
+          label: "name",
+          type: "text",
+          opts: {}
+        },
+        {
+          key: "url",
+          label: "image",
+          type: "image"
+        }
       ]
-    },
+    }
   ]
 };
