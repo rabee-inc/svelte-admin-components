@@ -22,6 +22,23 @@ const admin = {
     },
   ],
   actions: {
+    // path から content を取得する
+    pathToContent(path) {
+      // path 自体にマッチした場合はそれを返す
+      if (admin.contents[path]) return admin.contents[path];
+
+      let paths = params.path.split('/');
+
+      // 偶数だけ残す
+      let content_paths = paths.filter((p, i) => {
+        return i % 2 === 0;
+      });
+
+      let content_id = content_paths.join('/');
+
+      return admin.contents[content_id];
+    },
+
     api: {
       async index({path, cursor, query}) {
         let res = await fetch(`/api/${path}`);

@@ -18,7 +18,7 @@
     if (!value) return ;
 
     let res = await actions.api.get({
-      path: `${schema.opts.content_name}/${value}`
+      path: `${schema.opts.content_path}/${value}`
     });
 
     content = res.item;

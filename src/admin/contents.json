@@ -286,7 +286,7 @@
             "label": "作者",
             "type": "content",
             "opts": {
-              "content_name": "users",
+              "content_path": "users",
               "value_key": "id",
               "label_key": "screen_name"
             }
