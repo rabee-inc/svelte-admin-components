@@ -47,16 +47,6 @@
   };
 
   let onSelect = (e, item) => {
-    // 遷移する
-    let url = `/${path}/${item.id}`;
-    if (e.metaKey) {
-      // 新しいタブで開く
-      window.open(url);
-    }
-    else {
-      goto(url);
-    }
-
     dispatch('select', {
       item,
       originalEvent: e,
