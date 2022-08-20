@@ -16,6 +16,16 @@ export let headings = {
     width: '100px',
     class: 'h64',
   },
+  title: {
+    key: "title",
+    label: "タイトル",
+    type: "text"
+  },
+  created_at: {
+    key: "created_at",
+    label: "作成日",
+    type: "date"
+  },
 };
 
 export let schemas = {
@@ -31,6 +41,12 @@ export let schemas = {
     key: "image.url",
     label: "image",
     type: "image",
+  },
+  title: {
+    key: "title",
+    label: "title",
+    type: "text",
+    class: "",
   },
 };
 

@@ -5,16 +5,8 @@ export default {
   headings: [
     headings.image,
     headings.id,
-    {
-      key: "title",
-      label: "タイトル",
-      type: "text"
-    },
-    {
-      key: "created_at",
-      label: "作成日",
-      type: "date"
-    },
+    headings.title,
+    headings.created_at,
     {
       key: "tags",
       label: "タグ",
@@ -46,13 +38,7 @@ export default {
       description: "メインとなる入力フォームです!",
       schemas: [
         schemas.id,
-        {
-          key: "title",
-          label: "title",
-          type: "text",
-          class: "",
-          opts: {}
-        },
+        schemas.title,
         {
           key: "description",
           label: "description",
