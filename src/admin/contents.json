@@ -441,9 +441,10 @@
             "opts": {}
           },
           {
-            "key": "url",
+            "key": "image.url",
             "label": "image",
-            "type": "image"
+            "type": "image",
+            "class": ""
           }
         ]
       }
