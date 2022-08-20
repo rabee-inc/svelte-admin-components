@@ -9,11 +9,7 @@ export default {
       type: "image",
       width: "80px"
     },
-    {
-      key: "id",
-      label: "ID",
-      type: "text"
-    },
+    headings.id,
     {
       key: "title",
       label: "タイトル",
@@ -54,15 +50,7 @@ export default {
       class: "col8",
       description: "メインとなる入力フォームです!",
       schemas: [
-        {
-          key: "id",
-          label: "ID",
-          type: "text",
-          class: "mb64",
-          opts: {
-            readonly: true
-          }
-        },
+        schemas.id,
         {
           key: "title",
           label: "title",

@@ -7,12 +7,7 @@ export default {
       label: "メイン",
       class: "col12",
       schemas: [
-        {
-          key: "id",
-          label: "id",
-          type: "text",
-          opts: {}
-        },
+        schemas.id,
         {
           key: "name",
           label: "name",

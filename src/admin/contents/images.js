@@ -10,11 +10,7 @@ export default {
       width: "100px",
       class: "h64"
     },
-    {
-      key: "id",
-      label: "ID",
-      type: "text"
-    },
+    headings.id,
     {
       key: "name",
       label: "name",
@@ -31,12 +27,7 @@ export default {
       label: "メイン",
       class: "col12",
       schemas: [
-        {
-          key: "id",
-          label: "id",
-          type: "text",
-          opts: {}
-        },
+        schemas.id,
         {
           key: "name",
           label: "name",

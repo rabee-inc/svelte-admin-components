@@ -24,7 +24,7 @@ export let schemas = {
     label: "ID",
     type: "text",
     opts: {
-      "readonly": true
+      readonly: true
     }
   },
 };
