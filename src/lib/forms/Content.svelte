@@ -5,6 +5,7 @@
   import { onMount } from "svelte";
   import { openModal } from 'svelte-modal-manager';
 
+  export let path;
   export let schema;
   export let actions;
   export let value = '';
@@ -25,6 +26,7 @@
 
   let openContentModal = () => {
     let modal = openModal('admin-content', {
+      path,
       schema,
       actions,
     });

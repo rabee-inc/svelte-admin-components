@@ -102,5 +102,5 @@
         button.button.danger.mr8(type='button', on:click!='{onDelete}') delete
       button.button.primary(on:click='{form.submit}') {item?.id ? 'save' : 'create'}
   div.p16
-    ContentForm(bind:this='{form}', value='{item}', sections='{content.sections}', actions='{actions}', on:submit='{onSubmit}')
+    ContentForm(bind:this='{form}', path='{path}', value='{item}', sections='{content.sections}', actions='{actions}', on:submit='{onSubmit}')
 </template>

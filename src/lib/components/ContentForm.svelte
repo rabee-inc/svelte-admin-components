@@ -9,6 +9,7 @@
 
   let className = null;
   export {className as class};
+  export let path;
   export let value;
   export let sections;
   export let actions;
@@ -116,5 +117,5 @@
             +if('shouldShowSection(section)')
               div.align-self-top.px8(class!='{section.class || "mb16"}')
                 svelte:component(this='{sectionComponent}', section='{section}')
-                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
+                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', path='{path}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
 </template>
