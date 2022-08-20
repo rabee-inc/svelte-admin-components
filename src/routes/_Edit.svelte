@@ -3,7 +3,6 @@
   import { ContentForm } from "svelte-admin-components";
   import { indicator } from "svelte-modal-manager";
 
-  export let content_id;
   export let content;
   export let path;
   export let actions;

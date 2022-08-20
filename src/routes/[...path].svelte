@@ -83,9 +83,9 @@
 <template lang="pug">
   main.s-full.overflow-scroll
     +if('mode === "list"')
-      List(content_id='{content_id}', content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
+      List(content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
     +if('mode === "edit"')
-      Edit(content_id='{content_id}', content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
+      Edit(content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
     +if('mode === "schema"')
       div TODO: schema 編集
 </template>
