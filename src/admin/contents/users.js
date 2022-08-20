@@ -61,6 +61,9 @@ export default {
           key: "gender",
           label: "性別",
           type: "select",
+          shouldShow: ({schema, value}) => {
+            return value.age >= 18;
+          },
           opts: {
             choices: [
               {
