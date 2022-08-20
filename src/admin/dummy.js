@@ -72,6 +72,8 @@ let dummy = {
   settings: [
     {
       id: 'config',
+      name: 'svelte-admin-components demo',
+      image: image(),
     },
   ]
 };
