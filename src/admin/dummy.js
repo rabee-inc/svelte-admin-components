@@ -9,6 +9,7 @@ export function image() {
     // url: faker.image.avatar(), // こっちだと 429 error 出る
     url: `https://picsum.photos/id/${faker.datatype.number()%50}/512/512`,
     name: faker.lorem.word(),
+    created_at: faker.datatype.datetime().getTime(),
   }
 };
 
