@@ -3,12 +3,7 @@ import { headings, schemas, sections } from "./template";
 export default {
   label: "post",
   headings: [
-    {
-      key: "image.url",
-      label: "アイキャッチ",
-      type: "image",
-      width: "80px"
-    },
+    headings.image,
     headings.id,
     {
       key: "title",
@@ -91,12 +86,7 @@ export default {
             action: "preview"
           }
         },
-        {
-          key: "image.url",
-          label: "image",
-          type: "image",
-          class: ""
-        },
+        schemas.image,
         {
           key: "tags",
           label: "tags",

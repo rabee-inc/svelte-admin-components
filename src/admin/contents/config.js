@@ -14,12 +14,7 @@ export default {
           type: "text",
           opts: {}
         },
-        {
-          key: "image.url",
-          label: "image",
-          type: "image",
-          class: ""
-        }
+        schemas.image,
       ]
     }
   ]

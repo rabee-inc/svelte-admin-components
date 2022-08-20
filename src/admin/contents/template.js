@@ -13,7 +13,7 @@ export let headings = {
     key: "image.url",
     label: "画像",
     type: "image",
-    width: '150px',
+    width: '100px',
     class: 'h64',
   },
 };
@@ -26,6 +26,11 @@ export let schemas = {
     opts: {
       readonly: true
     }
+  },
+  image: {
+    key: "image.url",
+    label: "image",
+    type: "image",
   },
 };
 

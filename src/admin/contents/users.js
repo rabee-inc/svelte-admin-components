@@ -3,13 +3,9 @@ import { headings, schemas, sections } from "./template";
 export default {
   label: "user",
   headings: [
-    {
-      key: "icon_image.url",
-      label: "Icon",
-      type: "image",
-      width: "100px",
-      class: "h64"
-    },
+    Object.assign({}, headings.image, {
+      key: 'icon_image.url',
+    }),
     headings.id,
     {
       key: "screen_name",
