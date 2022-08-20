@@ -1,20 +1,6 @@
 <script context="module">
   import admin from "$admin/index.js"
 
-  // paths から content_id を取得する
-  let pathsToContentId = (paths) => {
-    // 偶数だけ残す
-    let content_paths = paths.filter((p, i) => {
-      return i % 2 === 0;
-    });
-
-    return content_paths.join('/');
-  };
-
-  let pathsToId = (paths) => {
-    return paths[paths.length-1];
-  };
-
   export async function load({fetch, params}) {
     let path = params.path;
     let paths = params.path.split('/');
@@ -33,14 +19,13 @@
       }
     }
 
-    let content_id = pathsToContentId(paths);
     let id;
 
     if (mode !== 'list') {
-      id = pathsToId(paths);
+      id = admin.actions.pathToId(path);
     }
 
-    let content = admin.contents[content_id + '/' + id] || admin.contents[content_id];
+    let content = admin.actions.pathToContent(path);
     if (!content) {
       return {
         status: 404,
@@ -54,7 +39,6 @@
         paths,
         mode,
         content,
-        content_id,
         id,
       }
     };
@@ -72,10 +56,9 @@
   export let paths;
   export let mode;
   export let content;
-  export let content_id;
   export let id;
 
-  content = admin.contents[content_id + '/' + id] || admin.contents[content_id];
+  content = admin.actions.pathToContent(path);
 </script>
 
 <Meta />
