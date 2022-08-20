@@ -61,7 +61,7 @@ export default {
     },
     {
       label: "サブ",
-      class: "col4",
+      class: "col4 mb16",
       schemas: [
         {
           key: "",
@@ -103,6 +103,9 @@ export default {
     {
       label: "メタ",
       class: "col12",
+      shouldShow: ({value}) => {
+        return value?.meta;
+      },
       schemas: [
         {
           key: "meta_title",
