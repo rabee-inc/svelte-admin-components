@@ -57,11 +57,35 @@ export function postComment() {
   };
 };
 
+
+export function operator() {
+  const GENDERS = ['male', 'female', 'other'];
+  let name = faker.name.firstName();
+  
+  return {
+    id: faker.datatype.uuid(),
+    // id: '1',
+    screen_name: name.toLowerCase(),
+    display_name: name,
+    bio: faker.lorem.lines(),
+    icon_image: image(),
+    followers_count: faker.datatype.number() % 1000,
+    following_count: faker.datatype.number() % 1000,
+    created_at: faker.datatype.datetime().getTime(),
+    age: faker.datatype.number({min: 18, max: 64}),
+    gender: GENDERS[faker.datatype.number() % 3],
+    roles: ['member'],
+  };
+};
+
+
 let dummy = {
   images: Array(32).fill().map(() => image()),
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
   'posts/comments': Array(32).fill().map(() => postComment()),
+
+  operators: Array(32).fill().map(() => operator()),
 
   generator: {
     images: image,
