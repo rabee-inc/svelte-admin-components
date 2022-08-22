@@ -6,40 +6,8 @@
   export let path;
   export let actions;
 
-  const LIMIT = 16;
-
-  let queryElement;
-  let items = [];
-  let nextCursor;
-  let query;
-  let loading;
-
-  let setup = () => {
-    items = [];
-    nextCursor = '';
-    query = '';
-    loading = false;
-  };
-
-  let fetchItems = async () => {
-    loading = true;
-
-    let res = await actions.api.index({
-      path,
-      cursor: nextCursor,
-      query,
-      limit: LIMIT,
-    });
-
-    items.push(...res.items);
-    items = items;
-
-    nextCursor = res.next_cursor;
-
-    loading = false;
-  };
-
-  let onSelect = (e) => {
+  let onSelect = (e, item) => {
+    // 遷移する
     let url = `/${path}/${e.detail.item.id}`;
     if (e.detail.originalEvent.metaKey) {
       // 新しいタブで開く
@@ -49,19 +17,6 @@
       goto(url);
     }
   };
-
-  let onSearch = async () => {
-    setup();
-    query = queryElement.value;
-    fetchItems();
-  };
-
-  $: {
-    path;
-
-    setup();
-    fetchItems();
-  }
 </script>
 
 <template lang="pug">
@@ -73,18 +28,6 @@
     div
       a.button.primary(href='/{path}/new') NEW
   div.p16
-    form.f.fr(on:submit|preventDefault='{onSearch}')
-      div.f
-        input.input.mr4(bind:this='{queryElement}', type='search')
-        button.button 検索
     div.mb16
-      ContentList(items='{items}', headings='{content.headings}', actions='{actions}', on:select='{onSelect}')
-    
-    div.p16
-      +if('nextCursor && !loading')
-        div.f.fh
-          button.button(on:click='{fetchItems}') More
-      +if('loading')
-        div.f.fh
-          div loading...
+      ContentList(path='{path}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
 </template>
