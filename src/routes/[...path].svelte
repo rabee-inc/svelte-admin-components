@@ -40,7 +40,7 @@
       id = pathsToId(paths);
     }
 
-    let content = admin.contents[content_id];
+    let content = admin.contents[content_id + '/' + id] || admin.contents[content_id];
     if (!content) {
       return {
         status: 404,
@@ -75,7 +75,7 @@
   export let content_id;
   export let id;
 
-  content = admin.contents[content_id];
+  content = admin.contents[content_id + '/' + id] || admin.contents[content_id];
 </script>
 
 <Meta />
