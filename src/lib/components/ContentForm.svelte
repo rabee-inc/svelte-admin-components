@@ -103,6 +103,13 @@
     dispatch('change');
   };
 
+  $: {
+    // value が代入されたら必ず一回は formValue に反映する
+    if (value && !formValue) {
+      formValue = value;
+    }
+  }
+
 </script>
 
 <template lang='pug'>
