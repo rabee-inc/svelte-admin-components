@@ -5,6 +5,7 @@
   import { forms } from "$lib/index.js";
   import { getByPath, setByPath } from "$lib/utils";
 
+  export let path;
   export let schema;
   export let actions = null;
   export let value;
@@ -108,5 +109,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.align-self-top.w-full.px8(class!='{schema.class || "mb16"}')
-            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', schema='{schema}', actions='{actions}', {formValue}, item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
+            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', path='{path}', schema='{schema}', actions='{actions}', {formValue}, item='{value}', value='{getByPath(value, schema.key)}', on:change='{syncValue}')
 </template>

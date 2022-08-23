@@ -1,6 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import ContentList from '$lib/components/ContentList.svelte';
   import { getByPath } from '$lib/utils';
 
   import { createEventDispatcher, onMount } from 'svelte';
@@ -13,28 +14,20 @@
   export let schema;
   export let actions;
 
-  let items = [];
+  let content = actions.pathToContent(schema.opts.content_path);
 
-  onMount(async () => {
-    let res = await actions.api.index({
-      path: `${schema.opts.content_name}`
-    });
-
-    items = [...items, ...res.items];
-  });
-
-  let selectContent = (content) => {
+  let onSelect = (e) => {
     dispatch('select', {
-      content,
+      item: e.detail.item,
     });
   };
+
 </script>
 
 <template lang='pug'>
   div.modal.rounded-8.overflow-scroll
-    div.p16
-      +each('items as item')
-        button.block.w-full.p8.hover-trigger.text-left.mb4(type='button', on:click!='{ () => selectContent(item) }') {getByPath(item, schema.opts.label_key)}
+    div.p16.w-full
+      ContentList(path='{schema.opts.content_path}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
 </template>
 
 <style lang="less">
@@ -42,8 +35,8 @@
     min-width: 300px;
     max-width: 90vw;
     max-height: 80vh;
-    width: 340px;
-    background-color: rgba(255, 255, 255, 0.90);
+    width: 100%;
+    background-color: white;
     color: #222222;
   }
 </style>

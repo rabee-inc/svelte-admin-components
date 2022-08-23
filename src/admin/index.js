@@ -22,6 +22,29 @@ const admin = {
     },
   ],
   actions: {
+    // path から content を取得する
+    pathToContent(path) {
+      // path 自体にマッチした場合はそれを返す
+      if (admin.contents[path]) return admin.contents[path];
+
+      let paths = path.split('/');
+
+      // 偶数だけ残す
+      let content_paths = paths.filter((p, i) => {
+        return i % 2 === 0;
+      });
+
+      let content_id = content_paths.join('/');
+
+      return admin.contents[content_id];
+    },
+
+    // path から id を取得する
+    pathToId(path) {
+      let paths = path.split('/');
+      return paths[paths.length-1];
+    },
+
     api: {
       async index({path, cursor, query}) {
         let res = await fetch(`/api/${path}`);
