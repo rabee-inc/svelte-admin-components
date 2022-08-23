@@ -1,5 +1,6 @@
 
 import { goto } from '$app/navigation';
+import { getByPath } from '$lib/utils.js';
 import { openModal } from 'svelte-modal-manager';
 import contents from './contents/index.js';
 
@@ -35,9 +36,9 @@ const admin = {
         return i % 2 === 0;
       });
 
-      let content_id = content_paths.join('/');
+      let content_id = content_paths.join('.');
 
-      return admin.contents[content_id];
+      return getByPath(admin.contents, content_id);
     },
 
     // path から id を取得する
