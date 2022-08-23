@@ -26,8 +26,7 @@
 
   let openContentModal = () => {
     let modal = openModal('admin-content', {
-      path,
-      schema,
+      path: schema.opts.content_path,
       actions,
     });
 
