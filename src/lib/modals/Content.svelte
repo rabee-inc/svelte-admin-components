@@ -11,14 +11,17 @@
   // svelte-ignore unused-export-let
   export let awaitClose;
 
-  export let schema;
+  export let path;
   export let actions;
 
-  let content = actions.pathToContent(schema.opts.content_path);
+  export let value;
+
+  let content = actions.pathToContent(path);
 
   let onSelect = (e) => {
+    value = e.detail.item;
     dispatch('select', {
-      item: e.detail.item,
+      item: value,
     });
   };
 
@@ -27,7 +30,7 @@
 <template lang='pug'>
   div.modal.rounded-8.overflow-scroll
     div.p16.w-full
-      ContentList(path='{schema.opts.content_path}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
+      ContentList(path='{path}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
 </template>
 
 <style lang="less">

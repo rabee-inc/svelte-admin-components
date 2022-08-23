@@ -35,7 +35,9 @@
   let click = async () => {
     if (actions.image?.select) {
       let image = await actions.image.select();
-      value = image;
+      if (image) {
+        value = image;
+      }
     }
     else {
       input.click();

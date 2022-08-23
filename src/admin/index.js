@@ -1,5 +1,6 @@
 
 import { goto } from '$app/navigation';
+import { openModal } from 'svelte-modal-manager';
 import contents from './contents/index.js';
 
 const admin = {
@@ -90,10 +91,22 @@ const admin = {
     },
 
     image: {
-      // select() {
-      //   // 画像選択モーダル開いたり
+      async select() {
+        // 画像選択モーダル開いたり
+        let modal = openModal('admin-content', {
+          path: 'images',
+          actions: admin.actions,
+        });
 
-      // },
+        // 何かしら選んだらクローズする
+        modal.$on('select', (e) => {
+          modal.close();
+        });
+
+        let item = await modal.awaitClose();
+
+        return item && item.url;
+      },
       upload({value, file}) {
         return value;
       },
