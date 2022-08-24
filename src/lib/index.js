@@ -1,3 +1,6 @@
+// utils
+export * from './utils.js';
+
 // components
 export { default as Sidebar } from './components/Sidebar.svelte';
 export { default as ContentList } from './components/ContentList.svelte';
@@ -331,4 +334,3 @@ import { registerModalComponent } from 'svelte-modal-manager';
 import * as ContentModal from './modals/Content.svelte';
 
 registerModalComponent('admin-content', ContentModal);
-
