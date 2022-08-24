@@ -10,7 +10,6 @@
   export {className as class};
   export let path;
   export let content;
-  export let headings = [];
   export let actions;
   export let limit = 16;
 
@@ -90,12 +89,12 @@
     table.w-full.border-spacing-0.border-collapse-collapse
       thead
         tr.border-bottom.text-left
-          +each('headings as heading')
+          +each('content.headings as heading')
             th.px12.py16.text-gray.bold.word-break-keep(style!='min-width: {heading.width || "150px"}; width: {heading.width || "auto"}') {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => onSelect(e, item)}')
-            +each('headings as heading')
+            +each('content.headings as heading')
               td.p12.fs13
                 div(class='{heading.class}')
                   svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
