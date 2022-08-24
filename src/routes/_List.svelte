@@ -27,5 +27,5 @@
       a.button.primary(href='/{path}/new') NEW
   div.p16
     div.mb16
-      ContentList(path='{path}', content='{content}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
+      ContentList(path='{path}', content='{content}', actions='{actions}', limit='{16}', on:select='{onSelect}')
 </template>
