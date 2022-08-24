@@ -15,7 +15,8 @@
     div.mb16
       a.block.p16.text-center(href='/')
         +if('logo')
-          img.w-full(src='{logo}')
+          div.px16
+            img.w-full(src='{logo}', alt='{name}')
           +else
             span.bold.fs16 {name}
     +each('sections as section')
