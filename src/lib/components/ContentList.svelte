@@ -79,7 +79,7 @@
       thead
         tr.border-bottom.text-left
           +each('headings as heading')
-            th.px12.py16.text-gray.bold.word-break-keep(style!='min-width: {heading.width || "150px"}; width: {heading.width || "100%"}') {heading.label}
+            th.px12.py16.text-gray.bold.word-break-keep(style!='min-width: {heading.width || "150px"}; width: {heading.width || "auto"}') {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => onSelect(e, item)}')
