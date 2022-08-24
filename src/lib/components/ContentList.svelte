@@ -9,6 +9,7 @@
   let className = null;
   export {className as class};
   export let path;
+  export let content;
   export let headings = [];
   export let actions;
   export let limit = 16;
@@ -59,6 +60,13 @@
     fetchItems();
   };
 
+  let onAction = (action) => {
+    action.onclick({
+      path,
+      content,
+    });
+  };
+
   $: {
     path;
 
@@ -69,10 +77,14 @@
 
 <template lang='pug'>
   div
-    form.f.fr(on:submit|preventDefault='{onSearch}')
+    form.f.flex-between.fm(on:submit|preventDefault='{onSearch}')
       div.f
         input.input.mr4(bind:this='{queryElement}', type='search')
         button.button 検索
+      div
+        +if('content.actions')
+          +each('content.actions as action')
+            button.button.fs12.ml8(type='button', on:click!='{() => onAction(action)}') {action.label}
 
   div.w-full.overflow-scroll(class='{className}')
     table.w-full.border-spacing-0.border-collapse-collapse
