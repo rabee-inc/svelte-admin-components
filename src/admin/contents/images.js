@@ -41,5 +41,20 @@ export default {
         }
       ]
     }
-  ]
+  ],
+
+  actions: [
+    {
+      label: 'CSV アップロード',
+      onclick: () => {
+        alert('CSV アップロードだよ');
+      },
+    },
+    {
+      label: 'CSV ダウンロード',
+      onclick: () => {
+        alert('CSV ダウンロードだよ');
+      },
+    },
+  ],
 };

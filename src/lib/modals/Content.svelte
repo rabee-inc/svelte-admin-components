@@ -30,7 +30,7 @@
 <template lang='pug'>
   div.modal.rounded-8.overflow-scroll
     div.p16.w-full
-      ContentList(path='{path}', headings='{content.headings}', actions='{actions}', limit='{16}', on:select='{onSelect}')
+      ContentList(path='{path}', content='{content}', actions='{actions}', limit='{16}', on:select='{onSelect}')
 </template>
 
 <style lang="less">

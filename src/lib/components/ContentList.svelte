@@ -9,7 +9,7 @@
   let className = null;
   export {className as class};
   export let path;
-  export let headings = [];
+  export let content;
   export let actions;
   export let limit = 16;
 
@@ -59,6 +59,13 @@
     fetchItems();
   };
 
+  let onAction = (action) => {
+    action.onclick({
+      path,
+      content,
+    });
+  };
+
   $: {
     path;
 
@@ -69,21 +76,25 @@
 
 <template lang='pug'>
   div
-    form.f.fr(on:submit|preventDefault='{onSearch}')
+    form.f.flex-between.fm(on:submit|preventDefault='{onSearch}')
       div.f
         input.input.mr4(bind:this='{queryElement}', type='search')
         button.button 検索
+      div
+        +if('content.actions')
+          +each('content.actions as action')
+            button.button.fs12.ml8(type='button', on:click!='{() => onAction(action)}') {action.label}
 
   div.w-full.overflow-scroll(class='{className}')
     table.w-full.border-spacing-0.border-collapse-collapse
       thead
         tr.border-bottom.text-left
-          +each('headings as heading')
+          +each('content.headings as heading')
             th.px12.py16.text-gray.bold.word-break-keep(style!='min-width: {heading.width || "150px"}; width: {heading.width || "auto"}') {heading.label}
       tbody
         +each('items as item')
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => onSelect(e, item)}')
-            +each('headings as heading')
+            +each('content.headings as heading')
               td.p12.fs13
                 div(class='{heading.class}')
                   svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
