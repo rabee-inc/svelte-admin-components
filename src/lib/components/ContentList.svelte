@@ -75,7 +75,7 @@
 </script>
 
 <template lang='pug'>
-  div
+  div.p8
     form.f.flex-between.fm(on:submit|preventDefault='{onSearch}')
       div.f
         input.input.mr4(bind:this='{queryElement}', type='search')

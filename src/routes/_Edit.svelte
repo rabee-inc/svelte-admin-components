@@ -95,7 +95,7 @@
 </script>
 
 <template lang="pug">
-  div.f.fm.flex-between.p16.sticky.t0.border-bottom.bg-white.relative.z100
+  div.f.fm.flex-between.p16.sticky.t0.border-bottom.box-shadow.bg-white.relative.z100
     h1.fs16 {content.label} / {item?.id || 'new'}
     div.f
       +if('item?.id')
