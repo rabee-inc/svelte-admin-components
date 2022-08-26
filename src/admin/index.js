@@ -1,6 +1,6 @@
 
 import { goto } from '$app/navigation';
-import { getByPath } from '$lib/utils.js';
+import { pathToContent } from 'svelte-admin-components';
 import { openModal } from 'svelte-modal-manager';
 import contents from './contents/index.js';
 
@@ -26,19 +26,7 @@ const admin = {
   actions: {
     // path から content を取得する
     pathToContent(path) {
-      // path 自体にマッチした場合はそれを返す
-      if (admin.contents[path]) return admin.contents[path];
-
-      let paths = path.split('/');
-
-      // 偶数だけ残す
-      let content_paths = paths.filter((p, i) => {
-        return i % 2 === 0;
-      });
-
-      let content_id = content_paths.join('.');
-
-      return getByPath(admin.contents, content_id);
+      return pathToContent(admin.contents, path);
     },
 
     // path から id を取得する
