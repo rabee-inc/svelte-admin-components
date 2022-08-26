@@ -23,8 +23,6 @@
           file: _file,
         });
         value = v;
-
-        console.log('uploaded');
       }
       catch (e) {
         // 失敗した場合はフラグを戻す
