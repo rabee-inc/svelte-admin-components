@@ -26,29 +26,19 @@
   let onSubmit = async (e) => {
     let item = e.detail.value;
 
-    if (id !== 'new') {
-      let i = indicator();
+    let i = indicator();
 
-      try {
+    try {
+      if (id !== 'new') {
+        // 更新
         let res = await actions.api.put({
           path,
           data: item,
         });
         console.log('saved', res);
       }
-      catch (e) {
-        alert(e);
-      }
-      finally {
-        setTimeout(() => {
-          i.close();
-        }, 512);
-      }
-    }
-    else {
-      let i = indicator();
-
-      try {
+      else {
+        // 新規作成
         let res = await actions.api.post({
           path: path.replace(/\/new$/, ''),
           data: item,
@@ -61,14 +51,14 @@
           replaceState: true,
         });
       }
-      catch (e) {
-        alert(e);
-      }
-      finally {
-        setTimeout(() => {
-          i.close();
-        }, 512);
-      }
+    }
+    catch(e) {
+      alert(e);
+    }
+    finally {
+      setTimeout(() => {
+        i.close();
+      }, 512);
     }
   };
 
