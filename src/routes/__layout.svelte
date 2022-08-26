@@ -35,7 +35,7 @@
 <template lang="pug">
   div.f.fclm.s-full
     div.s-full.f
-      Sidebar.w300.bg-primary.text-white(logo='/images/logo.svg', name='{name}', sections='{admin.sections}')
+      Sidebar.flex-fixed.w200.bg-primary.text-white(logo='/images/logo.svg', name='{name}', sections='{admin.sections}')
       div.s-full.f.flex-column.overflow-hidden
         slot
 </template>
