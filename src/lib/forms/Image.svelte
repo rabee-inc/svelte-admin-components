@@ -15,12 +15,19 @@
   // svelte-ignore unused-export-let
   export let getValue = async () => {
     if (_changed) {
-      let v = await actions.image.upload({
-        value,
-        file: _file,
-      });
-      value = v;
       _changed = false;
+
+      try {
+        let v = await actions.image.upload({
+          value,
+          file: _file,
+        });
+        value = v;
+      }
+      catch (e) {
+        // 失敗した場合はフラグを戻す
+        _changed = true;
+      }
     }
 
     return value;
