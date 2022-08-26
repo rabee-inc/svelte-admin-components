@@ -20,7 +20,7 @@
 </script>
 
 <template lang="pug">
-  div.f.fm.flex-between.p16.sticky.t0.box-shadow-1.bg-white.relative.z100
+  div.f.fm.flex-between.p16.sticky.t0.box-shadow.bg-white.relative.z100
     div.f.fm
       h1.fs16 {content.label}
     div
