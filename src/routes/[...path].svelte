@@ -154,7 +154,10 @@
           kind: 'primary',
           onclick: () => {
             goto(`/${path}/new`);
-          }
+          },
+          shouldShow() {
+            return content.settings.create;
+          },
         },
       ];
     }
@@ -166,7 +169,10 @@
           kind: 'primary',
           onclick: () => {
             form.submit();
-          }
+          },
+          shouldShow() {
+            return content.settings.create;
+          },
         },
       ];
     }
@@ -179,7 +185,10 @@
           kind: 'danger',
           onclick: (e) => {
             onDelete(e);
-          }
+          },
+          shouldShow() {
+            return content.settings.delete;
+          },
         },
         // 保存
         {
@@ -187,7 +196,10 @@
           kind: 'primary',
           onclick: () => {
             form.submit();
-          }
+          },
+          shouldShow() {
+            return content.settings.update;
+          },
         },
       ];
     }

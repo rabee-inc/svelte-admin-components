@@ -2,6 +2,12 @@ import { headings, schemas, sections } from "./template";
 
 export default {
   label: "画像",
+  settings: {
+    search: true,
+    create: true,
+    update: true,
+    delete: true,
+  },
   headings: [
     {
       key: "url",

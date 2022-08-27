@@ -2,6 +2,12 @@ import { headings, schemas, sections } from "./template";
 
 export default {
   label: "user",
+  settings: {
+    search: true,
+    create: true,
+    update: true,
+    delete: true,
+  },
   headings: [
     Object.assign({}, headings.image, {
       key: 'icon_image.url',

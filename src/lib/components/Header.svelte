@@ -12,6 +12,7 @@
     div.f.fm
       div.f.fm
       +each('actions as action')
-        button.button.ml8(type='button', class!='{action.kind || ""}', on:click='{action.onclick}') {action.label}
+        +if('!action.shouldShow || action.shouldShow()')
+          button.button.ml8(type='button', class!='{action.kind || ""}', on:click='{action.onclick}') {action.label}
       slot(name='right')
 </template>

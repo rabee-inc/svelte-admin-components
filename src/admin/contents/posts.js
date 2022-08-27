@@ -2,6 +2,12 @@ import { headings, schemas, sections } from "./template";
 
 export default {
   label: "post",
+  settings: {
+    search: true,
+    create: true,
+    update: true,
+    delete: true,
+  },
   headings: [
     headings.image,
     headings.id,
