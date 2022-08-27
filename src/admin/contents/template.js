@@ -19,7 +19,7 @@ export let headings = {
   title: {
     key: "title",
     label: "タイトル",
-    type: "text"
+    type: "text",
   },
   created_at: {
     key: "created_at",
@@ -47,6 +47,9 @@ export let schemas = {
     label: "title",
     type: "text",
     class: "",
+    opts: {
+      required: true,
+    }
   },
 };
 
