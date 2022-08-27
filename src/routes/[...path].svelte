@@ -51,6 +51,7 @@
 
   import List from "./_List.svelte";
   import Edit from "./_Edit.svelte";
+  import {Header} from "svelte-admin-components";
 
   export let path;
   export let paths;
@@ -59,12 +60,64 @@
   export let id;
 
   content = admin.actions.pathToContent(path);
+
+  let getHeaderLabel = (path) => {
+    return id ? `${content.label} / ${id}` : content.label;
+  };
+
+  let getHeaderActions = (path) => {
+    if (mode === 'list') {
+      // 一覧
+      return [
+        {
+          label: 'NEW',
+          kind: 'primary',
+          onclick: () => {
+            goto(`/${path}/new`);
+          }
+        },
+      ];
+    }
+    else if (id === 'new') {
+      // 新規作成
+      return [
+        {
+          label: 'CREATE',
+          kind: 'primary',
+          onclick: () => {
+            alert();
+          }
+        },
+      ];
+    }
+    else {
+      // 編集
+      return [
+        {
+          label: 'DELETE',
+          kind: 'danger',
+          onclick: () => {
+            alert();
+          }
+        },
+        {
+          label: 'SAVE',
+          kind: 'primary',
+          onclick: () => {
+            alert();
+          }
+        },
+      ];
+    }
+  };
 </script>
 
 <Meta />
 
 <template lang="pug">
   main.s-full.overflow-scroll
+    Header.p16.sticky.t0.box-shadow.bg-white.relative.z100(label='{getHeaderLabel(path)}', actions='{getHeaderActions(path)}')
+
     +if('mode === "list"')
       List(content='{content}', path='{path}', actions='{admin.actions}', id='{id}')
     +if('mode === "edit"')

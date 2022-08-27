@@ -5,6 +5,7 @@ export * from './utils.js';
 export { default as Sidebar } from './components/Sidebar.svelte';
 export { default as ContentList } from './components/ContentList.svelte';
 export { default as ContentForm } from './components/ContentForm.svelte';
+export { default as Header } from './components/Header.svelte';
 
 // contents
 export { default as contents } from './contents/index.js';
