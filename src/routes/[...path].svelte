@@ -127,7 +127,7 @@
 
   // 削除
   let onDelete = async () => {
-    if (!confirm('really?')) {
+    if (!confirm('このデータを削除します。よろしいですか？\n※この操作は取り消せません。')) {
       return ;
     }
 
