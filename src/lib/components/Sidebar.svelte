@@ -15,7 +15,7 @@
     div.mb16
       a.block.p16.text-center(href='/')
         +if('logo')
-          div.px16
+          div
             img.w-full(src='{logo}', alt='{name}')
           +else
             span.bold.fs16 {name}
