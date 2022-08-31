@@ -4,23 +4,42 @@ import { pathToContent } from 'svelte-admin-components';
 import { openModal } from 'svelte-modal-manager';
 import contents from './contents/index.js';
 
+let isGuest = () => {
+  let url = new URL(location.href);
+  let mode = url.searchParams.get('mode');
+
+  return mode === 'guest';
+};
+
 const admin = {
   contents,
   sections: [
     {
       label: 'service',
       items: [
-        { label: 'user', link: '/users' },
+        {
+          label: 'user',
+          link: '/users',
+          shouldShow() {
+            return !isGuest();
+          }
+        },
         { label: 'post', link: '/posts' },
         { label: 'image', link: '/images' },
-      ]
+      ],
     },
     {
       label: 'admin',
       items: [
         { label: 'operator', link: '/operators' },
-        { label: 'config', link: '/settings/config' },
-      ]
+        {
+          label: 'config',
+          link: '/settings/config',
+        },
+      ],
+      shouldShow() {
+        return !isGuest();
+      },
     },
   ],
   actions: {
