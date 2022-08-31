@@ -8,6 +8,13 @@
   export let name = 'Admin Demo'
   export let logo;
   export let sections = [];
+
+  let shouldShowMenu = (item) => {
+    if (item.shouldShow) {
+      return item.shouldShow();
+    }
+    return true;
+  };
 </script>
 
 <template lang='pug'>
@@ -25,9 +32,10 @@
         
         div
           +each('section.items as item')
-            div.pl8.rounded-8.hover-trigger.hover-bg-light
-              a.block.pl8.py3.fs16(href='{item.link}', class!="{$page.url.pathname.indexOf(item.link) === 0 ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln8' : ''}")
-                div {item.label}
+            +if('shouldShowMenu(item)')
+              div.pl8.rounded-8.hover-trigger.hover-bg-light
+                a.block.pl8.py3.fs16(href='{item.link}', class!="{$page.url.pathname.indexOf(item.link) === 0 ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln8' : ''}")
+                  div {item.label}
 </template>
 
 <style lang="less">

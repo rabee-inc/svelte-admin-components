@@ -19,7 +19,14 @@ const admin = {
       label: 'admin',
       items: [
         { label: 'operator', link: '/operators' },
-        { label: 'config', link: '/settings/config' },
+        {
+          label: 'config',
+          link: '/settings/config',
+          shouldShow() {
+            // MEMO: ここを false にするとメニューから消える
+            return true;
+          }
+        },
       ]
     },
   ],
