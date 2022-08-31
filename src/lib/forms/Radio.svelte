@@ -43,9 +43,9 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    div.f.fm
+    div.row
       +each('_choices as choice')
-        label.f.fm.mr16
+        label.f.fm.mr16.mr0-last
           input.mr4(type='radio', bind:group='{value}', value='{choice.value}')
           span(value='{choice.value}') {choice.label || choice.value}
 </template>
