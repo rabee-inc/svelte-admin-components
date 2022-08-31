@@ -1,4 +1,4 @@
-import { headings, schemas, sections } from "./template";
+import { headings, schemas, sections } from "$admin/contents/template";
 
 export default {
   label: "settings",
