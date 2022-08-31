@@ -2,6 +2,10 @@ import { headings, schemas, sections } from "./template";
 
 export default {
   label: "settings",
+  settings: {
+    update: true,
+    delete: false,
+  },
   sections: [
     {
       label: "メイン",
