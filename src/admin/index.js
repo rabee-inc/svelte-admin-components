@@ -97,7 +97,8 @@ const admin = {
         return item && item.url;
       },
       upload({value, file}) {
-        return value;
+        let url = URL.createObjectURL(file);
+        return url;
       },
     },
 
