@@ -12,6 +12,7 @@
   // svelte-ignore unused-export-let
   export let item;
 
+  let tempValue = value;
   let _choices = [];
 
   let setupChoices = async (choices) => {
@@ -19,13 +20,10 @@
     if (typeof choices === 'string') {
       // 共通の関数もしくは配列に変換
       choices = actions[choices];
+    }
 
-      if (typeof choices === 'function') {
-        _choices = await choices({schema, value});
-      }
-      else {
-        _choices = choices;
-      }
+    if (typeof choices === 'function') {
+      _choices = await choices({schema, value});
     }
     else {
       _choices = choices;
@@ -35,6 +33,11 @@
   onMount(() => {
     setupChoices(schema.opts.choices);
   });
+
+  // svelte-ignore unused-export-let
+  export let getValue = () => {
+    return tempValue;
+  };
 </script>
 
 <template lang='pug'>
@@ -46,6 +49,6 @@
     div.f.fm
       +each('_choices as choice')
         label.f.fm.mr16
-          input.mr4(type='radio', bind:group='{value}', value='{choice.value}')
+          input.mr4(type='radio', bind:group='{tempValue}', value='{choice.value}')
           span(value='{choice.value}') {choice.label || choice.value}
 </template>
