@@ -49,7 +49,7 @@
           span *
     div.row
       +each('_choices as choice')
-        label.f.fm.mr16.mr0-last
+        label.f.fm.flex-fixed.mr16.mr0-last
           input.mr4(type='checkbox', bind:group='{tempValue}', value='{choice.value}')
           span(value='{choice.value}') {choice.label || choice.value}
 </template>
