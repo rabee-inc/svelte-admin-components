@@ -30,7 +30,7 @@ export default {
   sections: [
     {
       label: "メイン",
-      class: "col12",
+      class: "col8",
       schemas: [
         schemas.id,
         {
@@ -153,6 +153,29 @@ export default {
             ]
           }
         }
+      ]
+    },
+    {
+      label: "サブ",
+      class: "col4",
+      schemas: [
+        {
+          key: " media",
+          label: "メディア",
+          type: "array",
+          class: "",
+          opts: {
+            schema: {
+              type: "object",
+              opts: {
+                schemas: [
+                  { key: 'name', type: 'text', label: 'サービス名', },
+                  { type: 'text', key: 'url', label: 'URL' },
+                ],
+              },
+            },
+          },
+        },
       ]
     }
   ]
