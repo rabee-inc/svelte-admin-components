@@ -77,7 +77,7 @@
         div.fs12.mb4 {schema.label}
     div
       div(bind:this='{elements}')
-        +each('value as v,i (v)')
+        +each('value as v,i (v+i)')
           div.relative.f.fm.p16.border-bottom.hover-trigger(data-id='{i}')
             div.handle.flex-fixed.p8.cursor-pointer.mr8(alt='handle').
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
