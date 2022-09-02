@@ -33,17 +33,37 @@
     return v;
   };
 
+  
+  import { createEventDispatcher } from 'svelte';
+  let dispatch = createEventDispatcher();
+
+  let key = '';
   let instances = [];
   let elements;
 
   let add = () => {
     value.push('');
-    value = value;
+
+    _updateArray(value);
   };
 
   let del = (i) => {
     value.splice(i, 1);
-    value = value;
+
+    _updateArray(value);
+  };
+
+  // 子要素で変更があった際に反映する
+  let _syncValue = async () => {
+    value = await getValue();
+
+    dispatch('change');
+  };
+
+  // 配列をアップデート(キャッシュ対策)
+  let _updateArray = (v) => {
+    key = Date.now();
+    value = v;
   };
 
   onMount(() => {
@@ -55,7 +75,8 @@
           let temp = sortable.toArray().map(id => {
             return value[id];
           });
-          value = temp;
+
+          _updateArray(temp);
         },
       },
     });
@@ -77,13 +98,14 @@
         div.fs12.mb4 {schema.label}
     div
       div(bind:this='{elements}')
-        +each('value as v,i (v+i)')
-          div.relative.f.fm.p16.border-bottom.hover-trigger(data-id='{i}')
-            div.handle.flex-fixed.p8.cursor-pointer.mr8(alt='handle').
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
-            div.w-full
-              svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', actions='{actions}', bind:value='{v}', on:change)
-            button.absolute.t8.r8.f.fh.s24.circle.border.bg-white.hover-show(type='button', on:click!='{() => {del(i)}}') ✕
+        +key('key')
+          +each('value as v,i')
+            div.relative.f.fm.p16.border-bottom.hover-trigger(data-id='{i}')
+              div.handle.flex-fixed.p8.cursor-pointer.mr8(alt='handle').
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
+              div.w-full
+                svelte:component(bind:this='{instances[i]}', this='{forms[schema.opts.schema.type]}', schema='{schema.opts.schema}', actions='{actions}', bind:value='{v}', on:change='{_syncValue}')
+              button.absolute.t8.r8.f.fh.s24.circle.border.bg-white.hover-show(type='button', on:click!='{() => {del(i)}}') ✕
       div.p16
         button.button.w-full(type='button', on:click='{add}') +
 </template>
