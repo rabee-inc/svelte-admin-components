@@ -79,7 +79,7 @@ export function operator() {
 };
 
 
-export function tag() {
+export function category() {
   let name = faker.name.firstName();
   
   return {
@@ -95,7 +95,7 @@ let dummy = {
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
   'posts/comments': Array(32).fill().map(() => postComment()),
-  tags: Array(32).fill().map(() => tag()),
+  categories: Array(32).fill().map(() => category()),
 
   operators: Array(32).fill().map(() => operator()),
 
@@ -104,7 +104,7 @@ let dummy = {
     users: user,
     posts: post,
     'posts/comments': postComment,
-    tags: tag,
+    categories: category,
   },
   
   settings: [
