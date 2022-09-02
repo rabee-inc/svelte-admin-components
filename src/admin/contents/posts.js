@@ -79,13 +79,28 @@ export default {
           }
         },
         schemas.image,
+        // {
+        //   key: "tags",
+        //   label: "tags",
+        //   type: "array",
+        //   opts: {
+        //     schema: {
+        //       type: "text"
+        //     }
+        //   }
+        // },
         {
           key: "tags",
           label: "tags",
           type: "array",
           opts: {
             schema: {
-              type: "text"
+              type: "content",
+              opts: {
+                content_path: "tags",
+                value_key: "id",
+                label_key: "name"
+              }
             }
           }
         },
