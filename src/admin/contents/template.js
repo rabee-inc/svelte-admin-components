@@ -21,6 +21,11 @@ export let headings = {
     label: "タイトル",
     type: "text",
   },
+  name: {
+    key: "name",
+    label: "名前",
+    type: "text",
+  },
   created_at: {
     key: "created_at",
     label: "作成日",
@@ -49,6 +54,23 @@ export let schemas = {
     class: "",
     opts: {
       required: true,
+    }
+  },
+  name: {
+    key: "name",
+    label: "名前　",
+    type: "text",
+    opts: {}
+  },
+  created_at: {
+    key: "created_at",
+    label: "作成日",
+    type: "date",
+    opts: {
+      is_unixtime: true,
+      date_type: "",
+      readonly: true,
+      required: true
     }
   },
 };
