@@ -221,7 +221,6 @@
       +if('mode === "list"')
         div.bg-white.box-shadow.rounded-4.mb16
           ContentList(path='{path}', content='{content}', actions='{actions}', limit='{16}', on:select='{onSelect}')
-        //- List(content='{content}', path='{path}', actions='{actions}', id='{id}')
       +if('mode === "edit"')
         ContentForm(bind:this='{form}', path='{path}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
 </template>

@@ -150,6 +150,12 @@ export default {
   // コメント
   comments: {
     label: "post comments",
+    settings: {
+      search: true,
+      create: true,
+      update: true,
+      delete: true,
+    },  
     headings: [
       {
         key: "id",
