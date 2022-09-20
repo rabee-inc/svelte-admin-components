@@ -10,6 +10,7 @@ export default {
   },
   headings: [
     headings.id,
+    headings.name,
   ],
   sections: [
     {
@@ -17,6 +18,7 @@ export default {
       class: "col12 mb16",
       schemas: [
         schemas.id,
+        schemas.name,
       ],
     },
     {

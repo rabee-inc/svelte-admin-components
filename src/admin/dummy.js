@@ -65,8 +65,7 @@ export function operator() {
   return {
     id: faker.datatype.uuid(),
     // id: '1',
-    screen_name: name.toLowerCase(),
-    display_name: name,
+    name: [name, '', null][faker.datatype.number() % 3],
     bio: faker.lorem.lines(),
     icon_image: image(),
     followers_count: faker.datatype.number() % 1000,
