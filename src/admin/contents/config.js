@@ -1,7 +1,7 @@
 import { headings, schemas, sections } from "$admin/contents/template";
 
 export default {
-  label: "settings",
+  label: "コンフィグ",
   settings: {
     update: true,
     delete: false,
