@@ -141,11 +141,7 @@
     history.back();
   };
 
-  let getHeaderLabel = (path) => {
-    return id ? `${content.label} / ${id}` : content.label;
-  };
-
-  let getHeaderActions = (path) => {
+  let getHeaderButtons = (path) => {
     if (mode === 'list') {
       // 一覧
       return [
@@ -215,7 +211,7 @@
 
 <template lang="pug">
   main.s-full.overflow-scroll
-    Header.p16.sticky.t0.box-shadow.bg-white.relative.z100(label='{getHeaderLabel(path)}', actions='{getHeaderActions(path)}')
+    Header.p16.sticky.t0.box-shadow.bg-white.relative.z100(path='{path}', actions='{actions}', buttons='{getHeaderButtons(path)}')
 
     div.p16
       +if('mode === "list"')

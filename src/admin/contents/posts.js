@@ -1,7 +1,7 @@
 import { headings, schemas, sections } from "$admin/contents/template";
 
 export default {
-  label: "post",
+  label: "投稿",
   settings: {
     search: true,
     create: true,
@@ -149,7 +149,7 @@ export default {
   ],
   // コメント
   comments: {
-    label: "post comments",
+    label: "コメント",
     settings: {
       search: true,
       create: true,
