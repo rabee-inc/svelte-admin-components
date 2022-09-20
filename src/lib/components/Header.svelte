@@ -38,12 +38,11 @@
 
 <template lang="pug">
   div.f.fm.flex-between(class='{className}')
-    div.overflow-scroll
-      h1.fs14.f
-        +each('breadcrumbs as breadcrumb,i')
-          a.flex-fixed(href='{breadcrumb.link}') {breadcrumb.label} 
-          +if('i < (breadcrumbs.length-1)')
-            span.mx4 / 
+    h1.fs14.f.fm.overflow-scroll
+      +each('breadcrumbs as breadcrumb,i')
+        a.flex-fixed(href='{breadcrumb.link}') {breadcrumb.label}
+        +if('i < (breadcrumbs.length-1)')
+          span.fs11.text-gray.mx4 /
 
     div.f.fm
       div.f.fm
