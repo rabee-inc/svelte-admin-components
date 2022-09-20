@@ -45,5 +45,9 @@
 </script>
 
 <template lang='pug'>
-  p.line-clamp-3 {_value}
+  p.line-clamp-3
+    +if('_value !== null')
+      | {_value}
+      +else
+        | (未設定)
 </template>
