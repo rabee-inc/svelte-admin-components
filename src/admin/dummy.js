@@ -79,11 +79,23 @@ export function operator() {
 };
 
 
+export function category() {
+  let name = faker.name.firstName();
+  
+  return {
+    id: faker.datatype.uuid(),
+    name: name.toLowerCase(),
+    created_at: faker.datatype.datetime().getTime(),
+  };
+};
+
+
 let dummy = {
   images: Array(32).fill().map(() => image()),
   users: Array(32).fill().map(() => user()),
   posts: Array(32).fill().map(() => post()),
   'posts/comments': Array(32).fill().map(() => postComment()),
+  categories: Array(32).fill().map(() => category()),
 
   operators: Array(32).fill().map(() => operator()),
 
@@ -92,6 +104,7 @@ let dummy = {
     users: user,
     posts: post,
     'posts/comments': postComment,
+    categories: category,
   },
   
   settings: [

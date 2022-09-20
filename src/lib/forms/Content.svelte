@@ -11,6 +11,9 @@
   export let value = '';
   export let item;
 
+  import { createEventDispatcher } from 'svelte';
+  let dispatch = createEventDispatcher();
+
   let items = [];
   let contentItem = null;
 
@@ -32,6 +35,8 @@
 
     modal.$on('select', (e) => {
       contentItem = e.detail.item;
+
+      dispatch('change');
       modal.close();
     });
   };

@@ -90,6 +90,21 @@ export default {
           }
         },
         {
+          key: "categories",
+          label: "categories",
+          type: "array",
+          opts: {
+            schema: {
+              type: "content",
+              opts: {
+                content_path: "categories",
+                value_key: "id",
+                label_key: "name"
+              }
+            }
+          }
+        },
+        {
           key: "author",
           label: "作者",
           type: "content",

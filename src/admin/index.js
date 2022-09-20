@@ -25,6 +25,7 @@ const admin = {
           }
         },
         { label: 'post', link: '/posts' },
+        { label: 'category', link: '/categories' },
         { label: 'image', link: '/images' },
       ],
     },
