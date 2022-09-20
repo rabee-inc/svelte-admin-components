@@ -1,7 +1,9 @@
 <script>
   export {className as class};
+  export let path;
   export let label;
-  export let actions = [];
+  export let actions;
+  export let buttons = [];
 
   let className = null;
 </script>
@@ -11,8 +13,8 @@
     h1.fs16 {label}
     div.f.fm
       div.f.fm
-      +each('actions as action')
-        +if('!action.shouldShow || action.shouldShow()')
-          button.button.ml8(type='button', class!='{action.kind || ""}', on:click='{action.onclick}') {action.label}
+      +each('buttons as button')
+        +if('!button.shouldShow || button.shouldShow()')
+          button.button.ml8(type='button', class!='{button.kind || ""}', on:click='{button.onclick}') {button.label}
       slot(name='right')
 </template>
