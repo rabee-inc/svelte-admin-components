@@ -22,6 +22,15 @@ export default {
       key: "gender",
       label: "gender",
       type: "text",
+      class: ({item}) => {
+        if (item.gender === 'male') {
+          return 'text-blue';
+        }
+        else if (item.gender === 'female') {
+          return 'text-red';
+        }
+        return 'text-green';
+      },
       opts: {
         mappings: "genders"
       }

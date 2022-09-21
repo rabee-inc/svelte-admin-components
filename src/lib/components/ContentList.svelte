@@ -66,6 +66,20 @@
     });
   };
 
+  let getHeadingClass = (heading, item) => {
+    let cls = heading.class;
+
+    if (typeof cls === 'function') {
+      // 関数だったら実行した返り値を class として使う
+      cls = cls({
+        heading,
+        item,
+      });
+    }
+
+    return cls;
+  };
+
   $: {
     path;
 
@@ -97,7 +111,7 @@
           tr.border-bottom.transition.hover-bg.cursor-pointer(on:click!='{(e) => onSelect(e, item)}')
             +each('content.headings as heading')
               td.p12.fs13
-                div(class='{heading.class}')
+                div(class='{getHeadingClass(heading, item)}')
                   svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
   div.p16
     +if('nextCursor && !loading')
