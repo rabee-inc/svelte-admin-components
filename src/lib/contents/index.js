@@ -5,9 +5,15 @@ import { default as Image } from './Image.svelte';
 import { default as Date } from './Date.svelte';
 import { default as Button } from './Button.svelte';
 
-export default {
+let contents = {
   text: Text,
   image: Image,
   date: Date,
   button: Button,
+};
+
+export default contents;
+
+export let registerContent = (key, content) => {
+  contents[key] = content;
 };

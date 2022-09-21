@@ -8,7 +8,7 @@ export { default as ContentForm } from './components/ContentForm.svelte';
 export { default as Header } from './components/Header.svelte';
 
 // contents
-export { default as contents } from './contents/index.js';
+export { default as contents, registerContent } from './contents/index.js';
 import contents from './contents/index.js';
 
 // forms
