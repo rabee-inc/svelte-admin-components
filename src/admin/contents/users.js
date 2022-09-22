@@ -110,6 +110,14 @@ export default {
           type: "switch"
         },
         {
+          key: "editable",
+          label: "編集権限",
+          type: "switch",
+          opts: {
+            readonly: true,
+          }
+        },
+        {
           key: "created_at",
           label: "作成日",
           type: "date",
