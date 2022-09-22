@@ -110,8 +110,8 @@ export default {
           type: "switch"
         },
         {
-          key: "editable",
-          label: "編集権限",
+          key: "is_official",
+          label: "公式",
           type: "switch",
           opts: {
             readonly: true,
