@@ -16,7 +16,6 @@ export function image() {
 export function user() {
   const GENDERS = ['male', 'female', 'other'];
   let name = faker.name.firstName();
-  let isBool = faker.datatype.number() % 2;
   
   return {
     id: faker.datatype.uuid(),
@@ -31,7 +30,7 @@ export function user() {
     age: faker.datatype.number({min: 18, max: 64}),
     gender: GENDERS[faker.datatype.number() % 3],
     roles: ['member'],
-    is_official: isBool,
+    is_official: faker.datatype.boolean(),
   };
 };
 
