@@ -30,6 +30,7 @@ export function user() {
     age: faker.datatype.number({min: 18, max: 64}),
     gender: GENDERS[faker.datatype.number() % 3],
     roles: ['member'],
+    is_official: faker.datatype.boolean(),
   };
 };
 

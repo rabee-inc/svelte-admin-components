@@ -110,6 +110,14 @@ export default {
           type: "switch"
         },
         {
+          key: "is_official",
+          label: "公式",
+          type: "switch",
+          opts: {
+            readonly: true,
+          }
+        },
+        {
           key: "created_at",
           label: "作成日",
           type: "date",

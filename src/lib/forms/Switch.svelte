@@ -17,7 +17,7 @@
   label.inline-block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    input.switch.text-primary(type='checkbox' bind:checked='{value}' class:checked='{value}', on:change)
+    input.switch.text-primary(type='checkbox', bind:checked='{value}', class:checked='{value}', disabled!='{schema.opts?.readonly}', class:opacity-30='{schema.opts?.readonly}', on:change)
 </template>
 
 <style lang='less' global>
