@@ -1,5 +1,3 @@
-
-
 <svelte:options accessors={true}/>
 
 <script>
@@ -17,7 +15,7 @@
   export let getValue = async () => {
     if (_changed) {
       _changed = false;
-
+      // ここの箇所のactions.image.uploadは、file用のものを作るのか
       try {
         let v = await actions.image.upload({
           value,
@@ -41,7 +39,7 @@
 
   // 画像を click したとき
   let click = async () => {
-    // たぶん、モーダルのこと
+    // actions.の中のモーダルを開く処理の必要性（file版）
     if (!actions.image?.select) {
       let image = await actions.image.select();
       if (image) {
@@ -53,7 +51,6 @@
     }
   };
 
-  // そんなに問題ではない
   // 画像を drop したとき
   let drop = (e) => {
     var file = e.dataTransfer.files[0];
@@ -61,7 +58,7 @@
 
     // 動画以外は弾く
     if (/^video/.test(file.type) === false) return ;
-    // alert()でわかるようにすると（テスト用でもおく）
+    
     // アップロードしてセット
     setFile(file);
   };
