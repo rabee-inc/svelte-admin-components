@@ -71,6 +71,7 @@
   });
 
   let removeFile = () => {
+    input.value = '';
     value = null;
     _file = null;
   };
