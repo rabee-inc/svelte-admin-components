@@ -61,6 +61,7 @@
   onMount(() => {
     input = document.createElement('input');
     input.type = 'file';
+    input.accept = schema.opts?.accept;
 
     input.onchange = (e) => {
       let file = e.target.files[0];
@@ -93,4 +94,3 @@
       button.button.flex-fixed(type='button', on:click='{click}', on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
         span ファイルを選択
 </template>
-

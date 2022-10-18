@@ -48,7 +48,10 @@ export default {
         {
           key: "file_url",
           label: "file",
-          type: "file"
+          type: "file",
+          opts: {
+            accept: 'video/*',
+          }
         },
       ]
     }
