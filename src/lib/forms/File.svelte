@@ -36,7 +36,7 @@
   let dispatch = createEventDispatcher();
 
   // ファイルを選択を click したとき
-  let click = async () => {
+  let click = () => {
     input.click();
   };
 
