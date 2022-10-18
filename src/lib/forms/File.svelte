@@ -69,6 +69,12 @@
       setFile(file);
     };
   });
+
+  let removeFile = () => {
+    value = null;
+    _file = null;
+  };
+
 </script>
 
 <template lang='pug'>
@@ -77,7 +83,9 @@
       div.fs12.mb4 {schema.label}
     div
       +if('value')
-        div.word-break-all {value}
+        div.f.fm
+          div.word-break-all.mr8 {value}
+          div.cursor-pointer(on:click='{removeFile}') ×
       button.button.flex-fixed(type='button', on:click='{click}', on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
         span ファイルを選択
 </template>
