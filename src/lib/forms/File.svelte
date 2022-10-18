@@ -85,7 +85,10 @@
       +if('value')
         div.f.fm
           div.word-break-all.mr8 {value}
-          div.cursor-pointer(on:click='{removeFile}') ×
+          div.flex-fixed.cursor-pointer(on:click='{removeFile}', alt='close').
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.05024 5.63604L12 10.5858L16.9497 5.63604L18.3639 7.05025L13.4142 12L18.3639 16.9497L16.9497 18.364L12 13.4142L7.05024 18.364L5.63603 16.9497L10.5858 12L5.63603 7.05025L7.05024 5.63604Z" fill="black"/>
+            </svg>
       button.button.flex-fixed(type='button', on:click='{click}', on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
         span ファイルを選択
 </template>
