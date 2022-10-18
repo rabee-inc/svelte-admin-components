@@ -15,9 +15,8 @@
   export let getValue = async () => {
     if (_changed) {
       _changed = false;
-      // ここの箇所のactions.image.uploadは、file用のものを作るのか
       try {
-        let v = await actions.image.upload({
+        let v = await actions.file.upload({
           value,
           file: _file,
         });
@@ -28,7 +27,6 @@
         _changed = true;
       }
     }
-    console.log(value,'value')
     return value;
   };
 
@@ -37,46 +35,32 @@
   let _changed = false;
   let dispatch = createEventDispatcher();
 
-  // 画像を click したとき
+  // ファイルを選択を click したとき
   let click = async () => {
-    // actions.の中のモーダルを開く処理の必要性（file版）
-    if (!actions.image?.select) {
-      let image = await actions.image.select();
-      if (image) {
-        value = image;
-      }
-    }
-    else {
-      input.click();
-    }
+    input.click();
   };
 
-  // 画像を drop したとき
+  // ファイルを drop したとき
   let drop = (e) => {
     var file = e.dataTransfer.files[0];
     if (!file) return ;
 
-    // 動画以外は弾く
-    if (/^video/.test(file.type) === false) return ;
-    
     // アップロードしてセット
     setFile(file);
   };
   
   let setFile = (file) => {
-    // ファイルの最大サイズ指定はあるのか
     value = URL.createObjectURL(file);
     _file = file;
 
     _changed = true;
-    // ここが不明
+
     dispatch('change');
   };
 
   onMount(() => {
     input = document.createElement('input');
     input.type = 'file';
-    input.accept = 'video/*';
 
     input.onchange = (e) => {
       let file = e.target.files[0];
@@ -88,23 +72,13 @@
 </script>
 
 <template lang='pug'>
-  div.block
-    //- ここには、渡ってきたスキーマが入ってくる
+  div
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-
-    div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
+    div
       +if('value')
-        //- プレビューがいらないので、動画のURLだけがでればいい
-        div {value}
-        +else
-          div.w200.square.bg-whitesmoke
-      div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +
+        div.word-break-all {value}
+      button.button.flex-fixed(type='button', on:click='{click}', on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
+        span ファイルを選択
 </template>
 
-
-<style lang="less">
-  .max-height-300 {
-    max-height: 300px;
-  }
-</style>

@@ -46,7 +46,7 @@ export default {
           type: "image"
         },
         {
-          key: "video_url",
+          key: "file_url",
           label: "file",
           type: "file"
         },

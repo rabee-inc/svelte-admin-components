@@ -122,6 +122,13 @@ const admin = {
       },
     },
 
+    file: {
+      upload({value, file}) {
+        let url = URL.createObjectURL(file);
+        return url;
+      },
+    },
+
     button: {
       preview({schema, item}) {
         console.log(schema, item);
