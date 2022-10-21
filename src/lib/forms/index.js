@@ -13,6 +13,7 @@ import Array from './Array.svelte';
 import Object from './Object.svelte';
 import Button from './Button.svelte';
 import Content from './Content.svelte';
+import File from './File.svelte';
 
 let forms = {
   text: Text,
@@ -28,6 +29,7 @@ let forms = {
   object: Object,
   button: Button,
   content: Content,
+  file: File,
 };
 
 export default forms;

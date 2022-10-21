@@ -44,7 +44,12 @@ export default {
           key: "url",
           label: "image",
           type: "image"
-        }
+        },
+        {
+          key: "file_url",
+          label: "file",
+          type: "file",
+        },
       ]
     }
   ],
