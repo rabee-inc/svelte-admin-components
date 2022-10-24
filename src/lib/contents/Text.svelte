@@ -48,6 +48,11 @@
         item,
         heading,
       });
+
+      // 非同期を考慮
+      if (_value instanceof Promise) {
+        _value = await _value;
+      }
     }
   };
 
