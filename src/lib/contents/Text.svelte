@@ -40,6 +40,15 @@
     else {
       _value = value;
     }
+
+    // value が関数だったら実行する
+    if (heading.opts?.getValue) {
+      _value = heading.opts?.getValue({
+        value: _value,
+        item,
+        heading,
+      });
+    }
   };
 
 </script>

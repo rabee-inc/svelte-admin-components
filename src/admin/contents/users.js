@@ -16,7 +16,12 @@ export default {
     {
       key: "screen_name",
       label: "name",
-      type: "text"
+      type: "text",
+      opts: {
+        getValue({value}) {
+          return `【${value}】`;
+        },
+      }
     },
     {
       key: "gender",
