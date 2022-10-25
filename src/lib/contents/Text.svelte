@@ -40,6 +40,20 @@
     else {
       _value = value;
     }
+
+    // value が関数だったら実行する
+    if (heading.opts?.getValue) {
+      _value = heading.opts?.getValue({
+        value: _value,
+        item,
+        heading,
+      });
+
+      // 非同期を考慮
+      if (_value instanceof Promise) {
+        _value = await _value;
+      }
+    }
   };
 
 </script>
