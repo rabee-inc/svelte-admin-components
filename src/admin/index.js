@@ -42,6 +42,12 @@ const admin = {
         return !isGuest();
       },
     },
+    {
+      label: 'shortcut',
+      items: [
+        { label: 'user(vi)', link: '/users?q=vi' },
+      ],
+    },
   ],
   actions: {
     // path から content を取得する
@@ -57,7 +63,7 @@ const admin = {
 
     api: {
       async index({path, cursor, query}) {
-        let res = await fetch(`/api/${path}?query=${query}`);
+        let res = await fetch(`/api/${path}?query=${query || ''}`);
         let json = await res.json();
 
         return json;
