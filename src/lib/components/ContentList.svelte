@@ -12,19 +12,17 @@
   export let content;
   export let actions;
   export let limit = 16;
+  export let query = '';
 
   let dispatch = createEventDispatcher();
 
-  let queryElement;
   let items = [];
   let nextCursor;
-  let query;
   let loading;
 
   let setup = () => {
     items = [];
     nextCursor = '';
-    query = '';
     loading = false;
   };
 
@@ -55,7 +53,6 @@
 
   let onSearch = () => {
     setup();
-    query = queryElement.value;
     fetchItems();
 
     dispatch('search', {
@@ -97,7 +94,7 @@
     form.f.flex-between.fm(on:submit|preventDefault='{onSearch}')
       div.f
         +if('content.settings.search')
-          input.input.mr4(bind:this='{queryElement}', type='search')
+          input.input.mr4(bind:value='{query}', type='search')
           button.button 検索
       div
         +if('content.actions')
