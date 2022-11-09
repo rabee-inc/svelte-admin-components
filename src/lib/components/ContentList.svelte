@@ -57,6 +57,10 @@
     setup();
     query = queryElement.value;
     fetchItems();
+
+    dispatch('search', {
+      query,
+    });
   };
 
   let onAction = (action) => {

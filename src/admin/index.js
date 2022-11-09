@@ -57,7 +57,7 @@ const admin = {
 
     api: {
       async index({path, cursor, query}) {
-        let res = await fetch(`/api/${path}`);
+        let res = await fetch(`/api/${path}?query=${query}`);
         let json = await res.json();
 
         return json;

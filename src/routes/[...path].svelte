@@ -46,6 +46,7 @@
 
 <script>
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import { Meta } from "svelte-head";
 
   import { ContentList, ContentForm, Header } from "svelte-admin-components";
@@ -74,6 +75,23 @@
     else {
       goto(url);
     }
+  };
+
+  // 検索
+  let onSearch = (e) => {
+    let query = e.detail.query;
+    let url = new URL($page.url.href);
+
+    if (query) {
+      url.searchParams.set('q', query);
+    }
+    else {
+      url.searchParams.delete('q');
+    }
+
+    goto(url.href, {
+      replaceState: true,
+    });
   };
 
   // item 取得
