@@ -18,12 +18,18 @@ let pathsToId = (paths) => {
 /*
  * index/get
  */
-export async function get({params}) {
+export async function get({params, url}) {
   let paths = params.path.split('/');
   let content_id = pathsToContentId(paths);
   let items = dummy[content_id];
 
   if (paths.length % 2 === 1) {
+    let query = url.searchParams.get('query');
+
+    if (query) {
+      items = items.filter(item => item.screen_name?.includes(query));
+    }
+
     // 一覧
     return {
       body: {
@@ -46,7 +52,7 @@ export async function get({params}) {
       }
     }
 
-    // 一覧
+    // 単体
     return {
       body: {
         content_id,
