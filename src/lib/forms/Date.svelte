@@ -35,10 +35,11 @@
     let v = input.value;
 
     if (schema.opts.is_unixtime) {
+      if (!v) return 0;
+
       // return dayjs(v).unix();
       return dayjs(v).valueOf();
     }
-
     return v;
   };
 
