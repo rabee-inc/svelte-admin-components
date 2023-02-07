@@ -129,8 +129,7 @@ export default {
           opts: {
             is_unixtime: true,
             date_type: "",
-            readonly: true,
-            required: true
+            // readonly: true
           }
         },
         {
