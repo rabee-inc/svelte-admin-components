@@ -1,6 +1,8 @@
 <svelte:options accessors={true}/>
 
 <script>
+  import { getImgixUrl } from "$lib/utils";
+
   export let schema;
   export let value = '';
   // svelte-ignore unused-export-let
@@ -23,9 +25,9 @@
       file,
     });
 
-    console.log(url, width, height, 'upload');
+    let imgix_url = getImgixUrl(url, width < 2000 ? width : 2000);
 
-    let text = `![${file.name}](${url})`;
+    let text = `![${file.name}](${imgix_url})`;
 
     // 差し込む
     let cursor_position = textareaElement.selectionStart;
