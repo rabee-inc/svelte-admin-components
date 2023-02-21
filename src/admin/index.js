@@ -116,9 +116,27 @@ const admin = {
 
         return item && item.url;
       },
-      upload({value, file}) {
+      async upload({value, file}) {
         let url = URL.createObjectURL(file);
-        return url;
+
+        const image = new Image();
+        image.src = url;
+
+        let loadImage = new Promise((resolve) => {
+          image.addEventListener('load', () => {
+            resolve({
+              width: image.naturalWidth,
+              height: image.naturalHeight,
+            });
+          });
+        });
+        let {width = 0, height = 0} = await loadImage;
+
+        return {
+          url,
+          width,
+          height,
+        };
       },
     },
 

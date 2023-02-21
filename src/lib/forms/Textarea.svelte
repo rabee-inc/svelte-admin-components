@@ -19,9 +19,11 @@
     // 画像以外は弾く
     if (/^image/.test(file.type) === false) return ;
 
-    let url = await actions.image.upload({
+    let { url, width, height } = await actions.image.upload({
       file,
     });
+
+    console.log(url, width, height, 'upload');
 
     let text = `![${file.name}](${url})`;
 

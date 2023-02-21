@@ -34,3 +34,16 @@ export function pathToContent(contents, path) {
 
   return getByPath(contents, content_id);
 };
+
+// imgix画像の取得
+export function getImgixUrl(image, width = null, height = null) {
+  let dpr = (typeof devicePixelRatio === 'number') ? devicePixelRatio : 1;
+  let url = `${image}?auto=format&cs=srgb&fit=crop&dpr=${dpr}`;
+  if (width) {
+    url += `&w=${width}`;
+  }
+  if (height) {
+    url += `&h=${height}`;
+  }
+  return url;
+};
