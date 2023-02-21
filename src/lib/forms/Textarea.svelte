@@ -25,7 +25,7 @@
       file,
     });
 
-    let imgix_url = getImgixUrl(url, width < 2000 ? width : 2000);
+    let imgix_url = getImgixUrl(url, (width < 2000 ? width : 2000));
 
     let text = `![${file.name}](${imgix_url})`;
 
