@@ -41,7 +41,14 @@ export function getImgixUrl(image, width=null, height=null, fit='crop') {
   // if (!/imgix\.net/.test(image)) return image;
   let dpr = (typeof devicePixelRatio === 'number') ? devicePixelRatio : 1;
   let url_obj = new URL(image);
-  let query_array = Object.entries({ auto: 'format', cs: 'srgb', fit, dpr, width, height });
+  let query_array = Object.entries({
+    auto: 'format',
+    cs: 'srgb',
+    fit,
+    dpr,
+    width,
+    height
+  });
 
   query_array.forEach(([key, value]) => {
     if (!value) return ;
