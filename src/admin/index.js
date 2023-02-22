@@ -122,7 +122,7 @@ const admin = {
         const image = new Image();
         image.src = url;
 
-        let loadImage = new Promise((resolve) => {
+        let loadImagePromise = new Promise((resolve) => {
           image.addEventListener('load', () => {
             resolve({
               width: image.naturalWidth,
@@ -130,7 +130,7 @@ const admin = {
             });
           });
         });
-        let {width = 0, height = 0} = await loadImage;
+        let {width = 0, height = 0} = await loadImagePromise;
 
         return {
           url,
