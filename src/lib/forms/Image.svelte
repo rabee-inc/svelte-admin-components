@@ -18,11 +18,11 @@
       _changed = false;
 
       try {
-        let v = await actions.image.upload({
+        let { url } = await actions.image.upload({
           value,
           file: _file,
         });
-        value = v;
+        value = url;
       }
       catch (e) {
         // 失敗した場合はフラグを戻す
