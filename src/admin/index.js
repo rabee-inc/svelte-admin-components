@@ -117,9 +117,9 @@ const admin = {
         return item && item.url;
       },
       async upload({value, file}) {
-        let url = URL.createObjectURL(file);
+        let object_url = URL.createObjectURL(file);
         let image = new Image();
-        image.src = url;
+        image.src = object_url;
 
         let loadImagePromise = new Promise((resolve, reject) => {
           image.onload = resolve;
@@ -128,8 +128,9 @@ const admin = {
 
         try {
           await loadImagePromise;
+          // サーバーへ画像をアップロードし、 object_url の代わりにその URL を返してください
           return {
-            url,
+            url: object_url,
             width: image.naturalWidth || 0,
             height: image.naturalHeight || 0,
           };
@@ -140,6 +141,7 @@ const admin = {
         finally {
           image = null;
           loadImagePromise = null;
+          URL.revokeObjectURL(object_url);
         }
       },
     },
