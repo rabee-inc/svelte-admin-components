@@ -117,26 +117,32 @@ const admin = {
         return item && item.url;
       },
       async upload({value, file}) {
-        let url = URL.createObjectURL(file);
+        let object_url = URL.createObjectURL(file);
+        let image = new Image();
+        image.src = object_url;
 
-        const image = new Image();
-        image.src = url;
-
-        let loadImagePromise = new Promise((resolve) => {
-          image.addEventListener('load', () => {
-            resolve({
-              width: image.naturalWidth,
-              height: image.naturalHeight,
-            });
-          });
+        let loadImagePromise = new Promise((resolve, reject) => {
+          image.onload = resolve;
+          image.onerror = reject;
         });
-        let {width = 0, height = 0} = await loadImagePromise;
 
-        return {
-          url,
-          width,
-          height,
-        };
+        try {
+          await loadImagePromise;
+          // サーバーへ画像をアップロードし、 object_url の代わりにその URL を返してください
+          return {
+            url: object_url,
+            width: image.naturalWidth || 0,
+            height: image.naturalHeight || 0,
+          };
+        }
+        catch (e) {
+          throw new Error('画像の読み込みに失敗しました');
+        }
+        finally {
+          image = null;
+          loadImagePromise = null;
+          URL.revokeObjectURL(object_url);
+        }
       },
     },
 
