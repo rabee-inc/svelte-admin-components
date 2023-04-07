@@ -7,11 +7,11 @@
   import { gfm } from '@milkdown/preset-gfm';
   import { clipboard } from '@milkdown/plugin-clipboard';
   import { insert, callCommand } from '@milkdown/utils';
-
   import { history } from '@milkdown/plugin-history'
   import { indent } from '@milkdown/plugin-indent'
   import { cursor } from '@milkdown/plugin-cursor'
   import { commonmark } from '@milkdown/preset-commonmark';
+  import { listener, listenerCtx } from "@milkdown/plugin-listener";
 
   // styles
   import '@milkdown/theme-nord/style.css'
@@ -37,6 +37,7 @@
     }
   }
 
+
   // readonly を逆にして editable set
   const editable = () => !schema.opts?.readonly;
 
@@ -46,14 +47,18 @@
       .config((ctx) => {
         ctx.set(rootCtx, element);
         ctx.set(defaultValueCtx, value);
+        ctx.get(listenerCtx).markdownUpdated((ctx, markdown, prevMarkdown) => {
+            value = markdown;
+        });
         ctx.update(editorViewOptionsCtx, (prev) => ({
           ...prev,
           editable,
-        }))
+        }));
       })
       .config(nord)
       .use(commonmark)
       .use(history)
+      .use(listener)
       .use(indent)
       .use(cursor)
       .use(clipboard)
@@ -95,7 +100,7 @@
 
     insertValue(text);
   };
-  
+
 </script>
 
 <template lang='pug'>

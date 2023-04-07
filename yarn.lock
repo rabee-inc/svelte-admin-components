@@ -117,6 +117,16 @@
     "@milkdown/utils" "7.1.1"
     tslib "^2.5.0"
 
+"@milkdown/plugin-listener@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-listener/-/plugin-listener-7.1.1.tgz#ab51b3622a323a1de6fbefa46737463e3a512d06"
+  integrity sha512-DR7U6PPhIEHgUhEsob6+AU6ewfUhU4ozOY5X+zQbbfpkPFBlxi9y05udYpvS4IyH92UXVUatIUPaU9vE9MmXvw==
+  dependencies:
+    "@milkdown/utils" "7.1.1"
+    "@types/lodash.debounce" "^4.0.7"
+    lodash.debounce "^4.0.8"
+    tslib "^2.5.0"
+
 "@milkdown/plugin-tooltip@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@milkdown/plugin-tooltip/-/plugin-tooltip-7.1.1.tgz#0a17eada154545b50f85bb871d3a83a481a13e03"
