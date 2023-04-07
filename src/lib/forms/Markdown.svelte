@@ -5,6 +5,7 @@
   import { Editor, rootCtx, defaultValueCtx, EditorStatus, editorViewCtx, serializerCtx } from '@milkdown/core';
   import { nord } from '@milkdown/theme-nord';
   import { gfm } from '@milkdown/preset-gfm';
+  import { clipboard } from '@milkdown/plugin-clipboard';
   import { insert, callCommand } from '@milkdown/utils';
 
   import { history } from '@milkdown/plugin-history'
@@ -48,6 +49,7 @@
       .use(history)
       .use(indent)
       .use(cursor)
+      .use(clipboard)
       .use(gfm)
       .create();
   };
