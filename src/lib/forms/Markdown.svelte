@@ -71,6 +71,12 @@
     return value;
   };
 
+  // 値を挿入
+  export const insertValue = (value) => {
+    if (!value.trim) return ;
+    editor.action(insert(value));
+  };
+
   // 画像埋め込み対応
   let onDrop = async (e) => {
     var file = e.dataTransfer.files[0];
@@ -87,14 +93,9 @@
 
     let text = `![${file.name}](${imgix_url})`;
 
-    // 差し込む
-    let cursor_position = editorElement.selectionStart;
-
-    let before = value.substring(0, cursor_position);
-    let after = value.substring(cursor_position, value.length);
-
-    value = before + text + after;
+    insertValue(text);
   };
+  
 </script>
 
 <template lang='pug'>
