@@ -47,7 +47,7 @@ export default {
         schemas.title,
         {
           key: "description",
-          label: "description",
+          label: "markdown",
           type: "markdown",
           class: "",
           opts: {

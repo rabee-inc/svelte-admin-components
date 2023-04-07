@@ -103,5 +103,5 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    div.markdown-article.w-full.border.rounded-4.p8(bind:this='{editorElement}', rows='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+    div.markdown-styles.w-full.border.rounded-4.p8(bind:this='{editorElement}', rows='{schema.opts?.cols || 8}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
 </template>
