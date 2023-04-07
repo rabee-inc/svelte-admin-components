@@ -2,7 +2,7 @@
 
 <script>
   import { getImgixUrl } from "$lib/utils";
-  import { Editor, rootCtx, defaultValueCtx, EditorStatus, editorViewCtx, serializerCtx } from '@milkdown/core';
+  import { Editor, rootCtx, defaultValueCtx, EditorStatus, editorViewCtx, serializerCtx, editorViewOptionsCtx } from '@milkdown/core';
   import { nord } from '@milkdown/theme-nord';
   import { gfm } from '@milkdown/preset-gfm';
   import { clipboard } from '@milkdown/plugin-clipboard';
@@ -37,12 +37,19 @@
     }
   }
 
+  // readonly を逆にして editable set
+  const editable = () => !schema.opts?.readonly;
+
   // editor 初期化
   const initializeEditor = async (element) => {
     editor = await Editor.make()
       .config((ctx) => {
         ctx.set(rootCtx, element);
         ctx.set(defaultValueCtx, value);
+        ctx.update(editorViewOptionsCtx, (prev) => ({
+          ...prev,
+          editable,
+        }))
       })
       .config(nord)
       .use(commonmark)
