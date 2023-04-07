@@ -48,7 +48,7 @@ export default {
         {
           key: "description",
           label: "description",
-          type: "textarea",
+          type: "markdown",
           class: "",
           opts: {
             cols: ""
