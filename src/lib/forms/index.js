@@ -2,6 +2,7 @@
 // contents
 import Text from './Text.svelte';
 import Textarea from './Textarea.svelte';
+import Markdown from './Markdown.svelte';
 import Number from './Number.svelte';
 import Switch from './Switch.svelte';
 import Date from './Date.svelte';
@@ -18,6 +19,7 @@ import File from './File.svelte';
 let forms = {
   text: Text,
   textarea: Textarea,
+  markdown: Markdown,
   number: Number,
   switch: Switch,
   date: Date,
