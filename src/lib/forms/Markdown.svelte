@@ -14,7 +14,6 @@
   import { listener, listenerCtx } from "@milkdown/plugin-listener";
 
   // styles
-  import '@milkdown/theme-nord/style.css'
   import 'prosemirror-tables/style/tables.css'
 
 
