@@ -46,6 +46,7 @@
 
 <script>
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import { Meta } from "svelte-head";
 
   import { ContentList, ContentForm, Header } from "svelte-admin-components";
@@ -58,6 +59,7 @@
 
   let actions = admin.actions;
   let item;
+  let list;
   let form;
 
   // ライブリロード
@@ -74,6 +76,25 @@
     else {
       goto(url);
     }
+  };
+
+  // 検索
+  let onSearch = (e) => {
+    let query = e.detail.query;
+    let url = new URL($page.url.href);
+
+    if (query) {
+      url.searchParams.set('q', query);
+    }
+    else {
+      url.searchParams.delete('q');
+    }
+
+    history.replaceState(null, null, url.href);
+
+    // goto(url.href, {
+    //   replaceState: true,
+    // });
   };
 
   // item 取得
@@ -203,7 +224,10 @@
 
   $: {
     path;
-    fetchItem();
+    
+    if (mode === 'edit') {
+      fetchItem();
+    }
   }
 </script>
 
@@ -213,10 +237,11 @@
   main.s-full.overflow-scroll
     Header.p16.sticky.t0.box-shadow.bg-white.relative.z100(path='{path}', actions='{actions}', buttons='{getHeaderButtons(path)}')
 
-    div.p16
-      +if('mode === "list"')
-        div.bg-white.box-shadow.rounded-4.mb16
-          ContentList(path='{path}', content='{content}', actions='{actions}', limit='{16}', on:select='{onSelect}')
-      +if('mode === "edit"')
-        ContentForm(bind:this='{form}', path='{path}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
+    +key('path')
+      div.p16
+        +if('mode === "list"')
+          div.bg-white.box-shadow.rounded-4.mb16
+            ContentList(bind:this='{list}', path='{path}', content='{content}', actions='{actions}', query!='{$page.url.searchParams.get("q")}', limit='{16}', on:select='{onSelect}', on:search='{onSearch}')
+        +if('mode === "edit"')
+          ContentForm(bind:this='{form}', path='{path}', value='{item}', sections='{content.sections}', actions='{admin.actions}', on:submit='{onSubmit}')
 </template>
