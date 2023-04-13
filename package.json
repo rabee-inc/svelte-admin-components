@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.1",
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/adapter-node": "next",
-    "@sveltejs/kit": "next",
+    "@sveltejs/adapter-auto": "1.0.0-next.50",
+    "@sveltejs/adapter-node": "1.0.0-next.78",
+    "@sveltejs/kit": "1.0.0-next.350",
     "less": "^4.1.2",
     "meltline": "^0.1.15",
     "pug": "^3.0.2",
