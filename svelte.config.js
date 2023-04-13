@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapterAuto from '@sveltejs/adapter-auto';
+import adapterNode from '@sveltejs/adapter-node';
 import sveltePreprocess from 'svelte-preprocess';
 const preprocess = sveltePreprocess({
   typescript: true,
@@ -6,10 +7,21 @@ const preprocess = sveltePreprocess({
 });
 import path from 'path';
 
+let adapter = null;
+
+if (adapterAuto().name !== '@sveltejs/adapter-auto') {
+  // vercel/netlify/cloudflare pages
+  adapter = adapterAuto();
+}
+else {
+  // auto で hit しなかったら強制的に node にする
+  adapter = adapterNode();
+}
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
+    adapter,
 
     // Override http methods in the Todo forms
     methodOverride: {
