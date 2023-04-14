@@ -53,6 +53,10 @@
         ctx.update(editorViewOptionsCtx, (prev) => ({
           ...prev,
           editable,
+          handleDOMEvents: {
+          ...prev.handleDOMEvents,
+          click: handleElementClick,
+        },
         }));
       })
       .config(nord)
@@ -64,6 +68,16 @@
       .use(clipboard)
       .use(gfm)
       .create();
+  };
+
+  const handleElementClick = (view, event) => {
+    console.log("Element clicked:", event.target);
+    if (event.target.tagName.toLowerCase() === 'a') {
+      event.preventDefault();
+      // 新しいタブでリンクを開く
+      const href = event.target.getAttribute('href');
+      window.open(href, '_blank');
+    }
   };
 
   // 値を取得
