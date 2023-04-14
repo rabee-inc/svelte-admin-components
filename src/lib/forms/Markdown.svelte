@@ -54,9 +54,9 @@
           ...prev,
           editable,
           handleDOMEvents: {
-          ...prev.handleDOMEvents,
-          click: handleElementClick,
-        },
+            ...prev.handleDOMEvents,
+            click: handleElementClick,
+          },
         }));
       })
       .config(nord)
