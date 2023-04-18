@@ -1,7 +1,6 @@
 {
   "name": "svelte-admin-components",
   "version": "0.0.29",
-  "main": "index.js",
   "description": "svelte-admin-components is ...",
   "keywords": [
     "svelte",
@@ -15,33 +14,47 @@
     "setup": "yarn",
     "clean": "rm -rf node_modules yarn.lock .svelte-kit build",
     "reset": "yarn clean; yarn setup",
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
     "start": "node build/index.js",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
+    "package": "svelte-package -o ./package",
+    "dev": "vite dev --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "deploy": "NODE_ENV=development npm run build; gcloud app deploy --project $npm_package_config_gae_stg gae_stg.yaml --version svelte -q",
+    "deploy:prod": "npm run build; gcloud app deploy --project $npm_package_config_gae_prod gae_prod.yaml --version svelte -q",
     "release": "npm run package && cd package && npm publish",
     "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.1",
-    "@sveltejs/adapter-auto": "1.0.0-next.50",
-    "@sveltejs/adapter-node": "1.0.0-next.78",
-    "@sveltejs/kit": "1.0.0-next.350",
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/adapter-node": "^1.2.1",
+    "@sveltejs/kit": "^1.9.3",
+    "@sveltejs/package": "^2.0.2",
+    "@types/cookie": "^0.5.1",
+    "@types/underscore": "^1.11.4",
+    "svelte-check": "^3.0.1",
+    "svelte-preprocess": "^4.10.7",
     "less": "^4.1.2",
     "meltline": "^0.1.15",
     "pug": "^3.0.2",
     "svelte": "^3.48.0",
     "svelte-head": "^0.0.6",
-    "svelte-preprocess": "^4.10.1",
-    "svelte2tsx": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "tailwindcss": "^3.3.1",
-    "typescript": "^4.5.5"
+    "svelte2tsx": "^0.6.10",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "peerDependencies": {
+    "svelte": "^3.54.0",
+    "@sveltejs/kit": "^1.5.0"
   },
   "type": "module",
   "dependencies": {
     "@jalik/deep-extend": "^1.1.14",
+    "express-useragent": "^1.0.15",
     "@milkdown/core": "7.1.1",
     "@milkdown/ctx": "7.1.1",
     "@milkdown/plugin-clipboard": "7.1.1",
@@ -58,6 +71,15 @@
     "dayjs": "^1.11.0",
     "sortablejs": "^1.15.0",
     "svelte-modal-manager": "^0.0.7"
+  },
+  "files": ["package"],
+  "main": "./package/index.js",
+  "exports": {
+    ".": {
+      "types": "./package/index.d.ts",
+      "svelte": "./package/index.js",
+      "default": "./package/index.js"
+    }
   },
   "repository": {
     "type": "git",
