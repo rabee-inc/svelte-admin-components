@@ -1,5 +1,6 @@
-import adapterAuto from '@sveltejs/adapter-auto';
-import adapterNode from '@sveltejs/adapter-node';
+// import adapterAuto from '@sveltejs/adapter-auto';
+// import adapterNode from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-auto';
 import sveltePreprocess from 'svelte-preprocess';
 import path from 'path';
 
@@ -8,22 +9,23 @@ const preprocess = sveltePreprocess({
   // ...
 });
 
-let adapter = null;
+// let adapter = null;
 
-if (adapterAuto().name !== '@sveltejs/adapter-auto') {
-  // vercel/netlify/cloudflare pages
-  adapter = adapterAuto();
-}
-else {
-  // auto で hit しなかったら強制的に node にする
-  adapter = adapterNode();
-}
+// if (adapterAuto().name !== '@sveltejs/adapter-auto') {
+//   // vercel/netlify/cloudflare pages
+//   adapter = adapterAuto();
+// }
+// else {
+//   // auto で hit しなかったら強制的に node にする
+//   adapter = adapterNode();
+// }
 
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter,
+    // adapter,
+    adapter: adapter(),
     alias: {
       '$components': path.resolve('./src/components'),
       "$admin": path.resolve('./src/admin'),
