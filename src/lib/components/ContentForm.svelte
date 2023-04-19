@@ -62,14 +62,15 @@
     return instances;
   };
 
-  let getObjectSchema = () => {
-    return {
-      type: "object",
-      opts: {
-        schemas: schemas,
-      }
-    };
-  };
+  // 使われてなさそうで、エラー出るので非表示
+  // let getObjectSchema = () => {
+  //   return {
+  //     type: "object",
+  //     opts: {
+  //       schemas: schemas,
+  //     }
+  //   };
+  // };
 
   let sectionToObjectSchema = (section) => {
     return {

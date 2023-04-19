@@ -1,5 +1,3 @@
-<script context="module">
-</script>
 <script>
   import admin from "$admin/index.js"
 

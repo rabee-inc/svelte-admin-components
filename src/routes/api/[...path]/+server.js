@@ -1,3 +1,4 @@
+import { json } from '@sveltejs/kit';
 import dummy from "$admin/dummy";
 
 // path to content_id
@@ -18,19 +19,17 @@ let pathsToId = (paths) => {
 /*
  * index/get
  */
-export async function get({params}) {
+export async function GET({params}) {
   let paths = params.path.split('/');
   let content_id = pathsToContentId(paths);
   let items = dummy[content_id];
 
   if (paths.length % 2 === 1) {
     // 一覧
-    return {
-      body: {
-        content_id,
-        items,
-      }
-    };
+    return json({
+      content_id,
+      items,
+    });
   }
   else {
     // 単体取得
@@ -38,21 +37,19 @@ export async function get({params}) {
     let item = items.find(item => item['id'] === id);
 
     if (!item) {
-      return {
-        status: '404',
-        body: {
-          message: `Not found: ${params['id']}`,
-        }
-      }
+      return json({
+        message: `Not found: ${params['id']}`,
+      },
+      {
+        status: 404
+      })
     }
 
     // 一覧
-    return {
-      body: {
-        content_id,
-        item,
-      }
-    };
+    return json({
+      content_id,
+      item,
+    });
   }
 };
 
@@ -60,7 +57,7 @@ export async function get({params}) {
 /*
  * post
  */
-export async function post({params, request}) {
+export async function POST({params, request}) {
   let paths = params.path.split('/');
   let content_id = pathsToContentId(paths);
   let items = dummy[content_id];
@@ -77,18 +74,16 @@ export async function post({params, request}) {
 
   items.unshift(item);
 
-  return {
-    body: {
-      item,
-    }
-  };
+  return json({
+    item,
+  });
 };
 
 
 /*
  * put
  */
-export async function put({params, request}) {
+export async function PUT({params, request}) {
   let paths = params.path.split('/');
   let content_id = pathsToContentId(paths);
   let items = dummy[content_id];
@@ -98,29 +93,27 @@ export async function put({params, request}) {
   let item = items.find(item => item['id'] === id);
 
   if (!item) {
-    return {
-      status: '404',
-      body: {
-        message: `Not found: ${id}`,
-      }
-    }
+    return json({
+      message: `Not found: ${id}`,
+    },
+    {
+      status: 404
+    })
   }
 
   let body = await request.json();
   Object.assign(item, body.item);
 
-  return {
-    body: {
-      item,
-    }
-  };
+  return json({
+    item,
+  });
 };
 
 
 /*
  * del
  */
-export async function del({params, request}) {
+export async function DELETE({params, request}) {
   let paths = params.path.split('/');
   let content_id = pathsToContentId(paths);
   let items = dummy[content_id];
@@ -130,19 +123,17 @@ export async function del({params, request}) {
   let index = items.findIndex(item => item['id'] === id);
 
   if (index === -1) {
-    return {
-      status: '404',
-      body: {
-        message: `Not found: ${id}`,
-      }
-    }
+    return json({
+      message: `Not found: ${id}`,
+    },
+    {
+      status: 404
+    })
   }
 
   items.splice(index, 1);
 
-  return {
-    body: {
-      message: `deleted ${params['id']}`,
-    }
-  };
+  return json({
+    message: `deleted ${params['id']}`,
+  });
 };

@@ -23,6 +23,8 @@ export function pathToContent(contents, path) {
   // path 自体にマッチした場合はそれを返す
   if (contents[path]) return contents[path];
 
+  // pathがなかったら null を返す
+  if (!path) return null;
   let paths = path.split('/');
 
   // 偶数だけ残す

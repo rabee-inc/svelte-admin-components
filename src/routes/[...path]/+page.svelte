@@ -1,60 +1,14 @@
-<script context="module">
-  import admin from "$admin/index.js"
-
-  export async function load({fetch, params}) {
-    let path = params.path;
-    let paths = params.path.split('/');
-    let mode;
-
-    // mode の判定
-    if (paths.length % 2 === 1) {
-      mode = 'list';
-    }
-    else {
-      if (paths[paths.length-1] === '_schema') {
-        mode = 'schema';
-      }
-      else {
-        mode = 'edit';
-      }
-    }
-
-    let id;
-
-    if (mode !== 'list') {
-      id = admin.actions.pathToId(path);
-    }
-
-    let content = admin.actions.pathToContent(path);
-    if (!content) {
-      return {
-        status: 404,
-        error: new Error('content not found!'),
-      };
-    }
-
-    return {
-      props: {
-        path,
-        mode,
-        content,
-        id,
-      }
-    };
-  };
-</script>
-
 <script>
-  import { goto } from "$app/navigation";
+
+  import { afterNavigate, goto } from "$app/navigation";
   import { Meta } from "svelte-head";
-
-  import { ContentList, ContentForm, Header } from "svelte-admin-components";
+  import { page } from "$app/stores";
+  import admin from "$admin/index.js"
+  import { onMount } from "svelte";
   import { indicator } from "svelte-modal-manager";
+  import { ContentList, ContentForm, Header } from "svelte-admin-components";
 
-  export let path;
-  export let mode;
-  export let content;
-  export let id;
+  $: ({ path, mode, id, content } = $page.data);
 
   let actions = admin.actions;
   let item;
@@ -180,7 +134,8 @@
           label: 'DELETE',
           kind: 'danger',
           onclick: (e) => {
-            onDelete(e);
+            // NOTE: e 使う場合は入れる
+            onDelete();
           },
           shouldShow() {
             return content.settings.delete;
