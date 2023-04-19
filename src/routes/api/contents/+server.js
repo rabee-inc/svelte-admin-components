@@ -8,5 +8,5 @@ export async function POST({request, params, url}) {
   fs.writeFileSync('src/admin/contents.json', JSON.stringify(body.contents, null, '  '));
 
   return json({
-});
+  });
 };
