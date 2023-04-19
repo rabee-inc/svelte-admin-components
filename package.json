@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "svelte": "^3.55.1",
-    "@sveltejs/kit": "^1.5.0"
+    "@sveltejs/kit": "^1.9.3"
   },
   "type": "module",
   "dependencies": {
