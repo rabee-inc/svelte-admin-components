@@ -23,7 +23,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "deploy": "NODE_ENV=development npm run build; gcloud app deploy --project $npm_package_config_gae_stg gae_stg.yaml --version svelte -q",
     "deploy:prod": "npm run build; gcloud app deploy --project $npm_package_config_gae_prod gae_prod.yaml --version svelte -q",
-    "release": "npm run package && cd package && npm publish",
+    "release": "npm run package && npm publish",
     "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/"
   },
   "devDependencies": {
