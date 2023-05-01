@@ -47,9 +47,6 @@
       .config((ctx) => {
         ctx.set(rootCtx, element);
         ctx.set(defaultValueCtx, value);
-        ctx.get(listenerCtx).markdownUpdated((ctx, markdown, prevMarkdown) => {
-            value = markdown;
-        });
         ctx.update(editorViewOptionsCtx, (prev) => ({
           ...prev,
           editable,
@@ -67,7 +64,7 @@
   };
 
   // 値を取得
-  export const getMarkdown = () => {
+  export const getValue = () => {
     let value = editor.action((ctx) => {
       const editorView = ctx.get(editorViewCtx);
       const serializer = ctx.get(serializerCtx);
