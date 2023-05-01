@@ -1,6 +1,6 @@
 {
   "name": "@rabee-org/svelte-admin-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "svelte-admin-components is ...",
   "keywords": [
     "svelte",
@@ -72,7 +72,9 @@
     "sortablejs": "^1.15.0",
     "svelte-modal-manager": "^0.0.7"
   },
-  "files": ["package"],
+  "files": [
+    "package"
+  ],
   "main": "./package/index.js",
   "exports": {
     ".": {
