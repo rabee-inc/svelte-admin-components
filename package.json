@@ -72,9 +72,7 @@
     "sortablejs": "^1.15.0",
     "svelte-modal-manager": "^0.0.7"
   },
-  "files": [
-    "package"
-  ],
+  "files": ["package"],
   "main": "./package/index.js",
   "exports": {
     ".": {
