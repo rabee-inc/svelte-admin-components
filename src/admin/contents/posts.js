@@ -1,4 +1,5 @@
 import { headings, schemas, sections } from "$admin/contents/template";
+import { openModal } from "svelte-modal-manager";
 
 export default {
   label: "投稿",
@@ -51,7 +52,26 @@ export default {
           type: "markdown",
           class: "",
           opts: {
-            cols: ""
+            cols: "",
+            actions: [
+              {
+                label: 'image',
+                onclick: ({insertValue, value, actions}) => {
+                  let modal = openModal('admin-content', {
+                    path: 'images',
+                    actions,
+                  });
+
+                  modal.$on('select', (e) => {
+                    let item = e.detail.item;
+
+                    insertValue(`![${item.name}](${item.url})`);
+
+                    modal.close();
+                  });              
+                },
+              }
+            ]
           }
         },
         {
