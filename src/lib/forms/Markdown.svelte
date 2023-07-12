@@ -98,6 +98,15 @@
     insertValue(text);
   };
 
+  const onAction = async (action) => {
+    await action.onclick({
+      value,
+      item,
+      actions,
+      insertValue,
+    });
+  };
+
 </script>
 
 <template lang='pug'>
@@ -106,5 +115,8 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    div.markdown-styles.w-full.border.rounded-4.p8(bind:this='{editorElement}', rows='{schema.opts?.cols || 8}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+  div.mb4
+    +each('schema.opts.actions || [] as action')
+      button.button.px8.py6.fs12(type='button', on:click!='{() => {onAction(action)}}') {action.label}
+  div.markdown-styles.w-full.border.rounded-4.p8(bind:this='{editorElement}', rows='{schema.opts?.cols || 8}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
 </template>
