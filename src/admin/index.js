@@ -1,7 +1,7 @@
 
 import { goto } from '$app/navigation';
 import { pathToContent } from 'svelte-admin-components';
-import { openModal } from 'svelte-modal-manager';
+import { openModal } from '@rabee-org/svelte-modal-manager';
 import contents from './contents/index.js';
 
 let isGuest = () => {

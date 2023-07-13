@@ -330,7 +330,7 @@ export const SCHEMA_CONTENT = [
 
 
 // setup modal
-import { registerModalComponent } from 'svelte-modal-manager';
+import { registerModalComponent } from '@rabee-org/svelte-modal-manager';
 
 import * as ContentModal from './modals/Content.svelte';
 

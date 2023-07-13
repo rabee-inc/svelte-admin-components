@@ -1,5 +1,5 @@
 import { headings, schemas, sections } from "$admin/contents/template";
-import { openModal } from "svelte-modal-manager";
+import { openModal } from "@rabee-org/svelte-modal-manager";
 
 export default {
   label: "投稿",

@@ -3,7 +3,7 @@
 <script>
   import { getByPath } from "$lib/utils";
   import { onMount } from "svelte";
-  import { openModal } from 'svelte-modal-manager';
+  import { openModal } from '@rabee-org/svelte-modal-manager';
 
   export let path;
   export let schema;
