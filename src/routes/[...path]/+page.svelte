@@ -1,7 +1,7 @@
 <script>
 
   import { afterNavigate, goto } from "$app/navigation";
-  import { Meta } from "svelte-head";
+  import { Meta } from "@rabee-org/svelte-head";
   import { page } from "$app/stores";
   import admin from "$admin/index.js"
   import { onMount } from "svelte";

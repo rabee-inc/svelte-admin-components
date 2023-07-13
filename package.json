@@ -40,7 +40,6 @@
     "meltline": "^0.1.15",
     "pug": "^3.0.2",
     "svelte": "^3.55.1",
-    "svelte-head": "^0.0.6",
     "@tailwindcss/typography": "^0.5.9",
     "tailwindcss": "^3.3.1",
     "svelte2tsx": "^0.6.10",
@@ -68,6 +67,7 @@
     "@milkdown/prose": "7.1.1",
     "@milkdown/theme-nord": "7.1.1",
     "@milkdown/transformer": "7.1.1",
+    "@rabee-org/svelte-head": "^0.1.0",
     "@rabee-org/svelte-modal-manager": "^0.1.0",
     "dayjs": "^1.11.0",
     "sortablejs": "^1.15.0"

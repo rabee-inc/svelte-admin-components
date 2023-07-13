@@ -368,6 +368,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
   integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
+"@rabee-org/svelte-head@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@rabee-org/svelte-head/-/svelte-head-0.1.0.tgz#e506b1a909cbabc32b4c284ddefdb3ca9e1397d2"
+  integrity sha512-Uhw5LyzyEmubDonjMMVTauziUlbIF7sj+nFM3S+o19FZ3tMpDKdj5G0L5OTqc9xJVvAopuDdJ7oqfFo96z5rQA==
+
 "@rabee-org/svelte-modal-manager@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@rabee-org/svelte-modal-manager/-/svelte-modal-manager-0.1.0.tgz#2ddb4c7dd995118435d1972be051e26bf83e2e8a"
@@ -2410,11 +2415,6 @@ svelte-check@^3.0.1:
     sade "^1.7.4"
     svelte-preprocess "^5.0.3"
     typescript "^5.0.3"
-
-svelte-head@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/svelte-head/-/svelte-head-0.0.6.tgz#99ef7840a81257ab9c0c7d772cde67563e0d7d8c"
-  integrity sha512-zyyEnl4EQwGtJ1oMUd4b9nnvOeHQFS4NY9cMYjDeL6kyvfYFQSv3lX7b1WJZ2a7eBeC17D7SYp0JS6TYQdKRBA==
 
 svelte-hmr@^0.15.1:
   version "0.15.1"
