@@ -68,9 +68,10 @@
     "@milkdown/theme-nord": "7.1.1",
     "@milkdown/transformer": "7.1.1",
     "@rabee-org/svelte-head": "^0.1.0",
-    "@rabee-org/svelte-modal-manager": "^0.1.0",
+    "@rabee-org/svelte-modal-manager": "0.2.1",
     "dayjs": "^1.11.0",
-    "sortablejs": "^1.15.0"
+    "sortablejs": "^1.15.0",
+    "modal:create": "svelte-modal-manager create -t=pug -d ./src/components/modals -s less"
   },
   "files": ["package"],
   "main": "./package/index.js",

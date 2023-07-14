@@ -327,11 +327,3 @@ export const SCHEMA_CONTENT = [
     ]
   }
 ];
-
-
-// setup modal
-import { registerModalComponent } from '@rabee-org/svelte-modal-manager';
-
-import * as ContentModal from './modals/Content.svelte';
-
-registerModalComponent('admin-content', ContentModal);

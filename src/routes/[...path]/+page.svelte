@@ -5,7 +5,7 @@
   import { page } from "$app/stores";
   import admin from "$admin/index.js"
   import { onMount } from "svelte";
-  import { indicator } from "@rabee-org/svelte-modal-manager";
+  import { indicator } from "$lib/scripts/modal";
   import { ContentList, ContentForm, Header } from "svelte-admin-components";
 
   $: ({ path, mode, id, content } = $page.data);

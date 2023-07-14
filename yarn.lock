@@ -373,10 +373,10 @@
   resolved "https://registry.yarnpkg.com/@rabee-org/svelte-head/-/svelte-head-0.1.0.tgz#e506b1a909cbabc32b4c284ddefdb3ca9e1397d2"
   integrity sha512-Uhw5LyzyEmubDonjMMVTauziUlbIF7sj+nFM3S+o19FZ3tMpDKdj5G0L5OTqc9xJVvAopuDdJ7oqfFo96z5rQA==
 
-"@rabee-org/svelte-modal-manager@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@rabee-org/svelte-modal-manager/-/svelte-modal-manager-0.1.0.tgz#2ddb4c7dd995118435d1972be051e26bf83e2e8a"
-  integrity sha512-2kvxWIAgq9haMpbXZL4WJLlw/1EbOur9so102JW4k1XQg1WvY17CED5RC8LzB9x6Zg2PqrB1KzwVXlj79+YOYQ==
+"@rabee-org/svelte-modal-manager@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rabee-org/svelte-modal-manager/-/svelte-modal-manager-0.2.1.tgz#4c8f0ac5b3cc770a7bb4e5aefd8520fff15e5cfa"
+  integrity sha512-zsi7TR41mCjOrGc4iTNMr7TbOuWwozkoRxMVAFb5OSXyysUb0g9Mg+n9KxdmOymUEIY0aBLhKMBmR4qMuFPWhw==
 
 "@rollup/plugin-commonjs@^24.0.0":
   version "24.1.0"
