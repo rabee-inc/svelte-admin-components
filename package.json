@@ -25,7 +25,7 @@
     "deploy:prod": "npm run build; gcloud app deploy --project $npm_package_config_gae_prod gae_prod.yaml --version svelte -q",
     "release": "npm run package && npm publish",
     "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/",
-    "modal:create": "svelte-modal-manager create -t=pug -d ./src/components/modals -s less"
+    "modal:create": "svelte-modal-manager create -t=pug -d ./src/lib/modals -s less"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.1",

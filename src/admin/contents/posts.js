@@ -1,5 +1,5 @@
 import { headings, schemas, sections } from "$admin/contents/template";
-import { openModal } from "@rabee-org/svelte-modal-manager";
+import { modalContent } from "$modal";
 
 export default {
   label: "投稿",
@@ -57,7 +57,7 @@ export default {
               {
                 label: 'image',
                 onclick: ({insertValue, value, actions}) => {
-                  let modal = openModal('admin-content', {
+                  let modal = modalContent.open({
                     path: 'images',
                     actions,
                   });

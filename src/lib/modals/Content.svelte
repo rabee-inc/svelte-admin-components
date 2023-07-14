@@ -1,27 +1,43 @@
 <svelte:options accessors={true}/>
 
+<script context="module">
+  /** @type {import('@rabee-org/svelte-modal-manager/types').ModalDefaultOptions} */
+  export const { dismissible, position, focus, transition, overlay, timeout } = {
+    // dismissible: false,
+    // position: { x: 'center', y: 'middle' },
+    // focus: false,
+    // transition: {
+    //   type: fly,
+    //   props: {
+    //     y: 8,
+    //     duration: 256,
+    //   },
+    // },
+    // overlay: {
+    //   styles: {
+    //     background: 'rgba(0, 0, 0, 0.75)',
+    //   },
+    // },
+    // timeout: 2000,
+  };
+</script>
+
 <script>
   import ContentList from '$lib/components/ContentList.svelte';
   import { getByPath } from '$lib/utils';
-
-  import { createEventDispatcher, onMount } from 'svelte';
-  export const dispatch = createEventDispatcher();
-  // svelte-ignore unused-export-let
-  export let close;
-  // svelte-ignore unused-export-let
-  export let awaitClose;
+  import { getModalContext } from '@rabee-org/svelte-modal-manager';
+  
+  const { close, awaitClose, result, isClosed, dispatch } = getModalContext();
 
   export let path;
   export let actions;
 
-  export let value;
-
   let content = actions.pathToContent(path);
 
   let onSelect = (e) => {
-    value = e.detail.item;
+    $result = e.detail.item;
     dispatch('select', {
-      item: value,
+      item: $result,
     });
   };
 

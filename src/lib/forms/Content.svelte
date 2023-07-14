@@ -3,7 +3,7 @@
 <script>
   import { getByPath } from "$lib/utils";
   import { onMount } from "svelte";
-  import { openModal } from '@rabee-org/svelte-modal-manager';
+  import { modalContent } from "$modal";
 
   export let path;
   export let schema;
@@ -28,7 +28,7 @@
   });
 
   let openContentModal = () => {
-    let modal = openModal('admin-content', {
+    let modal = modalContent.open({
       path: schema.opts.content_path,
       actions,
     });
