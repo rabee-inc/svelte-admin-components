@@ -24,7 +24,8 @@
     "deploy": "NODE_ENV=development npm run build; gcloud app deploy --project $npm_package_config_gae_stg gae_stg.yaml --version svelte -q",
     "deploy:prod": "npm run build; gcloud app deploy --project $npm_package_config_gae_prod gae_prod.yaml --version svelte -q",
     "release": "npm run package && npm publish",
-    "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/"
+    "icon": "fontcustom compile ./static/images/icons --font_name icons --output static/icons/",
+    "modal:create": "svelte-modal-manager create -t=pug -d ./src/components/modals -s less"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.1",
@@ -70,8 +71,7 @@
     "@rabee-org/svelte-head": "^0.1.0",
     "@rabee-org/svelte-modal-manager": "0.2.1",
     "dayjs": "^1.11.0",
-    "sortablejs": "^1.15.0",
-    "modal:create": "svelte-modal-manager create -t=pug -d ./src/components/modals -s less"
+    "sortablejs": "^1.15.0"
   },
   "files": ["package"],
   "main": "./package/index.js",
