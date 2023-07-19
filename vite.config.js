@@ -1,8 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { modalManagerPlugin } from '@rabee-org/svelte-modal-manager/vite'
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  plugins: [sveltekit(), modalManagerPlugin()],
   define: {
     'process.env': process.env,
   },

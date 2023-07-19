@@ -1,7 +1,7 @@
 
 import { goto } from '$app/navigation';
 import { pathToContent } from 'svelte-admin-components';
-import { openModal } from 'svelte-modal-manager';
+import { modalContent } from '$modal';
 import contents from './contents/index.js';
 
 let isGuest = () => {
@@ -102,7 +102,7 @@ const admin = {
     image: {
       async select() {
         // 画像選択モーダル開いたり
-        let modal = openModal('admin-content', {
+        let modal = modalContent.open({
           path: 'images',
           actions: admin.actions,
         });

@@ -1,6 +1,6 @@
 
 // setup head
-import {setOptions} from 'svelte-head';
+import { setOptions } from '@rabee-org/svelte-head';
 
 setOptions({
   title(title) {

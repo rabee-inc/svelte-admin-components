@@ -368,6 +368,16 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
   integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
+"@rabee-org/svelte-head@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@rabee-org/svelte-head/-/svelte-head-0.1.0.tgz#e506b1a909cbabc32b4c284ddefdb3ca9e1397d2"
+  integrity sha512-Uhw5LyzyEmubDonjMMVTauziUlbIF7sj+nFM3S+o19FZ3tMpDKdj5G0L5OTqc9xJVvAopuDdJ7oqfFo96z5rQA==
+
+"@rabee-org/svelte-modal-manager@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rabee-org/svelte-modal-manager/-/svelte-modal-manager-0.2.1.tgz#4c8f0ac5b3cc770a7bb4e5aefd8520fff15e5cfa"
+  integrity sha512-zsi7TR41mCjOrGc4iTNMr7TbOuWwozkoRxMVAFb5OSXyysUb0g9Mg+n9KxdmOymUEIY0aBLhKMBmR4qMuFPWhw==
+
 "@rollup/plugin-commonjs@^24.0.0":
   version "24.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-24.1.0.tgz#79e54bd83bb64396761431eee6c44152ef322100"
@@ -2406,20 +2416,10 @@ svelte-check@^3.0.1:
     svelte-preprocess "^5.0.3"
     typescript "^5.0.3"
 
-svelte-head@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/svelte-head/-/svelte-head-0.0.6.tgz#99ef7840a81257ab9c0c7d772cde67563e0d7d8c"
-  integrity sha512-zyyEnl4EQwGtJ1oMUd4b9nnvOeHQFS4NY9cMYjDeL6kyvfYFQSv3lX7b1WJZ2a7eBeC17D7SYp0JS6TYQdKRBA==
-
 svelte-hmr@^0.15.1:
   version "0.15.1"
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.1.tgz#d11d878a0bbb12ec1cba030f580cd2049f4ec86b"
   integrity sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==
-
-svelte-modal-manager@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/svelte-modal-manager/-/svelte-modal-manager-0.0.7.tgz#826bafcc519f7aa6cdc667256d3b7918397f048c"
-  integrity sha512-DE5eP5f3xg21Lm4j1+gCthZNK4HAm781CwO/FkyfWLNqx2cEEPoFl3A3Ll/8eo2zPeX7hYCRRkDkE2XhMjSNHw==
 
 svelte-preprocess@^4.10.7:
   version "4.10.7"
