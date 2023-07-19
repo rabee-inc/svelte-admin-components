@@ -2,7 +2,7 @@
 
 svelte-admin-components is ...
 
-https://www.npmjs.com/package/svelte-admin-components
+https://www.npmjs.com/package/@rabee-org/svelte-admin-components
 
 ## Demo
 
