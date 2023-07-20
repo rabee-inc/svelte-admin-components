@@ -1,7 +1,6 @@
 
 import { goto } from '$app/navigation';
-import { pathToContent } from 'svelte-admin-components';
-import { modalContent } from '$modal';
+import { modalContent, pathToContent } from 'svelte-admin-components';
 import contents from './contents/index.js';
 
 let isGuest = () => {

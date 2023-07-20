@@ -7,6 +7,11 @@ export { default as ContentList } from './components/ContentList.svelte';
 export { default as ContentForm } from './components/ContentForm.svelte';
 export { default as Header } from './components/Header.svelte';
 
+import * as Content from './modals/Content.svelte';
+import { createModalController } from '@rabee-org/svelte-modal-manager';
+/** @type {import('@rabee-org/svelte-modal-manager/types').ModalControllerProxy<typeof Content, any>} */
+export const modalContent = createModalController(Content);
+
 // contents
 export { default as contents, registerContent } from './contents/index.js';
 import contents from './contents/index.js';

@@ -1,5 +1,5 @@
 import { headings, schemas, sections } from "$admin/contents/template";
-import { modalContent } from "$modal";
+import { modalContent } from "svelte-admin-components";
 
 export default {
   label: "投稿",
