@@ -28,7 +28,6 @@ const config = {
     adapter: adapter(),
     alias: {
       '$components': path.resolve('./src/components'),
-      '$modals': path.resolve('./src/lib/modals'),
       "$admin": path.resolve('./src/admin'),
       "svelte-admin-components": path.resolve('./src/lib'),
       // '@rabee-org/svelte-admin-components': path.resolve('./src/lib'),
