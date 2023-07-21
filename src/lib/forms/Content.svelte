@@ -3,7 +3,7 @@
 <script>
   import { getByPath } from "$lib/utils";
   import { onMount } from "svelte";
-  import { modalContent } from "svelte-admin-components";
+  import { modalContent } from "../index.js";
 
   export let path;
   export let schema;
