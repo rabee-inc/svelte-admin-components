@@ -19,7 +19,7 @@
     { label: 'H1', action: () => insertText('# ') },
     { label: 'H2', action: () => insertText('## ') },
     { label: 'H3', action: () => insertText('### ') },
-    { label: 'B', action: () => insertText('**', { caret_move: -1 }) },
+    { label: 'B', action: () => insertText('****', { caret_move: -2 }) },
     { label: 'LIST', action: () => insertText('- ') },
     { label: 'IMAGE', action: () => insertImage() },
   ];
