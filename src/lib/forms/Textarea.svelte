@@ -2,6 +2,7 @@
 
 <script>
   import { getImgixUrl } from "$lib/utils";
+  import { tick } from "svelte";
 
   export let schema;
   export let value = '';
@@ -42,7 +43,7 @@
     return textareaElement.selectionStart;
   }
 
-  function insertText(text, opts = {}) {
+  async function insertText(text, opts = {}) {
     let cursor_position = getCursorPosition();
 
     let before = value.substring(0, cursor_position);
@@ -50,13 +51,13 @@
 
     value = before + text + after;
     textareaElement.focus();
+    
     // NOTE: caretの動かしたい値を設定する(例: 1つ戻したい場合は -1)
     if (opts?.caret_move) {
-      setTimeout(() => {
-        cursor_position = getCursorPosition();
-        let position = cursor_position + opts.caret_move;
-        textareaElement.setSelectionRange(position, position);
-      }, 128);
+      await tick()
+      cursor_position = getCursorPosition();
+      let position = cursor_position + opts.caret_move;
+      textareaElement.setSelectionRange(position, position);
     }
   }
 
