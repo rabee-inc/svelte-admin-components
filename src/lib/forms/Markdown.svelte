@@ -87,6 +87,8 @@
     // 画像以外は弾く
     if (/^image/.test(file.type) === false) return ;
 
+    // TODO: 型定義周り全体的に見直し
+    // @ts-ignore
     let { url, width, height } = await actions.image.upload({
       file,
     });
