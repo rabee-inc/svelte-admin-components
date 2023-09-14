@@ -19,10 +19,9 @@
     { label: 'H1', action: () => insertText('# ') },
     { label: 'H2', action: () => insertText('## ') },
     { label: 'H3', action: () => insertText('### ') },
-    { label: 'B', action: () => insertText('**') },
+    { label: 'B', action: () => insertText('**', { caret_move: -1 }) },
     { label: 'LIST', action: () => insertText('- ') },
-    // TODO
-    // { label: 'IMAGE', action: () => insertImage() },
+    { label: 'IMAGE', action: () => insertImage() },
   ];
 
   // 画像埋め込み対応
@@ -33,15 +32,7 @@
     // 画像以外は弾く
     if (/^image/.test(file.type) === false) return ;
 
-    // TODO: 型定義周り全体的に見直し
-    // @ts-ignore
-    let { url, width, height } = await actions.image.upload({
-      file,
-    });
-
-    let imgix_url = getImgixUrl(url, (width >= 2000 ? 2000 : null));
-
-    let text = `![${file.name}](${imgix_url})`;
+    let text = await createImageText(file);
 
     // 差し込む
     insertText(text);
@@ -51,20 +42,56 @@
     return textareaElement.selectionStart;
   }
 
-  function insertText(text) {
+  function insertText(text, opts = {}) {
     let cursor_position = getCursorPosition();
 
     let before = value.substring(0, cursor_position);
     let after = value.substring(cursor_position, value.length);
 
     value = before + text + after;
-    // TODO: Bold などの場合はカーソルを移動させる対応する
     textareaElement.focus();
+    // NOTE: caretの動かしたい値を設定する(例: 1つ戻したい場合は -1)
+    if (opts?.caret_move) {
+      setTimeout(() => {
+        cursor_position = getCursorPosition();
+        let position = cursor_position + opts.caret_move;
+        textareaElement.setSelectionRange(position, position);
+      }, 128);
+    }
   }
 
-  // TODO
   function insertImage() {
-    console.log('image');
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.click();
+
+    input.onchange = async (e) => {
+      // TODO: 型定義周り全体的に見直し
+      // @ts-ignore
+      let file = e.target.files[0];
+      if (!file) return ;
+
+      // 画像以外は弾く
+      if (/^image/.test(file.type) === false) return ;
+
+      let text = await createImageText(file);
+
+      // 差し込む
+      insertText(text);
+    };
+  }
+
+  async function createImageText(file) {
+    // TODO: 型定義周り全体的に見直し
+    // @ts-ignore
+    let { url, width, height } = await actions.image.upload({
+      file,
+    });
+
+    let imgix_url = getImgixUrl(url, (width >= 2000 ? 2000 : null));
+
+    return `![${file.name}](${imgix_url})`;
   }
 
   const onAction = async (action) => {
