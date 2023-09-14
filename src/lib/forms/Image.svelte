@@ -77,6 +77,8 @@
     input.accept = 'image/*';
 
     input.onchange = (e) => {
+      // TODO: 型定義周り全体的に見直し
+      // @ts-ignore
       let file = e.target.files[0];
       if (!file) return ;
 
