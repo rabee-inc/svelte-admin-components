@@ -64,7 +64,16 @@ export default {
           label: "プロフィール",
           type: "textarea",
           opts: {
-            cols: ""
+            toolbar: true,
+            actions: [
+              {
+                label: 'jump',
+                onclick: ({ item, value, actions, insertText }) => {
+                  let text = 'jump を外側から追加する';
+                  insertText(text);
+                },
+              }
+            ],
           }
         },
         {

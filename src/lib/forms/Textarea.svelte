@@ -13,6 +13,18 @@
 
   export let textareaElement;
 
+  let isShowToolbar = schema.opts?.toolbar;
+  
+  let toolbarItems = [
+    { label: 'H1', action: () => insertText('# ') },
+    { label: 'H2', action: () => insertText('## ') },
+    { label: 'H3', action: () => insertText('### ') },
+    { label: 'B', action: () => insertText('**') },
+    { label: 'LIST', action: () => insertText('- ') },
+    // TODO
+    // { label: 'IMAGE', action: () => insertImage() },
+  ];
+
   // 画像埋め込み対応
   let onDrop = async (e) => {
     var file = e.dataTransfer.files[0];
@@ -21,6 +33,8 @@
     // 画像以外は弾く
     if (/^image/.test(file.type) === false) return ;
 
+    // TODO: 型定義周り全体的に見直し
+    // @ts-ignore
     let { url, width, height } = await actions.image.upload({
       file,
     });
@@ -30,12 +44,36 @@
     let text = `![${file.name}](${imgix_url})`;
 
     // 差し込む
-    let cursor_position = textareaElement.selectionStart;
+    insertText(text);
+  };
+
+  function getCursorPosition() {
+    return textareaElement.selectionStart;
+  }
+
+  function insertText(text) {
+    let cursor_position = getCursorPosition();
 
     let before = value.substring(0, cursor_position);
     let after = value.substring(cursor_position, value.length);
 
     value = before + text + after;
+    // TODO: Bold などの場合はカーソルを移動させる対応する
+    textareaElement.focus();
+  }
+
+  // TODO
+  function insertImage() {
+    console.log('image');
+  }
+
+  const onAction = async (action) => {
+    await action.onclick({
+      value,
+      item,
+      actions,
+      insertText,
+    });
   };
 </script>
 
@@ -45,5 +83,24 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    textarea.w-full.border.rounded-4.px8.py4(bind:this='{textareaElement}', bind:value, rows='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+    div.relative.border.rounded-4.pb44.overflow-hidden
+      textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+      +if('isShowToolbar || schema.opts?.actions?.length')
+        div.absolute.b0.r0.l0.bg-white.w-full.overflow-x-scroll.p8.border-top
+          +if('isShowToolbar')
+            +each('toolbarItems as item')
+              button.border.px4.rounded-4.py2.mr4.mr0-last(type='button', on:click!='{item.action}') {item.label}
+          +if('schema.opts?.actions')
+            +each('schema.opts?.actions as action')
+              button.border.px4.rounded-4.py2.mr4.mr0-last(type='button', on:click!='{() => onAction(action)}') {action.label}
+
 </template>
+
+<style type='less'>
+  .pb44 {
+    padding-bottom: 44px;
+  }
+  textarea {
+    outline: none;
+  }
+</style>
