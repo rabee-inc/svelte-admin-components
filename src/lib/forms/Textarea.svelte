@@ -54,7 +54,7 @@
     
     // NOTE: caretの動かしたい値を設定する(例: 1つ戻したい場合は -1)
     if (opts?.caret_move) {
-      await tick()
+      await tick();
       cursor_position = getCursorPosition();
       let position = cursor_position + opts.caret_move;
       textareaElement.setSelectionRange(position, position);
