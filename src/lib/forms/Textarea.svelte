@@ -15,14 +15,17 @@
   export let textareaElement;
 
   let isShowToolbar = schema.opts?.toolbar;
-  
+
   let toolbarItems = [
-    { label: 'H1', action: () => insertText('# ') },
-    { label: 'H2', action: () => insertText('## ') },
-    { label: 'H3', action: () => insertText('### ') },
-    { label: 'B', action: () => insertText('****', { caret_move: -2 }) },
-    { label: 'LIST', action: () => insertText('- ') },
-    { label: 'IMAGE', action: () => insertImage() },
+    { id: 'h1', label: 'H1', symbol: '#', type: 'line_head' },
+    { id: 'h2', label: 'H2', symbol: '##', type: 'line_head' },
+    { id: 'h3', label: 'H3', symbol: '##', type: 'line_head' },
+    { id: 'bold', label: 'BOLD', symbol: '**', type: 'enclosing' },
+    { id: 'strikethrough', label: 'STRIKETHROUGH', symbol: '~~', type: 'enclosing' },
+    { id: 'list', label: 'LIST', symbol: '-', type: 'list' },
+    { id: 'number_list', label: 'NUM LIST', symbol: '1.', type: 'list' },
+    { id: 'clip', label: 'LINK', symbol: '[title](https://~)', type: 'link' },
+    { id: 'image', label: 'IMAGE', symbol: '![title](url)', type: 'image' },
   ];
 
   // 画像埋め込み対応
@@ -46,19 +49,11 @@
   async function insertText(text, opts = {}) {
     let cursor_position = getCursorPosition();
 
-    let before = value.substring(0, cursor_position);
-    let after = value.substring(cursor_position, value.length);
+    textareaElement.setRangeText(text);
 
-    value = before + text + after;
     textareaElement.focus();
-    
-    // NOTE: caretの動かしたい値を設定する(例: 1つ戻したい場合は -1)
-    if (opts?.caret_move) {
-      await tick();
-      cursor_position = getCursorPosition();
-      let position = cursor_position + opts.caret_move;
-      textareaElement.setSelectionRange(position, position);
-    }
+    let position = cursor_position += text.length;
+    textareaElement.setSelectionRange(position, position);
   }
 
   function insertImage() {
@@ -95,7 +90,7 @@
     return `![${file.name}](${imgix_url})`;
   }
 
-  const onAction = async (action) => {
+  async function onAction(action) {
     await action.onclick({
       value,
       item,
@@ -103,6 +98,62 @@
       insertText,
     });
   };
+
+  function selectToolbarItem({ symbol, type }) {
+    //- 行の頭につくタイプ
+    if (type === 'line_head' || type === 'list') {
+      replaceLineHead(symbol);
+    }
+    //- 囲むタイプ
+    else if (type === 'enclosing'){
+      replaceEnclosing(symbol);
+    }
+    // リンクタイプ
+    else if (type === 'link') {
+      replaceMarkdownLink(symbol)
+    }
+    // 画像タイプ
+    else if (type === 'image') {
+      insertImage();
+    }
+  }
+
+  // 記号が文字を囲うスタイルを形成
+  function replaceEnclosing(symbol) {
+    const selection = window.getSelection().toString();
+    const formatted_text = symbol + selection + symbol;
+    textareaElement.setRangeText(formatted_text);
+    textareaElement.focus();
+    let cursor_position = getCursorPosition();
+    cursor_position += formatted_text.length;
+    // 文字選択がなかった場合
+    if (!selection) {
+      cursor_position -= symbol.length;
+    }
+    textareaElement.setSelectionRange(cursor_position, cursor_position);
+  }
+
+  // 文字の頭に記号が付くスタイルを形成
+  function replaceLineHead(symbol) {
+    const selection = window.getSelection().toString();
+    const formatted_text = symbol + ' ' + selection;
+    textareaElement.setRangeText(formatted_text);
+    textareaElement.focus();
+    let cursor_position = getCursorPosition();
+    cursor_position += formatted_text.length;
+    textareaElement.setSelectionRange(cursor_position, cursor_position);
+  }
+
+  // リンクのスタイルを形成
+  function replaceMarkdownLink(symbol) {
+    const selection = window.getSelection().toString();
+    const formatted_text = symbol.replace('title', selection);
+    textareaElement.setRangeText(formatted_text);
+    textareaElement.focus();
+    let cursor_position = getCursorPosition();
+    cursor_position += formatted_text.length;
+    textareaElement.setSelectionRange(cursor_position, cursor_position);
+  }
 </script>
 
 <template lang='pug'>
@@ -117,7 +168,7 @@
         div.absolute.b0.r0.l0.bg-white.w-full.overflow-x-scroll.p8.border-top
           +if('isShowToolbar')
             +each('toolbarItems as item')
-              button.border.px4.rounded-4.py2.mr4.mr0-last(type='button', on:click!='{item.action}') {item.label}
+              button.border.px4.rounded-4.py2.mr4.mr0-last(type='button', on:click!='{() => selectToolbarItem(item)}') {item.label}
           +if('schema.opts?.actions')
             +each('schema.opts?.actions as action')
               button.border.px4.rounded-4.py2.mr4.mr0-last(type='button', on:click!='{() => onAction(action)}') {action.label}
