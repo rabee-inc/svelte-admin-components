@@ -43,8 +43,13 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    //- TODO: select は readonly 効かないので対策考える
-    select.px8.py4.border.rounded-4.lh15(bind:value, required!='{schema.opts?.required}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
+    select.px8.py4.border.rounded-4.lh15(bind:value, required!='{schema.opts?.required}', disabled!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
       +each('_choices as choice')
         option(value='{choice.value}') {choice.label || choice.value}
 </template>
+
+<style lang="less">
+  select:disabled {
+    color: #000;
+  }
+</style>
