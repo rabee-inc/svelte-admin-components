@@ -53,6 +53,8 @@
 
   // 画像を drop したとき
   let drop = (e) => {
+    if (schema.opts?.readonly) return ;
+    
     var file = e.dataTransfer.files[0];
     if (!file) return ;
 
@@ -91,17 +93,25 @@
   div.block
     +if('schema.label')
       div.fs12.mb4 {schema.label}
-    div.relative.inline-block(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
+    div.relative.f.fh.s-full(on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{drop}')
       +if('value')
-        img.max-height-300(src='{!value || value}', alt='')
+        img.block.max-height-300.s-full.object-fit-contain(src='{!value || value}', alt='')
         +else
           div.w200.square.bg-whitesmoke
-      div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer(on:click='{click}') +
+      +if('!schema.opts?.readonly')
+        div.absolute.trbl0.s-full.f.fh.fs26.cursor-pointer.hover-bg-black-40(on:click='{click}') +
 </template>
 
 
 <style lang="less">
   .max-height-300 {
     max-height: 300px;
+  }
+  
+
+  .hover-bg-black-40 {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
 </style>
