@@ -162,8 +162,8 @@
       div.fs12.mb4 {schema.label} 
         +if('schema.opts?.required')
           span *
-    div.relative.border.rounded-4.pb44.overflow-hidden
-      textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+    div.relative.border.rounded-4.overflow-hidden(class!='{isShowToolbar || schema.opts?.actions?.length ? "pb44" : ""}', class:bg-whitesmoke='{schema.opts?.readonly}')
+      textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
       +if('isShowToolbar || schema.opts?.actions?.length')
         div.absolute.b0.r0.l0.bg-white.w-full.overflow-x-scroll.p8.border-top
           +if('isShowToolbar')
