@@ -103,7 +103,7 @@
 <template lang='pug'>
   div.rounded-4(class:border='{frame}')
     +if('schema.label')
-      div.bg-aliceblue.border-bottom.p8
+      div.border-bottom.p8(class!='{schema.opts?.readonly ? "bg-whitesmoke" : "bg-aliceblue"}')
         div.fs12.mb4 {schema.label}
     div.row.p24.mxn8.mbn16(class:p24='{frame}')
       +each('getOpts(schema).schemas as schema')
