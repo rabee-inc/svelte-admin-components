@@ -1,7 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
-  import { createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher } from "svelte";
   import { contents } from "$lib/index.js";
   import { getByPath } from "$lib/utils";
   import { goto } from "$app/navigation";
