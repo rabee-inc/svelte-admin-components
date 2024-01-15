@@ -21,7 +21,7 @@
   let query;
   let loading;
   let sort;
-  let sortChoices = [];
+  let sortedChoices = [];
 
   let setup = () => {
     items = [];
@@ -84,21 +84,21 @@
     return cls;
   };
 
-  async function setupSortChoices(choices) {
+  async function setupSortChoices(sortChoices) {
     // 文字列だったら関数化して結果を返す
-    if (typeof choices === 'string') {
+    if (typeof sortChoices === 'string') {
       // 共通の関数もしくは配列に変換
-      choices = actions[choices];
+      sortChoices = actions[sortChoices];
 
-      if (typeof choices === 'function') {
-        sortChoices = await choices({ items });
+      if (typeof sortChoices === 'function') {
+        sortedChoices = await sortChoices({ items });
       }
       else {
-        sortChoices = choices;
+        sortedChoices = sortChoices;
       }
     }
     else {
-      sortChoices = choices;
+      sortedChoices = sortChoices;
     }
   };
 
@@ -129,7 +129,7 @@
           div.f.fm
             div.mr4 並び替え :
             select.border.rounded-4.py8.px12.mr4(on:change='{onSort}')
-              +each('sortChoices as sort')
+              +each('sortedChoices as sort')
                 option(value='{sort.value}') {sort.label}
         +if('content.actions')
           +each('content.actions as action')
