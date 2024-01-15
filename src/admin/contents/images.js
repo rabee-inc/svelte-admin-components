@@ -69,7 +69,7 @@ export default {
     },
   ],
   sort: [
-    {id: 'new', name: '新着順'},
-    {id: 'modified', name: '更新順'},
+    {value: 'new', label: '新着順'},
+    {value: 'modified', label: '更新順'},
   ],
 };
