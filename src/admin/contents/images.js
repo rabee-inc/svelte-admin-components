@@ -68,4 +68,8 @@ export default {
       },
     },
   ],
+  sort: [
+    {value: 'new', label: '新着順'},
+    {value: 'modified', label: '更新順'},
+  ],
 };

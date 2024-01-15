@@ -20,11 +20,14 @@
   let nextCursor;
   let query;
   let loading;
+  let sort;
+  let sortedChoices = [];
 
   let setup = () => {
     items = [];
     nextCursor = '';
     query = '';
+    sort = '';
     loading = false;
   };
 
@@ -35,6 +38,7 @@
       path,
       cursor: nextCursor,
       query,
+      sort,
       limit,
     });
 
@@ -80,11 +84,36 @@
     return cls;
   };
 
+  async function setupSortChoices(sortChoices) {
+    // 文字列だったら関数化して結果を返す
+    if (typeof sortChoices === 'string') {
+      // 共通の関数もしくは配列に変換
+      sortChoices = actions[sortChoices];
+
+      if (typeof sortChoices === 'function') {
+        sortedChoices = await sortChoices({ items });
+      }
+      else {
+        sortedChoices = sortChoices;
+      }
+    }
+    else {
+      sortedChoices = sortChoices;
+    }
+  };
+
+  function onSort(e) {
+    setup();
+    sort = e.target.value;
+    fetchItems();
+  }
+
   $: {
     path;
 
     setup();
     fetchItems();
+    setupSortChoices(content.sort);
   }
 </script>
 
@@ -95,7 +124,13 @@
         +if('content.settings.search')
           input.input.mr4(bind:this='{queryElement}', type='search')
           button.button 検索
-      div
+      div.f.fm
+        +if('content.sort')
+          div.f.fm
+            div.mr4 並び替え :
+            select.border.rounded-4.py8.px12.mr4(on:change='{onSort}')
+              +each('sortedChoices as sort')
+                option(value='{sort.value}') {sort.label}
         +if('content.actions')
           +each('content.actions as action')
             button.button.fs12.ml8(type='button', on:click!='{() => onAction(action)}') {action.label}
