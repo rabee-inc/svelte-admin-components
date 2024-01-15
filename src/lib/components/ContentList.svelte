@@ -28,6 +28,7 @@
     nextCursor = '';
     query = '';
     sort = '';
+    sortedChoices = [];
     loading = false;
   };
 
@@ -84,6 +85,12 @@
     return cls;
   };
 
+  async function setupSort() {
+    if (content.sort) {
+      await setupSortChoices(content.sort);
+    }
+  }
+
   async function setupSortChoices(sortChoices) {
     // 文字列だったら関数化して結果を返す
     if (typeof sortChoices === 'string') {
@@ -113,7 +120,7 @@
 
     setup();
     fetchItems();
-    setupSortChoices(content.sort);
+    setupSort();
   }
 </script>
 
