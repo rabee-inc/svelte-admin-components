@@ -21,12 +21,7 @@
   let query;
   let loading;
   let sort;
-
   let sortChoices = [];
-
-  onMount(async () => {
-    await setupSortChoices(content.sort);
-  });
 
   let setup = () => {
     items = [];
@@ -118,6 +113,7 @@
 
     setup();
     fetchItems();
+    setupSortChoices(content.sort);
   }
 </script>
 
