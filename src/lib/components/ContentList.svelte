@@ -1,7 +1,7 @@
 <svelte:options accessors={true}/>
 
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import { contents } from "$lib/index.js";
   import { getByPath } from "$lib/utils";
   import { goto } from "$app/navigation";
@@ -20,11 +20,19 @@
   let nextCursor;
   let query;
   let loading;
+  let sort;
+
+  let sortChoices = [];
+
+  onMount(async () => {
+    await setupSortChoices(content.sort);
+  });
 
   let setup = () => {
     items = [];
     nextCursor = '';
     query = '';
+    sort = '';
     loading = false;
   };
 
@@ -35,6 +43,7 @@
       path,
       cursor: nextCursor,
       query,
+      sort,
       limit,
     });
 
@@ -80,6 +89,30 @@
     return cls;
   };
 
+  async function setupSortChoices(choices) {
+    // 文字列だったら関数化して結果を返す
+    if (typeof choices === 'string') {
+      // 共通の関数もしくは配列に変換
+      choices = actions[choices];
+
+      if (typeof choices === 'function') {
+        sortChoices = await choices({ items });
+      }
+      else {
+        sortChoices = choices;
+      }
+    }
+    else {
+      sortChoices = choices;
+    }
+  };
+
+  function onSort(e) {
+    setup();
+    sort = e.target.value;
+    fetchItems();
+  }
+
   $: {
     path;
 
@@ -95,7 +128,13 @@
         +if('content.settings.search')
           input.input.mr4(bind:this='{queryElement}', type='search')
           button.button 検索
-      div
+      div.f.fm
+        +if('content.sort')
+          div.f.fm
+            div.mr4 並び替え :
+            select.border.rounded-4.py8.px12.mr4(on:change='{onSort}')
+              +each('sortChoices as sort')
+                option(value='{sort.value}') {sort.label}
         +if('content.actions')
           +each('content.actions as action')
             button.button.fs12.ml8(type='button', on:click!='{() => onAction(action)}') {action.label}
