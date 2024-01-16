@@ -28,7 +28,6 @@
     nextCursor = '';
     query = '';
     sort = '';
-    sortedChoices = [];
     loading = false;
   };
 
