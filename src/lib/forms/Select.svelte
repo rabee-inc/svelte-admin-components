@@ -40,9 +40,14 @@
 <template lang='pug'>
   label.block
     +if('schema.label')
-      div.fs12.mb4 {schema.label} 
-        +if('schema.opts?.required')
-          span *
+      div.mb4
+        div.fs12 {schema.label} 
+          +if('schema.opts?.required')
+            span *
+        +if('schema.opts?.description')
+          div.fs10 {schema.opts.description}
+        +if('schema.opts?.caution')
+          div.fs10.text-danger ※{schema.opts.caution}
     select.px8.py4.border.rounded-4.lh15(bind:value, required!='{schema.opts?.required}', disabled!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
       +each('_choices as choice')
         option(value='{choice.value}') {choice.label || choice.value}

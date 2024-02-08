@@ -114,9 +114,14 @@
 <template lang='pug'>
   label.block
     +if('schema.label')
-      div.fs12.mb4 {schema.label} 
-        +if('schema.opts?.required')
-          span *
+      div.mb4
+        div.fs12 {schema.label} 
+          +if('schema.opts?.required')
+            span *
+        +if('schema.opts?.description')
+          div.fs10 {schema.opts.description}
+        +if('schema.opts?.caution')
+          div.fs10.text-danger ※{schema.opts.caution}
   div.mb4
     +each('schema.opts.actions || [] as action')
       button.button.px8.py6.fs12(type='button', on:click!='{() => {onAction(action)}}') {action.label}

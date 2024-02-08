@@ -43,9 +43,14 @@
 <template lang='pug'>
   div.block
     +if('schema.label')
-      div.fs12.mb4 {schema.label} 
-        +if('schema.opts?.required')
-          span *
+      div.mb4
+        div.fs12 {schema.label} 
+          +if('schema.opts?.required')
+            span *
+        +if('schema.opts?.description')
+          div.fs10 {schema.opts.description}
+        +if('schema.opts?.caution')
+          div.fs10.text-danger ※{schema.opts.caution}
     div.row
       +each('_choices as choice')
         label.f.fm.flex-fixed.mr16.mr0-last
