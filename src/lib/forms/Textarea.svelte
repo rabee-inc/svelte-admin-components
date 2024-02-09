@@ -159,9 +159,14 @@
 <template lang='pug'>
   label.block
     +if('schema.label')
-      div.fs12.mb4 {schema.label} 
-        +if('schema.opts?.required')
-          span *
+      div.mb4
+        div.fs12 {schema.label} 
+          +if('schema.opts?.required')
+            span *
+        +if('schema.opts?.description')
+          div.fs10 {schema.opts.description}
+        +if('schema.opts?.caution')
+          div.fs10.text-danger ※{schema.opts.caution}
     div.relative.border.rounded-4.overflow-hidden(class!='{isShowToolbar || schema.opts?.actions?.length ? "pb44" : ""}', class:bg-whitesmoke='{schema.opts?.readonly}')
       textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
       +if('isShowToolbar || schema.opts?.actions?.length')

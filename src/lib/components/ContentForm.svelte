@@ -95,13 +95,17 @@
   };
 
   // 変更イベント
-  let onChange = async () => {
+  let onChange = async (e) => {
     formValue = await getValue();
 
     // 更新したら sections の表示を再チェックする
     sections = sections;
 
-    dispatch('change');
+    dispatch('change', { 
+      formValue,
+      originalEvent: e.detail?.originalEvent,
+      schema: e.detail?.schema,
+    });
   };
 
   $: {
@@ -124,6 +128,6 @@
           +each('sections as section,i')
             +if('shouldShowSection(section)')
               div.align-self-top.px8(class!='{section.class || "mb16"}')
-                svelte:component(this='{sectionComponent}', section='{section}')
-                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', path='{path}', schema='{sectionToObjectSchema(section)}', actions='{actions}', value='{value}', formValue='{formValue}', frame='{false}', on:change='{onChange}')
+                svelte:component(this='{sectionComponent}', {section})
+                  svelte:component(bind:this='{instances[i]}', this='{forms.object}', {path}, schema='{sectionToObjectSchema(section)}', {actions}, {value}, {formValue}, frame='{false}', on:change!='{onChange}')
 </template>

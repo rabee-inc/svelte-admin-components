@@ -50,9 +50,14 @@
 <template lang='pug'>
   div
     +if('schema.label')
-      div.fs12.mb4 {schema.label} 
-        +if('schema.opts?.required')
-          span *
+      div.mb4
+        div.fs12 {schema.label} 
+          +if('schema.opts?.required')
+            span *
+        +if('schema.opts?.description')
+          div.fs10 {schema.opts.description}
+        +if('schema.opts?.caution')
+          div.fs10.text-danger ※{schema.opts.caution}
     div.f.fm
       +if('contentItem')
         div.mr16 {getByPath(contentItem, schema.opts.label_key)}
