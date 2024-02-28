@@ -17,7 +17,11 @@
 
   let queryElement;
   let items = [];
+  // 追加読み込み用
+  // firesStore
   let nextCursor;
+  // algolia
+  let pagination;
   let query;
   let loading;
   let sort;
@@ -26,6 +30,7 @@
   let setup = () => {
     items = [];
     nextCursor = '';
+    pagination = null;
     query = '';
     sort = '';
     loading = false;
@@ -37,6 +42,7 @@
     let res = await actions.api.index({
       path,
       cursor: nextCursor,
+      pagination,
       query,
       sort,
       limit,
@@ -46,6 +52,7 @@
     items = items;
 
     nextCursor = res.next_cursor;
+    pagination = res.pagination;
 
     loading = false;
   };
@@ -155,7 +162,7 @@
                 div(class='{getHeadingClass(heading, item)}')
                   svelte:component(this='{contents[heading.type]}', value='{ getByPath(item, heading.key) }', item='{item}', heading='{heading}', actions='{actions}')
   div.p16
-    +if('nextCursor && !loading')
+    +if('(nextCursor || pagination?.next_page) && !loading')
       div.f.fh
         button.button(on:click='{fetchItems}') More
     +if('loading')
