@@ -123,7 +123,10 @@
   function replaceEnclosing(symbol) {
     const selection = window.getSelection().toString();
     const formatted_text = symbol + selection + symbol;
+
     textareaElement.setRangeText(formatted_text);
+    value = textareaElement.value;
+    
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
@@ -138,7 +141,10 @@
   function replaceLineHead(symbol) {
     const selection = window.getSelection().toString();
     const formatted_text = symbol + ' ' + selection;
+
     textareaElement.setRangeText(formatted_text);
+    value = textareaElement.value;
+    
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
@@ -149,7 +155,10 @@
   function replaceMarkdownLink(symbol) {
     const selection = window.getSelection().toString();
     const formatted_text = symbol.replace('title', selection);
+
     textareaElement.setRangeText(formatted_text);
+    value = textareaElement.value;
+    
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
