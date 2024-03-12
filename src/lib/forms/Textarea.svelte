@@ -50,7 +50,7 @@
     let cursor_position = getCursorPosition();
 
     textareaElement.setRangeText(text);
-    value = value;
+    value = textareaElement.value;
 
     textareaElement.focus();
     let position = cursor_position += text.length;
