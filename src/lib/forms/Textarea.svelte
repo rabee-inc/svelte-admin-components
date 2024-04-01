@@ -15,7 +15,6 @@
   export let textareaElement;
 
   let isShowToolbar = schema.opts?.toolbar;
-  let ddImageCreateType = schema.opts?.dragAndDrop?.image?.createTextType || 'markdown';
 
   let toolbarItems = [
     { id: 'h1', label: 'H1', symbol: '#', type: 'line_head' },
@@ -81,6 +80,8 @@
   }
 
   async function createImageText(file) {
+    let ddImageCreateType = schema.opts?.dragAndDrop?.image?.createTextType || 'markdown';
+    
     // TODO: 型定義周り全体的に見直し
     // @ts-ignore
     let { url, width, height } = await actions.image.upload({
