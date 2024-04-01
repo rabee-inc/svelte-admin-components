@@ -15,6 +15,7 @@
   export let textareaElement;
 
   let isShowToolbar = schema.opts?.toolbar;
+  let ddImageCreateType = schema.opts?.dragAndDrop?.image?.createTextType || 'markdown';
 
   let toolbarItems = [
     { id: 'h1', label: 'H1', symbol: '#', type: 'line_head' },
@@ -88,7 +89,17 @@
 
     let imgix_url = getImgixUrl(url, (width >= 2000 ? 2000 : null));
 
-    return `![${file.name}](${imgix_url})`;
+    let text = '';
+    if (ddImageCreateType === 'markdown') {
+      text = `![${file.name}](${imgix_url})`;
+    }
+    else if (ddImageCreateType === 'html') {
+      let _width = schema.opts?.dragAndDrop?.image?.width ? `width="${schema.opts?.dragAndDrop.image.width}"` : '';
+      let _height = schema.opts?.dragAndDrop?.image?.height ? `height="${schema.opts?.dragAndDrop.image.height}"` : '';
+      text = `<img src="${imgix_url}" ${_width} ${_height}>`;
+    }
+
+    return text;
   }
 
   async function onAction(action) {
