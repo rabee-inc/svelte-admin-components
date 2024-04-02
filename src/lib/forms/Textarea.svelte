@@ -80,7 +80,7 @@
   }
 
   async function createImageText(file) {
-    let ddImageCreateType = schema.opts?.insertImage?.createTextType || 'markdown';
+    let text_type = schema.opts?.insertImage?.textType || 'markdown';
     
     // TODO: 型定義周り全体的に見直し
     // @ts-ignore
@@ -91,10 +91,10 @@
     let imgix_url = getImgixUrl(url, (width >= 2000 ? 2000 : null));
 
     let text = '';
-    if (ddImageCreateType === 'markdown') {
+    if (text_type === 'markdown') {
       text = `![${file.name}](${imgix_url})`;
     }
-    else if (ddImageCreateType === 'html') {
+    else if (text_type === 'html') {
       let _width = schema.opts?.insertImage?.width ? `width="${schema.opts?.insertImage.width}"` : '';
       let _height = schema.opts?.insertImage?.height ? `height="${schema.opts?.insertImage.height}"` : '';
       text = `<img src="${imgix_url}" ${_width} ${_height}>`;
