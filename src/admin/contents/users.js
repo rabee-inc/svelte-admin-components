@@ -66,7 +66,7 @@ export default {
           opts: {
             toolbar: true,
             insertImage: {
-              createTextType: 'html',
+              textType: 'html',
               width: 300,
             },
             actions: [
