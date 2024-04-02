@@ -65,6 +65,10 @@ export default {
           type: "textarea",
           opts: {
             toolbar: true,
+            insertImage: {
+              textType: 'html',
+              width: 300,
+            },
             actions: [
               {
                 label: 'jump',
