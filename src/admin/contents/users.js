@@ -65,11 +65,9 @@ export default {
           type: "textarea",
           opts: {
             toolbar: true,
-            dragAndDrop: {
-              image: {
-                createTextType: 'html',
-                width: 300,
-              },
+            insertImage: {
+              createTextType: 'html',
+              width: 300,
             },
             actions: [
               {

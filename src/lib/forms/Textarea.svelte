@@ -80,7 +80,7 @@
   }
 
   async function createImageText(file) {
-    let ddImageCreateType = schema.opts?.dragAndDrop?.image?.createTextType || 'markdown';
+    let ddImageCreateType = schema.opts?.insertImage?.createTextType || 'markdown';
     
     // TODO: 型定義周り全体的に見直し
     // @ts-ignore
@@ -95,8 +95,8 @@
       text = `![${file.name}](${imgix_url})`;
     }
     else if (ddImageCreateType === 'html') {
-      let _width = schema.opts?.dragAndDrop?.image?.width ? `width="${schema.opts?.dragAndDrop.image.width}"` : '';
-      let _height = schema.opts?.dragAndDrop?.image?.height ? `height="${schema.opts?.dragAndDrop.image.height}"` : '';
+      let _width = schema.opts?.insertImage?.width ? `width="${schema.opts?.insertImage.width}"` : '';
+      let _height = schema.opts?.insertImage?.height ? `height="${schema.opts?.insertImage.height}"` : '';
       text = `<img src="${imgix_url}" ${_width} ${_height}>`;
     }
 
