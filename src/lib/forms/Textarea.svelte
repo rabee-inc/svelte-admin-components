@@ -16,6 +16,9 @@
 
   let isShowToolbar = schema.opts?.toolbar;
 
+  import { createEventDispatcher } from 'svelte';
+  let dispatch = createEventDispatcher();
+
   let toolbarItems = [
     { id: 'h1', label: 'H1', symbol: '#', type: 'line_head' },
     { id: 'h2', label: 'H2', symbol: '##', type: 'line_head' },
@@ -55,6 +58,8 @@
     textareaElement.focus();
     let position = cursor_position += text.length;
     textareaElement.setSelectionRange(position, position);
+
+    dispatch('change');
   }
 
   function insertImage() {
@@ -147,6 +152,8 @@
       cursor_position -= symbol.length;
     }
     textareaElement.setSelectionRange(cursor_position, cursor_position);
+
+    dispatch('change');
   }
 
   // 文字の頭に記号が付くスタイルを形成
@@ -161,6 +168,8 @@
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
     textareaElement.setSelectionRange(cursor_position, cursor_position);
+
+    dispatch('change');
   }
 
   // リンクのスタイルを形成
@@ -175,6 +184,8 @@
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
     textareaElement.setSelectionRange(cursor_position, cursor_position);
+
+    dispatch('change');
   }
 </script>
 
