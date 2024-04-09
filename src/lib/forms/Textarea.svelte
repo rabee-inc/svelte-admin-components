@@ -59,7 +59,7 @@
     let position = cursor_position += text.length;
     textareaElement.setSelectionRange(position, position);
 
-    dispatch('sync');
+    dispatch('change');
   }
 
   function insertImage() {
@@ -153,7 +153,7 @@
     }
     textareaElement.setSelectionRange(cursor_position, cursor_position);
 
-    dispatch('sync');
+    dispatch('change');
   }
 
   // 文字の頭に記号が付くスタイルを形成
@@ -169,7 +169,7 @@
     cursor_position += formatted_text.length;
     textareaElement.setSelectionRange(cursor_position, cursor_position);
 
-    dispatch('sync');
+    dispatch('change');
   }
 
   // リンクのスタイルを形成
@@ -185,7 +185,7 @@
     cursor_position += formatted_text.length;
     textareaElement.setSelectionRange(cursor_position, cursor_position);
 
-    dispatch('sync');
+    dispatch('change');
   }
 </script>
 

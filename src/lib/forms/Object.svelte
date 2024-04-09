@@ -112,5 +112,5 @@
       +each('getOpts(schema).schemas as schema')
         +if('shouldShow(schema, value)')
           div.align-self-top.w-full.px8(class!='{schema.class || "mb16"}')
-            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', {path}, {schema}, {actions}, {formValue}, item='{value}', value='{getByPath(value, schema.key)}', on:change!='{(e) => syncValue(e, schema)}', on:sync!='{(e) => syncValue(e, schema)}')
+            svelte:component(bind:this='{instances[schema.key]}', this='{forms[schema.type]}', {path}, {schema}, {actions}, {formValue}, item='{value}', value='{getByPath(value, schema.key)}', on:change!='{(e) => syncValue(e, schema)}')
 </template>
