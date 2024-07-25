@@ -50,8 +50,6 @@
   let del = (i) => {
     value.splice(i, 1);
 
-    value = value;
-
     _updateArray(value);
   };
 
