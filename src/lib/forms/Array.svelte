@@ -51,6 +51,7 @@
     value.splice(i, 1);
 
     _updateArray(value);
+    _syncValue();
   };
 
   // 子要素で変更があった際に反映する
@@ -78,6 +79,7 @@
           });
 
           _updateArray(temp);
+          _syncValue();
         },
       },
     });
