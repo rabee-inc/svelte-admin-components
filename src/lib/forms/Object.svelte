@@ -93,6 +93,7 @@
   };
 
   let syncValue = async (e, schema) => {
+    console.log('値の変更')
     value = await getValue();
 
     dispatch('change', {
