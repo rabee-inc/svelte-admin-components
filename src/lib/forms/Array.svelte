@@ -55,6 +55,7 @@
 
   // 子要素で変更があった際に反映する
   let _syncValue = async () => {
+    console.log('hogehoge');
     value = await getValue();
 
     dispatch('change');
@@ -79,6 +80,7 @@
           _updateArray(temp);
         },
       },
+      onSort: _syncValue,
     });
   });
 
@@ -88,6 +90,8 @@
       value = [];
     }
   }
+
+  $: console.log(value)
 
 </script>
 
@@ -105,7 +109,7 @@
                 div.handle.flex-fixed.p8.cursor-pointer.mr8(alt='handle').
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
               div.w-full
-                svelte:component(bind:this!='{instances[i]}', this!='{forms[schema.opts.schema.type]}', schema!='{schema.opts.schema}', actions!='{actions}', bind:value!='{v}', on:change!='{_syncValue}')
+                svelte:component(bind:this!='{instances[i]}', this!='{forms[schema.opts.schema.type]}', schema!='{schema.opts.schema}', actions!='{actions}', bind:value!='{v}')
               +if('!schema.opts?.readonly')
                 button.absolute.t8.r8.f.fh.s24.circle.border.bg-white.hover-show(type='button', on:click!='{() => {del(i)}}') ✕
       +if('!schema.opts?.readonly')
