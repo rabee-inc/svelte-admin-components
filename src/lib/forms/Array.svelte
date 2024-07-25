@@ -48,6 +48,7 @@
   };
 
   let del = (i) => {
+    console.log('削除');
     value.splice(i, 1);
 
     _updateArray(value);
