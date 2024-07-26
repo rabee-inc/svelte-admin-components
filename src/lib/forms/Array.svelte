@@ -52,12 +52,14 @@
 
     _updateArray(value);
 
-    dispatch('change');
+    dispatch('delete')
   };
 
   // 子要素で変更があった際に反映する
   let _syncValue = async () => {
     value = await getValue();
+
+    dispatch('change');
   };
 
   // 配列をアップデート(キャッシュ対策)
