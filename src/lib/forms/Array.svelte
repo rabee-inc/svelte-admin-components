@@ -3,7 +3,7 @@
 <script>
   import { forms } from "$lib/index.js";
   import Sortable from 'sortablejs';
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
 
   // NOTE: ssr:false にするとうまくいかない
   // import handle from "$lib/assets/handle.svg";
@@ -51,8 +51,6 @@
     value.splice(i, 1);
 
     _updateArray(value);
-
-    dispatch('delete')
   };
 
   // 子要素で変更があった際に反映する
@@ -63,10 +61,13 @@
   };
 
   // 配列をアップデート(キャッシュ対策)
-  let _updateArray = (v) => {
+  let _updateArray = async (v) => {
     key = Date.now();
     value = v;
 
+    await tick();
+
+    dispatch('change');
   };
 
   onMount(() => {
