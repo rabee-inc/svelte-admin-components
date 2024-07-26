@@ -51,14 +51,13 @@
     value.splice(i, 1);
 
     _updateArray(value);
-    _syncValue();
+
+    dispatch('change');
   };
 
   // 子要素で変更があった際に反映する
   let _syncValue = async () => {
     value = await getValue();
-
-    dispatch('change');
   };
 
   // 配列をアップデート(キャッシュ対策)
@@ -79,7 +78,6 @@
           });
 
           _updateArray(temp);
-          _syncValue();
         },
       },
     });
