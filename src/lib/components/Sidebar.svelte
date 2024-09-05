@@ -19,12 +19,7 @@
   const isActive = (item, pathname) => {
     const item_paths = item.link.split('/');
     const paths = pathname.split('/');
-    const isMatch = item_paths.every((p, i) => p === paths[i]);
-
-    if (isMatch) {
-    // パスの長さを比較して、最も具体的な一致を判定
-    return paths.length === item_paths.length || paths.length > item_paths.length;
-    }
+    return item.link === pathname;
   };
 
 </script>
