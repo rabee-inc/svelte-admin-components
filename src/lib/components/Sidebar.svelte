@@ -42,7 +42,7 @@
             +each('section.items as item')
               +if('shouldShow(item)')
                 div.pl8.rounded-8.hover-trigger.hover-bg-light
-                  a.block.pl8.py3.fs16(href='{item.link}', class!="{isActive(item, $page.url.pathname) ? 'pl16 bg-white rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln8' : ''}")
+                  a.block.pl8.py3.fs16(href='{item.link}', class!="{isActive(item, $page.url.pathname) ? 'pl16 rounded-top-left-full rounded-bottom-left-full text-primary bold mrn16 mln8' : ''}")
                     div {item.label}
 </template>
 
