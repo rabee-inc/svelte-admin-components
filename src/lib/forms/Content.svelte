@@ -56,7 +56,7 @@
           div.fs10.text-danger ※{schema.opts.caution}
     div.f.fm
       +if('contentItem')
-        div.col8.mr16 {getByPath(contentItem, schema.opts.label_key)}
-      div
+        div.mr16 {getByPath(contentItem, schema.opts.label_key)}
+      div.flex-fixed
         button.button(type='button', on:click='{openContentModal}') 選択する
 </template>
