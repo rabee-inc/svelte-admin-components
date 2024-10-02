@@ -35,16 +35,12 @@
 
     modal.$on('select', (e) => {
       contentItem = e.detail.item;
-
+      value = getByPath(contentItem, schema.opts.value_key);
       dispatch('change');
       modal.close();
     });
   };
 
-  // svelte-ignore unused-export-let
-  export let getValue = () => {
-    return contentItem ? getByPath(contentItem, schema.opts.value_key) : null;
-  };
 </script>
 
 <template lang='pug'>
@@ -60,7 +56,7 @@
           div.fs10.text-danger ※{schema.opts.caution}
     div.f.fm
       +if('contentItem')
-        div.mr16 {getByPath(contentItem, schema.opts.label_key)}
+        div.col8.mr16 {getByPath(contentItem, schema.opts.label_key)}
       div
         button.button(type='button', on:click='{openContentModal}') 選択する
 </template>
