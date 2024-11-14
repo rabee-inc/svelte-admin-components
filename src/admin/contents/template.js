@@ -53,6 +53,7 @@ export let schemas = {
     type: "text",
     class: "",
     opts: {
+      placeholder: "タイトルを入力してください",
       required: true,
     }
   },
@@ -84,7 +85,7 @@ export let sections = {
         key: "data.meta_title",
         label: "メタタイトル",
         type: "text",
-        opts: {}    
+        opts: {}
       },
       {
         key: "data.meta_description",

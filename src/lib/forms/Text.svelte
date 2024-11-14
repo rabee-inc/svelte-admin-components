@@ -1,4 +1,4 @@
-<svelte:options accessors={true}/>
+<svelte:options accessors={true} />
 
 <script>
   export let schema;
@@ -11,7 +11,7 @@
   export let item = null;
 </script>
 
-<template lang='pug'>
+<template lang="pug">
   label.block
     +if('schema.label')
       div.mb4
@@ -22,5 +22,5 @@
           div.fs10 {schema.opts.description}
         +if('schema.opts?.caution')
           div.fs10.text-danger ※{schema.opts.caution}
-    input.w-full.border.rounded-4.px8.py4(bind:value, type='text', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', on:change)
+    input.w-full.border.rounded-4.px8.py4(bind:value, type='text', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', class:bg-whitesmoke='{schema.opts?.readonly}', placeholder='{schema.opts?.placeholder}', on:change)
 </template>

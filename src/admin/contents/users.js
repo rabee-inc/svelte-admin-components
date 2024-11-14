@@ -18,7 +18,7 @@ export default {
       label: "name",
       type: "text",
       opts: {
-        getValue({value}) {
+        getValue({ value }) {
           return `【${value}】`;
         },
       }
@@ -27,7 +27,7 @@ export default {
       key: "gender",
       label: "gender",
       type: "text",
-      class: ({item}) => {
+      class: ({ item }) => {
         if (item.gender === 'male') {
           return 'text-blue';
         }
@@ -65,6 +65,7 @@ export default {
           type: "textarea",
           opts: {
             toolbar: true,
+            placeholder: "プロフィールを入力してください",
             insertImage: {
               textType: 'html',
               width: 300,
@@ -94,7 +95,7 @@ export default {
           key: "gender",
           label: "性別",
           type: "select",
-          shouldShow: ({schema, value}) => {
+          shouldShow: ({ schema, value }) => {
             return value.age >= 18;
           },
           opts: {
