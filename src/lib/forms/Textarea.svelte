@@ -1,8 +1,8 @@
-<svelte:options accessors={true}/>
+<svelte:options accessors={true} />
 
 <script>
-  import { getImgixUrl } from "$lib/utils";
-  import { tick } from "svelte";
+  import { getImgixUrl } from '$lib/utils';
+  import { tick } from 'svelte';
 
   export let schema;
   export let value = '';
@@ -34,10 +34,10 @@
   // 画像埋め込み対応
   let onDrop = async (e) => {
     var file = e.dataTransfer.files[0];
-    if (!file) return ;
+    if (!file) return;
 
     // 画像以外は弾く
-    if (/^image/.test(file.type) === false) return ;
+    if (/^image/.test(file.type) === false) return;
 
     let text = await createImageText(file);
 
@@ -56,7 +56,7 @@
     value = textareaElement.value;
 
     textareaElement.focus();
-    let position = cursor_position += text.length;
+    let position = (cursor_position += text.length);
     textareaElement.setSelectionRange(position, position);
 
     dispatch('change');
@@ -72,10 +72,10 @@
       // TODO: 型定義周り全体的に見直し
       // @ts-ignore
       let file = e.target.files[0];
-      if (!file) return ;
+      if (!file) return;
 
       // 画像以外は弾く
-      if (/^image/.test(file.type) === false) return ;
+      if (/^image/.test(file.type) === false) return;
 
       let text = await createImageText(file);
 
@@ -86,20 +86,19 @@
 
   async function createImageText(file) {
     let text_type = schema.opts?.insertImage?.textType || 'markdown';
-    
+
     // TODO: 型定義周り全体的に見直し
     // @ts-ignore
     let { url, width, height } = await actions.image.upload({
       file,
     });
 
-    let imgix_url = getImgixUrl(url, (width >= 2000 ? 2000 : null));
+    let imgix_url = getImgixUrl(url, width >= 2000 ? 2000 : null);
 
     let text = '';
     if (text_type === 'markdown') {
       text = `![${file.name}](${imgix_url})`;
-    }
-    else if (text_type === 'html') {
+    } else if (text_type === 'html') {
       let _width = schema.opts?.insertImage?.width ? `width="${schema.opts?.insertImage.width}"` : '';
       let _height = schema.opts?.insertImage?.height ? `height="${schema.opts?.insertImage.height}"` : '';
       text = `<img src="${imgix_url}" ${_width} ${_height}>`;
@@ -115,7 +114,7 @@
       actions,
       insertText,
     });
-  };
+  }
 
   function selectToolbarItem({ symbol, type }) {
     //- 行の頭につくタイプ
@@ -123,12 +122,12 @@
       replaceLineHead(symbol);
     }
     //- 囲むタイプ
-    else if (type === 'enclosing'){
+    else if (type === 'enclosing') {
       replaceEnclosing(symbol);
     }
     // リンクタイプ
     else if (type === 'link') {
-      replaceMarkdownLink(symbol)
+      replaceMarkdownLink(symbol);
     }
     // 画像タイプ
     else if (type === 'image') {
@@ -143,7 +142,7 @@
 
     textareaElement.setRangeText(formatted_text);
     value = textareaElement.value;
-    
+
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
@@ -163,7 +162,7 @@
 
     textareaElement.setRangeText(formatted_text);
     value = textareaElement.value;
-    
+
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
@@ -179,7 +178,7 @@
 
     textareaElement.setRangeText(formatted_text);
     value = textareaElement.value;
-    
+
     textareaElement.focus();
     let cursor_position = getCursorPosition();
     cursor_position += formatted_text.length;
@@ -189,7 +188,7 @@
   }
 </script>
 
-<template lang='pug'>
+<template lang="pug">
   label.block
     +if('schema.label')
       div.mb4
@@ -201,7 +200,7 @@
         +if('schema.opts?.caution')
           div.fs10.text-danger ※{schema.opts.caution}
     div.relative.border.rounded-4.overflow-hidden(class!='{isShowToolbar || schema.opts?.actions?.length ? "pb44" : ""}', class:bg-whitesmoke='{schema.opts?.readonly}')
-      textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
+      textarea.w-full.px8.pt4(bind:this!='{textareaElement}', bind:value, rows!='{schema.opts?.cols || 8}', required!='{schema.opts?.required}', readonly!='{schema.opts?.readonly}', placeholder="{schema.opts?.placeholder}", on:change, on:dragover|preventDefault!='{() => {}}', on:drop|preventDefault='{onDrop}')
       +if('isShowToolbar || schema.opts?.actions?.length')
         div.absolute.b0.r0.l0.bg-white.w-full.overflow-x-scroll.p8.border-top
           +if('isShowToolbar')
@@ -213,7 +212,7 @@
 
 </template>
 
-<style type='less'>
+<style type="less">
   .pb44 {
     padding-bottom: 44px;
   }
