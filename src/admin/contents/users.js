@@ -51,13 +51,17 @@ export default {
           key: "screen_name",
           label: "名前　",
           type: "text",
-          opts: {}
+          opts: {
+            placeholder: "名前を入力してください",
+          }
         },
         {
           key: "display_name",
           label: "表示名",
           type: "text",
-          opts: {}
+          opts: {
+            placeholder: "表示名を入力してください",
+          }
         },
         {
           key: "bio",
