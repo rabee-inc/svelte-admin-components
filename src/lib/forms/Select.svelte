@@ -12,6 +12,10 @@
   // svelte-ignore unused-export-let
   export let item;
 
+  if (value == '' && schema.opts?.defaultValue !== undefined) {
+    value = schema.opts?.defaultValue;
+  }
+
   let _choices = [];
 
   let setupChoices = async (choices) => {

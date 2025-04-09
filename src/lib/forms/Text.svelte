@@ -2,13 +2,17 @@
 
 <script>
   export let schema;
-  export let value = null;
+  export let value = '';
   // svelte-ignore unused-export-let
   export let formValue = null;
   // svelte-ignore unused-export-let
   export let actions = null;
   // svelte-ignore unused-export-let
   export let item = null;
+
+  if (value === '' && schema.opts?.defaultValue !== undefined) {
+    value = schema.opts?.defaultValue;
+  }
 </script>
 
 <template lang="pug">

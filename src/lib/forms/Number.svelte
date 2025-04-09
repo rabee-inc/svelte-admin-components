@@ -10,6 +10,9 @@
   // svelte-ignore unused-export-let
   export let item;
 
+  if (value === '' && schema.opts?.defaultValue !== undefined) {
+    value = schema.opts?.defaultValue;
+  }
 </script>
 
 <template lang='pug'>
