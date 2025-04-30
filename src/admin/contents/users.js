@@ -61,6 +61,7 @@ export default {
           type: "text",
           opts: {
             placeholder: "表示名を入力してください",
+            defaultValue: "ゲスト",
           }
         },
         {
@@ -92,7 +93,8 @@ export default {
           opts: {
             min: 12,
             max: 128,
-            step: ""
+            step: "",
+            defaultValue: '16',
           }
         },
         {
@@ -116,21 +118,17 @@ export default {
                 value: "other",
                 label: "その他"
               }
-            ]
-          }
-        },
-        {
-          key: "gender",
-          label: "性別",
-          type: "select",
-          opts: {
-            choices: "genders"
+            ],
+            defaultValue: "other"
           }
         },
         {
           key: "is_ambassador",
           label: "アンバサダー",
-          type: "switch"
+          type: "switch",
+          opts: {
+            defaultValue: true,
+          }
         },
         {
           key: "is_official",

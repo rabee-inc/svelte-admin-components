@@ -5,7 +5,7 @@
   import { tick } from 'svelte';
 
   export let schema;
-  export let value = '';
+  export let value = schema.opts?.defaultValue || '';
   // svelte-ignore unused-export-let
   export let formValue;
   export let actions = '';

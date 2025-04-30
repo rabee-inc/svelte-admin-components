@@ -2,7 +2,7 @@
 
 <script>
   export let schema;
-  export let value = null;
+  export let value = schema.opts?.defaultValue || '';
   // svelte-ignore unused-export-let
   export let formValue = null;
   // svelte-ignore unused-export-let
