@@ -30,6 +30,6 @@
 <template lang='pug'>
   div
     +if('schema.opts?.caution')
-      div.fs10.text-danger ※{schema.opts.caution}
+      div.fs10.text-danger.mb4 ※{schema.opts.caution}
     button.button(type='button', on:click='{onAction}') {schema.label}
 </template>
