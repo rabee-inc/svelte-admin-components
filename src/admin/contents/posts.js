@@ -80,6 +80,7 @@ export default {
           type: "button",
           class: "",
           opts: {
+            caution: 'コメント一覧へ移動します',
             action: "gotoComments"
           }
         }
